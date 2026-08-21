@@ -1,5 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using TheMovies.Core.Models;
+using TheMovies.Core.Repositories;
 
 
 namespace TheMovies.WPF.ViewModels
@@ -7,9 +9,11 @@ namespace TheMovies.WPF.ViewModels
     public class AddMovieViewModel : ViewModelBase
     {
 
-
+        private readonly FileMovieRepository _repository;
 
         private string _title;
+        private string _duration;
+        private string _genre;
 
         public string Title
         {
@@ -21,7 +25,6 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        private string _duration;
         public string Duration
         {
             get => _duration;
@@ -31,8 +34,6 @@ namespace TheMovies.WPF.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private string _genre;
         public string Genre
         {
             get => _genre;
@@ -43,13 +44,17 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        public List<Movie> Movies { get; set; }
+        public ObservableCollection<Movie> Movies { get; set; }
 
         public ICommand RegisterMovieCommand { get; }
 
-        public AddMovieViewModel()
+        public AddMovieViewModel(FileMovieRepository repository)
         {
-            Movies = new List<Movie>();
+            _repository = repository;
+
+            List<Movie> loadedMovies = _repository.LoadMovies();
+
+            Movies = new ObservableCollection<Movie>(loadedMovies);
 
             RegisterMovieCommand = new RelayCommand(RegisterMovie);
         }
@@ -65,6 +70,8 @@ namespace TheMovies.WPF.ViewModels
             };
 
             Movies.Add(movie);
+
+            _repository.SaveMovies(Movies.ToList());
         }
 
     }
