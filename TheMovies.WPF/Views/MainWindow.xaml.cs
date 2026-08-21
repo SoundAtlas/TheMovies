@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using TheMovies.WPF.ViewModels;
 
+
 namespace TheMovies.WPF
 {
     /// <summary>
@@ -11,7 +12,18 @@ namespace TheMovies.WPF
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            MainViewModel mainViewModel = new MainViewModel();
+            DataContext = mainViewModel;
+            mainViewModel.AddMovieViewModel.ShowMessageRequested += ShowMessage;
+        }
+
+        private void ShowMessage(string title, string message)
+        {
+            MessageBox.Show(
+                message,
+                title,
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
     }
 }

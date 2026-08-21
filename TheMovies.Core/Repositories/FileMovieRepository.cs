@@ -32,6 +32,12 @@ namespace TheMovies.Core.Repositories
             // Læser JSON-data fra filen
             string json = File.ReadAllText(_filePath);
 
+            // Returnerer en ny liste hvis JSON-dataen er tom
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return new List<Movie>();
+            }
+
             // Omdanner json til en liste af Movie-objekter
             List<Movie>? movies = JsonSerializer.Deserialize<List<Movie>>(json);
 
