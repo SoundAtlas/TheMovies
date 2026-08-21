@@ -7,6 +7,44 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Registrer film" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,20"/>
+            <TextBlock Text="Titel" />
+            <TextBox Text="{Binding AddMovieViewModel.Title}"
+                     Margin="0,5,0,10"/>
+            
+            <TextBlock Text="Varighed(min)" />
+            <TextBox Text="{Binding AddMovieViewModel.Duration}"
+                     Margin="0,5,0,10"/>
+            
+            <TextBlock Text="Genre" />
+            <TextBox Text="{Binding AddMovieViewModel.Genre}"
+                     Margin="0,5,0,20"/>
 
+            <Button Content="Registrer film"
+                    Command="{Binding AddMovieViewModel.RegisterMovieCommand}"
+                    Width="120"
+                    HorizontalAlignment="Left"/>
+            <ListBox ItemsSource="{Binding AddMovieViewModel.Movies}"
+         Margin="0,20,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Title}" />
+                            <TextBlock Text=" - " />
+                            <TextBlock Text="{Binding Duration}" />
+                            <TextBlock Text=" min - " />
+                            <TextBlock Text="{Binding Genre}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+        
+        
     </Grid>
 </Window>
