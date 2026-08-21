@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Registrer film" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,20"/>
+            <TextBlock Text="Titel" />
+            <TextBox Text="{Binding AddMovieViewModel.Title}"
+                     Margin="0,5,0,10"/>
+            
+            <TextBlock Text="Varighed(min)" />
+            <TextBox Text="{Binding AddMovieViewModel.Duration}"
+                     Margin="0,5,0,10"/>
+            
+            <TextBlock Text="Genre" />
+            <TextBox Text="{Binding AddMovieViewModel.Genre}"
+                     Margin="0,5,0,20"/>
 
+            <Button Content="Registrer film"
+                    Width="120"
+                    HorizontalAlignment="Left"/>
+
+
+        </StackPanel>
+        
+        
     </Grid>
 </Window>
