@@ -25,9 +25,23 @@
                      Margin="0,5,0,20"/>
 
             <Button Content="Registrer film"
+                    Command="{Binding AddMovieViewModel.RegisterMovieCommand}"
                     Width="120"
                     HorizontalAlignment="Left"/>
-
+            <ListBox ItemsSource="{Binding AddMovieViewModel.Movies}"
+         Margin="0,20,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Title}" />
+                            <TextBlock Text=" - " />
+                            <TextBlock Text="{Binding Duration}" />
+                            <TextBlock Text=" min - " />
+                            <TextBlock Text="{Binding Genre}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
         </StackPanel>
         

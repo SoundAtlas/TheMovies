@@ -1,7 +1,14 @@
-﻿namespace TheMovies.WPF.ViewModels
+﻿using System.Windows.Input;
+using TheMovies.Core.Models;
+
+
+namespace TheMovies.WPF.ViewModels
 {
     public class AddMovieViewModel : ViewModelBase
     {
+
+
+
         private string _title;
 
         public string Title
@@ -35,5 +42,30 @@
                 OnPropertyChanged();
             }
         }
+
+        public List<Movie> Movies { get; set; }
+
+        public ICommand RegisterMovieCommand { get; }
+
+        public AddMovieViewModel()
+        {
+            Movies = new List<Movie>();
+
+            RegisterMovieCommand = new RelayCommand(RegisterMovie);
+        }
+
+
+        private void RegisterMovie(object parameter)
+        {
+            Movie movie = new Movie
+            {
+                Title = Title,
+                Duration = int.Parse(Duration),
+                Genre = Genre
+            };
+
+            Movies.Add(movie);
+        }
+
     }
 }
