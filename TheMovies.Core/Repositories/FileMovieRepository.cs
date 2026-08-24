@@ -7,7 +7,12 @@ namespace TheMovies.Core.Repositories
     public class FileMovieRepository
     {
 
-        private readonly string _filePath = @"..\..\..\..\TheMovies.Core\Data\movies.json";
+        private readonly string _filePath;
+
+        public FileMovieRepository(string filePath = @"..\..\..\..\TheMovies.Core\Data\movies.json")
+        {
+            _filePath = filePath;
+        }
 
         public void SaveMovies(List<Movie> movies)
         {
