@@ -79,6 +79,40 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                
+                <TextBlock Text="Biografer"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="0,30,0,20"/>
+                
+                <TextBlock Text="Navn" />
+                
+                
+
+                <TextBox Text="{Binding CinemaViewModel.Name}"
+                         Margin="0,5,0,10"/>
+                
+                <Button Content="Registrer biograf"
+                        Command="{Binding CinemaViewModel.RegisterCinemaCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,10,0"/>
+
+                <TextBlock Text="Registrerede biografer:" 
+                           FontSize="16" 
+                           FontWeight="Medium" 
+                           Margin="0,20,0,10"/>
+
+                <ListBox ItemsSource="{Binding CinemaViewModel.Cinemas}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    
+                    
+                </ListBox>
+                 
 
             </StackPanel>
         </ScrollViewer>

@@ -168,7 +168,6 @@ namespace TheMovies.WPF.ViewModels
             };
 
             Movies.Add(movie);
-
             _repository.SaveMovies(Movies.ToList());
 
             ShowMessage($"{Title} registreret", "Filmen blev registreret.");
