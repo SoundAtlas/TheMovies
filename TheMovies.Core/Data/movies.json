@@ -1,18 +1,23 @@
 [
   {
-    "Title": "The Odyssey ",
-    "Duration": 172,
-    "Genre": "Mythic Action"
+    "Title": "Min Evige Sommer",
+    "Duration": 105,
+    "Genre": "Drama",
+    "Director": "Sylvia Le Fanu",
+    "ReleaseDate": "2026-08-15T00:00:00"
   },
   {
-    "Title": "Spider-Man: Brand New Day",
-    "Duration": 145,
-    "Genre": "Science Fiction"
+    "Title": "Onkel",
+    "Duration": 106,
+    "Genre": "Drama",
+    "Director": "Frelle Petersen",
+    "ReleaseDate": "2026-08-20T00:00:00"
   },
   {
-    "Title": "Vores L\u00F8fte",
-    "Duration": 108,
-    "Genre": "Drama"
+    "Title": "Trine On Fire",
+    "Duration": 95,
+    "Genre": "Dokumentar",
+    "Director": "Alexander Lind",
+    "ReleaseDate": "2026-08-26T13:07:36.6000728+02:00"
   }
-  
 ]

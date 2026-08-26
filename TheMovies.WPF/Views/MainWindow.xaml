@@ -23,11 +23,23 @@
             <TextBlock Text="Genre" />
             <TextBox Text="{Binding AddMovieViewModel.Genre}"
                      Margin="0,5,0,20"/>
+            
+            <TextBlock Text="Filminstruktør" />
+            <TextBox Text="{Binding AddMovieViewModel.Director}"
+                     Margin="0,5,0,10"/>
+
+            <TextBlock Text="Premieredato" />
+            <DatePicker SelectedDate="{Binding AddMovieViewModel.ReleaseDate}"
+                        Margin="0,5,0,10" Width="140" HorizontalAlignment="Left"/>
 
             <Button Content="Registrer film"
                     Command="{Binding AddMovieViewModel.RegisterMovieCommand}"
                     Width="120"
                     HorizontalAlignment="Left"/>
+            <TextBlock Text="Registrerede film:" 
+                       FontSize="16" 
+                       FontWeight="Medium" 
+                       Margin="0,20,0,0"/>
             <ListBox ItemsSource="{Binding AddMovieViewModel.Movies}"
          Margin="0,20,0,0">
                 <ListBox.ItemTemplate>
@@ -38,6 +50,12 @@
                             <TextBlock Text="{Binding Duration}" />
                             <TextBlock Text=" min - " />
                             <TextBlock Text="{Binding Genre}" />
+                            <TextBlock Text=" - " />
+                            <TextBlock Text="Filminstruktør: " />
+                            <TextBlock Text="{Binding Director}" />
+                            <TextBlock Text=" - " />
+                            <TextBlock Text="Premieredato: " />
+                            <TextBlock Text="{Binding ReleaseDate, StringFormat='{}{0:dd/MM/yyyy}'}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

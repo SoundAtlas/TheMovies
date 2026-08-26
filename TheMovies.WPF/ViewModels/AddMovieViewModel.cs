@@ -14,6 +14,8 @@ namespace TheMovies.WPF.ViewModels
         private string _title;
         private string _duration;
         private string _genre;
+        private string _director;
+        private DateTime _releasedate = DateTime.Today;
         private string _statusMessage;
 
         public string StatusMessage
@@ -54,6 +56,25 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
+        public string Director
+        {
+            get => _director;
+            set
+            {
+                _director = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime ReleaseDate
+        {
+            get => _releasedate;
+            set
+            {
+                _releasedate = value;
+                OnPropertyChanged();
+            }
+        }
         public ObservableCollection<Movie> Movies { get; set; }
 
         public ICommand RegisterMovieCommand { get; }
@@ -97,7 +118,9 @@ namespace TheMovies.WPF.ViewModels
             {
                 Title = Title,
                 Duration = duration,
-                Genre = Genre
+                Genre = Genre,
+                Director = Director,
+                ReleaseDate = ReleaseDate
             };
 
             Movies.Add(movie);
@@ -110,6 +133,8 @@ namespace TheMovies.WPF.ViewModels
             Title = "";
             Duration = "";
             Genre = "";
+            Director = "";
+            ReleaseDate = DateTime.Now;
         }
 
         public event Action<string, string>? ShowMessageRequested;
