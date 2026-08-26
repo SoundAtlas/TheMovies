@@ -47,7 +47,6 @@ namespace TheMovies.WPF.ViewModels
         }
 
 
-
         public ObservableCollection<Cinema> Cinemas { get; set; }
 
         public ICommand RegisterCinemaCommand { get; }
