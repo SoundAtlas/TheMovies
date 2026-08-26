@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovies.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="800">
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="Registrer film" 
@@ -13,40 +13,50 @@
                        FontWeight="Bold" 
                        Margin="0,0,0,20"/>
             <TextBlock Text="Titel" />
-            <TextBox Text="{Binding AddMovieViewModel.Title}"
+            <TextBox Text="{Binding MovieViewModel.Title}"
                      Margin="0,5,0,10"/>
             
             <TextBlock Text="Varighed(min)" />
-            <TextBox Text="{Binding AddMovieViewModel.Duration}"
+            <TextBox Text="{Binding MovieViewModel.Duration}"
                      Margin="0,5,0,10"/>
             
             <TextBlock Text="Genre" />
-            <TextBox Text="{Binding AddMovieViewModel.Genre}"
-                     Margin="0,5,0,20"/>
+            <TextBox Text="{Binding MovieViewModel.Genre}"
+                     Margin="0,5,0,10"/>
             
             <TextBlock Text="Filminstruktør" />
-            <TextBox Text="{Binding AddMovieViewModel.Director}"
+            <TextBox Text="{Binding MovieViewModel.Director}"
                      Margin="0,5,0,10"/>
 
             <TextBlock Text="Premieredato" />
-            <DatePicker SelectedDate="{Binding AddMovieViewModel.ReleaseDate}"
+            <DatePicker SelectedDate="{Binding MovieViewModel.ReleaseDate}"
                         Margin="0,5,0,10" Width="140" HorizontalAlignment="Left"/>
 
+            <StackPanel Orientation="Horizontal">
+                            
             <Button Content="Registrer film"
-                    Command="{Binding AddMovieViewModel.RegisterMovieCommand}"
+                    Command="{Binding MovieViewModel.RegisterMovieCommand}"
+                    Width="120"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,10,0"/>
+            <Button Content="Gem ændringer"
+                    Command="{Binding MovieViewModel.SaveMovieChangesCommand}"
+                    IsEnabled="{Binding MovieViewModel.IsEditing}"
                     Width="120"
                     HorizontalAlignment="Left"/>
             
+            </StackPanel>
+
             <TextBlock Text="Registrerede film:" 
                        FontSize="16" 
                        FontWeight="Medium" 
                        Margin="0,20,0,10"/>
             <Button Content="Slet film"
-                    Command="{Binding AddMovieViewModel.DeleteMovieCommand}"
+                    Command="{Binding MovieViewModel.DeleteMovieCommand}"
                     Width="120"
                     HorizontalAlignment="Left"/>                
-            <ListBox ItemsSource="{Binding AddMovieViewModel.Movies}"
-                     SelectedItem="{Binding AddMovieViewModel.SelectedMovie}"
+            <ListBox ItemsSource="{Binding MovieViewModel.Movies}"
+                     SelectedItem="{Binding MovieViewModel.SelectedMovie}"
          Margin="0,20,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>

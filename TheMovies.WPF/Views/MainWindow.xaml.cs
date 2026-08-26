@@ -14,7 +14,7 @@ namespace TheMovies.WPF
             InitializeComponent();
             MainViewModel mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
-            mainViewModel.AddMovieViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.MovieViewModel.ShowMessageRequested += ShowMessage;
         }
 
         private void ShowMessage(string title, string message)
