@@ -6,7 +6,7 @@ using TheMovies.Core.Repositories;
 
 namespace TheMovies.WPF.ViewModels
 {
-    public class AddMovieViewModel : ViewModelBase
+    public class MovieViewModel : ViewModelBase
     {
 
         private readonly FileMovieRepository _repository;
@@ -17,6 +17,19 @@ namespace TheMovies.WPF.ViewModels
         private string _director;
         private DateTime _releasedate = DateTime.Today;
         private string _statusMessage;
+
+        private Movie? _selectedMovie;
+
+        public Movie? SelectedMovie
+        {
+            get => _selectedMovie;
+            set
+            {
+                _selectedMovie = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public string StatusMessage
         {
@@ -77,9 +90,8 @@ namespace TheMovies.WPF.ViewModels
         }
         public ObservableCollection<Movie> Movies { get; set; }
 
-        public ICommand RegisterMovieCommand { get; }
 
-        public AddMovieViewModel(FileMovieRepository repository)
+        public MovieViewModel(FileMovieRepository repository)
         {
 
             _repository = repository;
@@ -89,8 +101,11 @@ namespace TheMovies.WPF.ViewModels
             Movies = new ObservableCollection<Movie>(loadedMovies);
 
             RegisterMovieCommand = new RelayCommand(RegisterMovie);
+            DeleteMovieCommand = new RelayCommand(DeleteMovie);
 
         }
+        public ICommand RegisterMovieCommand { get; }
+        public ICommand DeleteMovieCommand { get; }
 
 
         private void RegisterMovie(object parameter)
@@ -129,12 +144,26 @@ namespace TheMovies.WPF.ViewModels
 
             ShowMessage($"{Title} registreret", "Filmen blev registreret.");
 
-            // Sætter inputfelterne tilbage til tomme værdier
+            // Return to default values after registration
             Title = "";
             Duration = "";
             Genre = "";
             Director = "";
             ReleaseDate = DateTime.Now;
+        }
+
+        private void DeleteMovie(object parameter)
+        {
+            if (SelectedMovie == null)
+                return;
+
+            Movie movieToDelete = SelectedMovie;
+
+            Movies.Remove(movieToDelete);
+
+            _repository.SaveMovies(Movies.ToList());
+            ShowMessage($"{movieToDelete.Title} slettet", "Filmen blev slettet.");
+            SelectedMovie = null; // Reset the selected movie after deletion
         }
 
         public event Action<string, string>? ShowMessageRequested;

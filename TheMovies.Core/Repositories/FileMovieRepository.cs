@@ -34,19 +34,19 @@ namespace TheMovies.Core.Repositories
                 return new List<Movie>();
             }
 
-            // Læser JSON-data fra filen
+            // Read the JSON data from the file
             string json = File.ReadAllText(_filePath);
 
-            // Returnerer en ny liste hvis JSON-dataen er tom
+            // Check if the JSON string is empty or null
             if (string.IsNullOrWhiteSpace(json))
             {
                 return new List<Movie>();
             }
 
-            // Omdanner json til en liste af Movie-objekter
+            // Deserialize the JSON data into a list of Movie objects
             List<Movie>? movies = JsonSerializer.Deserialize<List<Movie>>(json);
 
-            // Returner listen eller en tom liste hvis deserialiseringen mislykkes
+            // Return the list of movies, or an empty list if deserialization failed
             return movies ?? new List<Movie>();
         }
     }

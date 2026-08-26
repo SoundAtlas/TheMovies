@@ -4,12 +4,12 @@ namespace TheMovies.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public AddMovieViewModel AddMovieViewModel { get; }
+        public MovieViewModel AddMovieViewModel { get; }
 
         public MainViewModel()
         {
             FileMovieRepository repository = new FileMovieRepository();
-            AddMovieViewModel = new AddMovieViewModel(repository);
+            AddMovieViewModel = new MovieViewModel(repository);
         }
 
     }
