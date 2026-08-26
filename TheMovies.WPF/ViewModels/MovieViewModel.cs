@@ -127,8 +127,8 @@ namespace TheMovies.WPF.ViewModels
 
             _repository = repository;
 
+            // Load movies from the repository and initialize the ObservableCollection
             List<Movie> loadedMovies = _repository.LoadMovies();
-
             Movies = new ObservableCollection<Movie>(loadedMovies);
 
             RegisterMovieCommand = new RelayCommand(RegisterMovie);

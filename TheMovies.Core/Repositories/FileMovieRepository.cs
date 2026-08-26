@@ -12,6 +12,8 @@ namespace TheMovies.Core.Repositories
         public FileMovieRepository(string filePath = @"..\..\..\..\TheMovies.Core\Data\movies.json")
         {
             _filePath = filePath;
+            if (!File.Exists(_filePath))
+                File.Create(_filePath).Close();
         }
 
         public void SaveMovies(List<Movie> movies)
