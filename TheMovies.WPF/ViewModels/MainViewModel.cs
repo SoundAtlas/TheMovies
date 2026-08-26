@@ -16,7 +16,7 @@ namespace TheMovies.WPF.ViewModels
 
             MovieViewModel = new MovieViewModel(movieRepository);
             CinemaViewModel = new CinemaViewModel(cinemaRepository);
-            HallViewModel = new HallViewModel(hallRepository);
+            HallViewModel = new HallViewModel(hallRepository, CinemaViewModel.Cinemas);
 
         }
 
