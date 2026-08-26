@@ -15,6 +15,9 @@ namespace TheMovies.WPF
             MainViewModel mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
             mainViewModel.MovieViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.MovieViewModel.ConfirmDeleteRequested += ConfirmDelete;
+            mainViewModel.CinemaViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.CinemaViewModel.ConfirmDeleteRequested += ConfirmDelete;
         }
 
         private void ShowMessage(string title, string message)
@@ -24,6 +27,17 @@ namespace TheMovies.WPF
                 title,
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
+        }
+
+        private bool ConfirmDelete(string title, string message)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                message,
+                title,
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            return result == MessageBoxResult.Yes;
         }
     }
 }

@@ -17,9 +17,54 @@ namespace TheMovies.WPF.ViewModels
             set { _name = value; OnPropertyChanged(); }
         }
 
+        private string _statusMessage;
+
+        public string StatusMessage
+        {
+            get { return _statusMessage; }
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged();
+            }
+        }
+        private bool _isEditing;
+        public bool IsEditing
+        {
+            get => _isEditing;
+            set
+            {
+                _isEditing = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Cinema? _selectedCinema;
+
+        public Cinema? SelectedCinema
+        {
+            get { return _selectedCinema; }
+            set
+            {
+                _selectedCinema = value;
+                OnPropertyChanged();
+
+                if (_selectedCinema == null)
+                    return;
+
+                Name = _selectedCinema.Name;
+
+                IsEditing = true;
+            }
+        }
+
+
+
         public ObservableCollection<Cinema> Cinemas { get; set; }
 
         public ICommand RegisterCinemaCommand { get; }
+        public ICommand DeleteCinemaCommand { get; }
+        public ICommand SaveCinemaChangesCommand { get; }
 
         public CinemaViewModel(FileCinemaRepository repository)
         {
@@ -30,6 +75,8 @@ namespace TheMovies.WPF.ViewModels
             Cinemas = new ObservableCollection<Cinema>(loadedCinemas);
 
             RegisterCinemaCommand = new RelayCommand(RegisterCinema);
+            DeleteCinemaCommand = new RelayCommand(DeleteCinema);
+            SaveCinemaChangesCommand = new RelayCommand(SaveCinemaChanges);
         }
 
         public void RegisterCinema(object paramter)
@@ -40,16 +87,88 @@ namespace TheMovies.WPF.ViewModels
                 return;
             }
 
+
+            int newId = 1;
+
+            // Ensure the new ID is unique by checking existing cinemas
+            foreach (var existingCinema in Cinemas)
+            {
+                if (existingCinema.Id >= newId)
+                {
+                    newId = existingCinema.Id + 1;
+                }
+            }
+
             Cinema cinema = new Cinema()
             {
-                Id = Cinemas.Count + 1,
+                Id = newId,
                 Name = Name,
             };
 
             Cinemas.Add(cinema);
             _repository.SaveCinemas(Cinemas.ToList());
+
+            StatusMessage = $"{Name} blev registreret.";
+
             Name = ""; // Clear the input field after saving
 
+            IsEditing = false;
+
+        }
+
+        public void DeleteCinema(object parameter)
+        {
+            if (SelectedCinema == null)
+            {
+                return;
+            }
+
+            Cinema cinemaToDelete = SelectedCinema;
+
+            bool confirmed = ConfirmDelete("Bekræft sletning",
+                $"Er du sikker på, at du vil slette biografen '{cinemaToDelete.Name}'?");
+
+
+            if (!confirmed)
+            {
+                return;
+            }
+
+            Cinemas.Remove(cinemaToDelete);
+            _repository.SaveCinemas(Cinemas.ToList());
+            ShowMessage($"{cinemaToDelete.Name} slettet", "Biografen blev slettet.");
+
+            Name = ""; // Clear the input field after deletion
+            SelectedCinema = null; // Clear the selection after deletion
+
+            IsEditing = false;
+        }
+
+        public void SaveCinemaChanges(object parameter)
+        {
+            if (SelectedCinema == null)
+                return;
+
+            if (string.IsNullOrWhiteSpace(Name))
+                return;
+
+            int index = Cinemas.IndexOf(SelectedCinema);
+
+            Cinema updatedCinema = new Cinema
+            {
+                Id = SelectedCinema.Id,
+                Name = Name
+            };
+
+            Cinemas[index] = updatedCinema;
+
+            _repository.SaveCinemas(Cinemas.ToList());
+
+            StatusMessage = $"{Name} blev opdateret.";
+            // Return to default values after saving changes
+            Name = "";
+            SelectedCinema = null;
+            IsEditing = false;
         }
 
         public event Action<string, string>? ShowMessageRequested;
@@ -57,6 +176,17 @@ namespace TheMovies.WPF.ViewModels
         private void ShowMessage(string title, string message)
         {
             ShowMessageRequested?.Invoke(title, message);
+        }
+
+        public event Func<string, string, bool>? ConfirmDeleteRequested;
+
+        private bool ConfirmDelete(string title, string message)
+        {
+            if (ConfirmDeleteRequested != null)
+            {
+                return ConfirmDeleteRequested.Invoke(title, message);
+            }
+            return false;
         }
 
     }

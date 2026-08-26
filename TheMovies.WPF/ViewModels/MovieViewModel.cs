@@ -77,6 +77,16 @@ namespace TheMovies.WPF.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool _isEditing;
+        public bool IsEditing
+        {
+            get => _isEditing;
+            set
+            {
+                _isEditing = value;
+                OnPropertyChanged();
+            }
+        }
 
         private Movie? _selectedMovie;
         public Movie? SelectedMovie
@@ -101,17 +111,6 @@ namespace TheMovies.WPF.ViewModels
 
         }
 
-        private bool _isEditing;
-
-        public bool IsEditing
-        {
-            get => _isEditing;
-            set
-            {
-                _isEditing = value;
-                OnPropertyChanged();
-            }
-        }
 
 
 
@@ -170,7 +169,7 @@ namespace TheMovies.WPF.ViewModels
             Movies.Add(movie);
             _repository.SaveMovies(Movies.ToList());
 
-            ShowMessage($"{Title} registreret", "Filmen blev registreret.");
+            StatusMessage = $"{Title} registreret";
 
             // Return to default values after registration
             ClearInputFields();
@@ -183,7 +182,16 @@ namespace TheMovies.WPF.ViewModels
             if (SelectedMovie == null)
                 return;
 
+
             Movie movieToDelete = SelectedMovie;
+
+            bool confirmed = ConfirmDelete("Bekræft sletning",
+                $"Er du sikker på, at du vil slette filmen '{movieToDelete.Title}'?");
+
+            if (!confirmed)
+            {
+                return;
+            }
 
             Movies.Remove(movieToDelete);
 
@@ -194,7 +202,7 @@ namespace TheMovies.WPF.ViewModels
             ClearInputFields();
             SelectedMovie = null; // Reset the selected movie after deletion
 
-
+            IsEditing = false;
         }
 
 
@@ -236,7 +244,7 @@ namespace TheMovies.WPF.ViewModels
 
 
             _repository.SaveMovies(Movies.ToList());
-            ShowMessage($"{Title} opdateret", "Filmen blev opdateret.");
+            StatusMessage = $"{Title} blev opdateret";
             // Reset the input fields after saving changes
             ClearInputFields();
             SelectedMovie = null; // Reset the selected movie after editing
@@ -249,6 +257,17 @@ namespace TheMovies.WPF.ViewModels
         private void ShowMessage(string title, string message)
         {
             ShowMessageRequested?.Invoke(title, message);
+        }
+
+        public event Func<string, string, bool>? ConfirmDeleteRequested;
+
+        private bool ConfirmDelete(string title, string message)
+        {
+            if (ConfirmDeleteRequested != null)
+            {
+                return ConfirmDeleteRequested.Invoke(title, message);
+            }
+            return false;
         }
 
         private void ClearInputFields()

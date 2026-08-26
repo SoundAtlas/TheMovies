@@ -50,17 +50,21 @@
 
                 </StackPanel>
 
+                <TextBlock Text="{Binding MovieViewModel.StatusMessage}"
+                            Margin="0,10,0,0"/>
+
                 <TextBlock Text="Registrerede film:" 
                            FontSize="16" 
                            FontWeight="Medium" 
                            Margin="0,20,0,10"/>
                 <Button Content="Slet film"
                         Command="{Binding MovieViewModel.DeleteMovieCommand}"
+                        IsEnabled="{Binding MovieViewModel.IsEditing}"
                         Width="120"
                         HorizontalAlignment="Left"/>
                 <ListBox ItemsSource="{Binding MovieViewModel.Movies}"
                          SelectedItem="{Binding MovieViewModel.SelectedMovie}"
-             Margin="0,20,0,0">
+                         Margin="0,20,0,0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -91,28 +95,46 @@
 
                 <TextBox Text="{Binding CinemaViewModel.Name}"
                          Margin="0,5,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <Button Content="Registrer biograf"
+                            Command="{Binding CinemaViewModel.RegisterCinemaCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,10,0"/>
                 
-                <Button Content="Registrer biograf"
-                        Command="{Binding CinemaViewModel.RegisterCinemaCommand}"
-                        Width="120"
-                        HorizontalAlignment="Left"
-                        Margin="0,0,10,0"/>
+                    <Button Content="Gem ændringer"
+                            Command="{Binding CinemaViewModel.SaveCinemaChangesCommand}"
+                            IsEnabled="{Binding CinemaViewModel.IsEditing}"
+                            Width="120"
+                            HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <TextBlock Text="{Binding CinemaViewModel.StatusMessage}"
+                           Margin="0,10,0,0"/>
 
                 <TextBlock Text="Registrerede biografer:" 
                            FontSize="16" 
                            FontWeight="Medium" 
                            Margin="0,20,0,10"/>
 
-                <ListBox ItemsSource="{Binding CinemaViewModel.Cinemas}">
+                <Button Content="Slet biograf"
+                        Command="{Binding CinemaViewModel.DeleteCinemaCommand}"
+                        IsEnabled="{Binding CinemaViewModel.IsEditing}"
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+                        
+
+                <ListBox ItemsSource="{Binding CinemaViewModel.Cinemas}"
+                         SelectedItem="{Binding CinemaViewModel.SelectedCinema}"
+                         Margin="0,20,0,0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                    
-                    
+
                 </ListBox>
-                 
 
             </StackPanel>
         </ScrollViewer>
