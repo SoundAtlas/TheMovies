@@ -23,7 +23,7 @@ namespace TheMovies.WPF.ViewModels
 	{
 		public string TimeSlot { get; set; }   // fx "18:00"
 		public string MovieTitle { get; set; }
-		public int Hall { get; set; }
+		public int CinemaRoom { get; set; }
 		public bool IsPremiere { get; set; }
 	}
 
@@ -203,7 +203,7 @@ namespace TheMovies.WPF.ViewModels
 				{
 					TimeSlot = $"{s.StartTime:HH\\:mm}",
 					MovieTitle = s.MovieTitle,
-					Hall = s.CinemaRoom,
+					CinemaRoom = s.CinemaRoom,
 				});
 
 			Screenings = new ObservableCollection<ScreeningDisplay>(list);
