@@ -12,7 +12,16 @@
                        FontSize="24" 
                        FontWeight="Bold" 
                        Margin="0,0,0,20"/>
-            <TextBlock Text="Titel" />
+
+                       <!-- ny knap til kalenderen-->
+            <Button Content="Åbn kalender"
+                Command="{Binding OpenCalendarCommand}"
+                Width="120"
+                HorizontalAlignment="Left"
+                Margin="0,0,0,20"/>
+
+
+			<TextBlock Text="Titel" /> 
             <TextBox Text="{Binding AddMovieViewModel.Title}"
                      Margin="0,5,0,10"/>
             

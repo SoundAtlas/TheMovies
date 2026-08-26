@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using TheMovies.WPF.ViewModels;
+using TheMovies.WPF.Views;
 
 
 namespace TheMovies.WPF
@@ -15,6 +16,7 @@ namespace TheMovies.WPF
             MainViewModel mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
             mainViewModel.AddMovieViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.OpenCalendarRequested += OpenCalendar;
         }
 
         private void ShowMessage(string title, string message)
@@ -24,6 +26,13 @@ namespace TheMovies.WPF
                 title,
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
+        }
+
+        private void OpenCalendar()
+        {
+            MainViewModel vm = (MainViewModel)DataContext;
+            CalendarView calendarView = new CalendarView(vm.CreateCalendarViewModel());
+            calendarView.Show();
         }
     }
 }
