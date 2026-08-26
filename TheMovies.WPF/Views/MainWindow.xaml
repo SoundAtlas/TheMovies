@@ -7,78 +7,81 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
     <Grid>
-        <StackPanel Margin="20">
-            <TextBlock Text="Registrer film" 
-                       FontSize="24" 
-                       FontWeight="Bold" 
-                       Margin="0,0,0,20"/>
-            <TextBlock Text="Titel" />
-            <TextBox Text="{Binding MovieViewModel.Title}"
-                     Margin="0,5,0,10"/>
-            
-            <TextBlock Text="Varighed(min)" />
-            <TextBox Text="{Binding MovieViewModel.Duration}"
-                     Margin="0,5,0,10"/>
-            
-            <TextBlock Text="Genre" />
-            <TextBox Text="{Binding MovieViewModel.Genre}"
-                     Margin="0,5,0,10"/>
-            
-            <TextBlock Text="Filminstruktør" />
-            <TextBox Text="{Binding MovieViewModel.Director}"
-                     Margin="0,5,0,10"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-            <TextBlock Text="Premieredato" />
-            <DatePicker SelectedDate="{Binding MovieViewModel.ReleaseDate}"
-                        Margin="0,5,0,10" Width="140" HorizontalAlignment="Left"/>
 
-            <StackPanel Orientation="Horizontal">
-                            
-            <Button Content="Registrer film"
-                    Command="{Binding MovieViewModel.RegisterMovieCommand}"
-                    Width="120"
-                    HorizontalAlignment="Left"
-                    Margin="0,0,10,0"/>
-            <Button Content="Gem ændringer"
-                    Command="{Binding MovieViewModel.SaveMovieChangesCommand}"
-                    IsEnabled="{Binding MovieViewModel.IsEditing}"
-                    Width="120"
-                    HorizontalAlignment="Left"/>
-            
+            <StackPanel Margin="20">
+                <TextBlock Text="Registrer film" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,20"/>
+                <TextBlock Text="Titel" />
+                <TextBox Text="{Binding MovieViewModel.Title}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Varighed(min)" />
+                <TextBox Text="{Binding MovieViewModel.Duration}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Genre" />
+                <TextBox Text="{Binding MovieViewModel.Genre}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Filminstruktør" />
+                <TextBox Text="{Binding MovieViewModel.Director}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Premieredato" />
+                <DatePicker SelectedDate="{Binding MovieViewModel.ReleaseDate}"
+                            Margin="0,5,0,10" Width="140" HorizontalAlignment="Left"/>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Content="Registrer film"
+                        Command="{Binding MovieViewModel.RegisterMovieCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,10,0"/>
+                    <Button Content="Gem ændringer"
+                        Command="{Binding MovieViewModel.SaveMovieChangesCommand}"
+                        IsEnabled="{Binding MovieViewModel.IsEditing}"
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+
+                </StackPanel>
+
+                <TextBlock Text="Registrerede film:" 
+                           FontSize="16" 
+                           FontWeight="Medium" 
+                           Margin="0,20,0,10"/>
+                <Button Content="Slet film"
+                        Command="{Binding MovieViewModel.DeleteMovieCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+                <ListBox ItemsSource="{Binding MovieViewModel.Movies}"
+                         SelectedItem="{Binding MovieViewModel.SelectedMovie}"
+             Margin="0,20,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Title}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding Duration}" />
+                                <TextBlock Text=" min - " />
+                                <TextBlock Text="{Binding Genre}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="Filminstruktør: " />
+                                <TextBlock Text="{Binding Director}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="Premieredato: " />
+                                <TextBlock Text="{Binding ReleaseDate, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
             </StackPanel>
-
-            <TextBlock Text="Registrerede film:" 
-                       FontSize="16" 
-                       FontWeight="Medium" 
-                       Margin="0,20,0,10"/>
-            <Button Content="Slet film"
-                    Command="{Binding MovieViewModel.DeleteMovieCommand}"
-                    Width="120"
-                    HorizontalAlignment="Left"/>                
-            <ListBox ItemsSource="{Binding MovieViewModel.Movies}"
-                     SelectedItem="{Binding MovieViewModel.SelectedMovie}"
-         Margin="0,20,0,0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Title}" />
-                            <TextBlock Text=" - " />
-                            <TextBlock Text="{Binding Duration}" />
-                            <TextBlock Text=" min - " />
-                            <TextBlock Text="{Binding Genre}" />
-                            <TextBlock Text=" - " />
-                            <TextBlock Text="Filminstruktør: " />
-                            <TextBlock Text="{Binding Director}" />
-                            <TextBlock Text=" - " />
-                            <TextBlock Text="Premieredato: " />
-                            <TextBlock Text="{Binding ReleaseDate, StringFormat='{}{0:dd/MM/yyyy}'}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
-        </StackPanel>
-        
+        </ScrollViewer>
         
     </Grid>
 </Window>
