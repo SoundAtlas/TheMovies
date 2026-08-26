@@ -28,16 +28,6 @@ namespace TheMovies.WPF.ViewModels
                 OnPropertyChanged();
             }
         }
-        private bool _isEditing;
-        public bool IsEditing
-        {
-            get => _isEditing;
-            set
-            {
-                _isEditing = value;
-                OnPropertyChanged();
-            }
-        }
 
         private Cinema? _selectedCinema;
 
@@ -53,8 +43,6 @@ namespace TheMovies.WPF.ViewModels
                     return;
 
                 Name = _selectedCinema.Name;
-
-                IsEditing = true;
             }
         }
 
@@ -75,8 +63,8 @@ namespace TheMovies.WPF.ViewModels
             Cinemas = new ObservableCollection<Cinema>(loadedCinemas);
 
             RegisterCinemaCommand = new RelayCommand(RegisterCinema);
-            DeleteCinemaCommand = new RelayCommand(DeleteCinema);
-            SaveCinemaChangesCommand = new RelayCommand(SaveCinemaChanges);
+            DeleteCinemaCommand = new RelayCommand(DeleteCinema, CanDeleteCinema);
+            SaveCinemaChangesCommand = new RelayCommand(SaveCinemaChanges, CanSaveCinemaChanges);
         }
 
         public void RegisterCinema(object paramter)
@@ -108,11 +96,9 @@ namespace TheMovies.WPF.ViewModels
             Cinemas.Add(cinema);
             _repository.SaveCinemas(Cinemas.ToList());
 
-            StatusMessage = $"{Name} blev registreret.";
+            StatusMessage = $"Biograf '{Name}' er blevet registreret.";
 
             Name = ""; // Clear the input field after saving
-
-            IsEditing = false;
 
         }
 
@@ -141,7 +127,6 @@ namespace TheMovies.WPF.ViewModels
             Name = ""; // Clear the input field after deletion
             SelectedCinema = null; // Clear the selection after deletion
 
-            IsEditing = false;
         }
 
         public void SaveCinemaChanges(object parameter)
@@ -164,13 +149,25 @@ namespace TheMovies.WPF.ViewModels
 
             _repository.SaveCinemas(Cinemas.ToList());
 
-            StatusMessage = $"{Name} blev opdateret.";
+            StatusMessage = $"Biograf '{Name}' er blevet opdateret.";
             // Return to default values after saving changes
             Name = "";
             SelectedCinema = null;
-            IsEditing = false;
         }
 
+        // Command CanExecute methods
+        private bool CanDeleteCinema(object? parameter)
+        {
+            return SelectedCinema != null;
+        }
+
+        private bool CanSaveCinemaChanges(object? parameter)
+        {
+            return SelectedCinema != null;
+        }
+
+
+        // Events for showing messages and confirming deletions
         public event Action<string, string>? ShowMessageRequested;
 
         private void ShowMessage(string title, string message)

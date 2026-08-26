@@ -77,16 +77,7 @@ namespace TheMovies.WPF.ViewModels
                 OnPropertyChanged();
             }
         }
-        private bool _isEditing;
-        public bool IsEditing
-        {
-            get => _isEditing;
-            set
-            {
-                _isEditing = value;
-                OnPropertyChanged();
-            }
-        }
+
 
         private Movie? _selectedMovie;
         public Movie? SelectedMovie
@@ -106,12 +97,9 @@ namespace TheMovies.WPF.ViewModels
                 Director = _selectedMovie.Director;
                 ReleaseDate = _selectedMovie.ReleaseDate;
 
-                IsEditing = true;
             }
 
         }
-
-
 
 
         public ObservableCollection<Movie> Movies { get; set; }
@@ -131,8 +119,8 @@ namespace TheMovies.WPF.ViewModels
             Movies = new ObservableCollection<Movie>(loadedMovies);
 
             RegisterMovieCommand = new RelayCommand(RegisterMovie);
-            DeleteMovieCommand = new RelayCommand(DeleteMovie);
-            SaveMovieChangesCommand = new RelayCommand(SaveMovieChanges);
+            DeleteMovieCommand = new RelayCommand(DeleteMovie, CanDeleteMovie);
+            SaveMovieChangesCommand = new RelayCommand(SaveMovieChanges, CanSaveMovieChanges);
 
         }
 
@@ -174,7 +162,6 @@ namespace TheMovies.WPF.ViewModels
             // Return to default values after registration
             ClearInputFields();
 
-            IsEditing = false;
         }
 
         private void DeleteMovie(object parameter)
@@ -202,7 +189,6 @@ namespace TheMovies.WPF.ViewModels
             ClearInputFields();
             SelectedMovie = null; // Reset the selected movie after deletion
 
-            IsEditing = false;
         }
 
 
@@ -249,7 +235,17 @@ namespace TheMovies.WPF.ViewModels
             ClearInputFields();
             SelectedMovie = null; // Reset the selected movie after editing
 
-            IsEditing = false; // Reset the editing state after saving changes
+        }
+
+        // Command CanExecute methods
+        private bool CanDeleteMovie(object? parameter)
+        {
+            return SelectedMovie != null;
+        }
+
+        private bool CanSaveMovieChanges(object? parameter)
+        {
+            return SelectedMovie != null;
         }
 
         public event Action<string, string>? ShowMessageRequested;

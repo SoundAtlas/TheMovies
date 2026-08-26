@@ -16,8 +16,11 @@ namespace TheMovies.WPF
             DataContext = mainViewModel;
             mainViewModel.MovieViewModel.ShowMessageRequested += ShowMessage;
             mainViewModel.MovieViewModel.ConfirmDeleteRequested += ConfirmDelete;
+
             mainViewModel.CinemaViewModel.ShowMessageRequested += ShowMessage;
             mainViewModel.CinemaViewModel.ConfirmDeleteRequested += ConfirmDelete;
+
+            mainViewModel.HallViewModel.ConfirmDeleteRequested += ConfirmDelete;
         }
 
         private void ShowMessage(string title, string message)
