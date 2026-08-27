@@ -12,7 +12,6 @@ namespace TheMovies.WPF.ViewModels
         private Cinema? _selectedCinema;
         private Hall? _selectedHall;
         private string _statusMessage;
-        private bool _isEditing;
 
         public string StatusMessage
         {

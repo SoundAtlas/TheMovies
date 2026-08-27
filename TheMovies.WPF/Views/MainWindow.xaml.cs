@@ -43,6 +43,7 @@ namespace TheMovies.WPF
                 MessageBoxImage.Question);
 
             return result == MessageBoxResult.Yes;
+        }
         private void OpenCalendar()
         {
             MainViewModel vm = (MainViewModel)DataContext;

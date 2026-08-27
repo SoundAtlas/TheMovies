@@ -17,6 +17,7 @@ namespace TheMovies.WPF.ViewModels
             set { _name = value; OnPropertyChanged(); }
         }
 
+
         private string _statusMessage;
 
         public string StatusMessage
@@ -141,7 +142,8 @@ namespace TheMovies.WPF.ViewModels
             Cinema updatedCinema = new Cinema
             {
                 Id = SelectedCinema.Id,
-                Name = Name
+                Name = Name,
+                Screenings = SelectedCinema.Screenings
             };
 
             Cinemas[index] = updatedCinema;

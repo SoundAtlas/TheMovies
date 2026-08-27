@@ -1,5 +1,6 @@
 [
   {
+    "Id": 1,
     "Name": "CinemaCity Fields",
     "Screenings": [
       {
@@ -40,6 +41,7 @@
     ]
   },
   {
+    "Id": 2,
     "Name": "Nordisk Film Biografer",
     "Screenings": [
       {

@@ -22,13 +22,13 @@ namespace TheMovies.WPF.ViewModels
             FileHallRepository hallRepository = new FileHallRepository();
 
             MovieViewModel = new MovieViewModel(movieRepository);
-            CinemaViewModel = new CinemaViewModel(cinemaRepository);
+            CinemaViewModel = new CinemaViewModel(_cinemaRepository);
             HallViewModel = new HallViewModel(
                 hallRepository,
                 CinemaViewModel.Cinemas);
 
             OpenCalendarCommand = new RelayCommand(
-                 => OpenCalendarRequested?.Invoke());
+                () => OpenCalendarRequested?.Invoke());
         }
 
         public CalendarViewModel CreateCalendarViewModel()
