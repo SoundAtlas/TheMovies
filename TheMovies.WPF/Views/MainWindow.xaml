@@ -8,9 +8,17 @@
         Title="TheMovies" Height="600" Width="800">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
+            
+            
             <!-- FILM SEKTION -->
 
             <StackPanel Margin="20">
+                <!-- ny knap til kalenderen-->
+                <Button Content="Åbn kalender"
+    Command="{Binding OpenCalendarCommand}"
+    Width="120"
+    HorizontalAlignment="Left"
+    Margin="0,0,0,20"/>
                 <TextBlock Text="Registrer film" 
                            FontSize="24" 
                            FontWeight="Bold" 
@@ -150,12 +158,7 @@
             <TextBox Text="{Binding HallViewModel.Name}"
                          Margin="0,5,0,10"/>
 
-            <!-- ny knap til kalenderen-->
-            <Button Content="Åbn kalender"
-                Command="{Binding OpenCalendarCommand}"
-                Width="120"
-                HorizontalAlignment="Left"
-                Margin="0,0,0,20"/>
+            
 
             <TextBlock Text="Biograf" />
             <ComboBox ItemsSource="{Binding HallViewModel.Cinemas}"

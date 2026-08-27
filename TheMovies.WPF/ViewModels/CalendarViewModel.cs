@@ -4,28 +4,13 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using TheMovies.Core.Models;
 using TheMovies.Core.Repositories;
+using TheMovies.WPF.DisplayModels;
 
 namespace TheMovies.WPF.ViewModels
 {
-    // Ét felt i kalendergitteret — én dag. 42 stk (6 rækker × 7 kolonner).
-    public class DayDisplay
-    {
-        public DateOnly Date { get; set; }
-        public bool HasScreenings { get; set; }     // Prik i UI hvis true altså så hvis der er forestillinger på den dag, kommer der en prik i UI
-        public bool IsInCurrentMonth { get; set; }  // Nedtonet hvis false så hvis dagen ikke er i den måned der vises i kalenderen, skal den være nedtonet
-                                                    // så det tydeligt fremgår at det er en dag i en anden måned, men stadig en del af kalendergitter
-                                                    // (det er en layoutmæssighed).
-    }
 
-    // Én linje i dagsoversigten til højre for kalendergitteret.
-    // simpel og med de tre ting vi skal vise: tidspunkt, filmtitel og biografsal
-    public class ScreeningDisplay
-    {
-        public string TimeSlot { get; set; }   // fx "18:00"
-        public string MovieTitle { get; set; }
-        public string HallName { get; set; }
-        public bool IsPremiere { get; set; }
-    }
+
+
 
     public class CalendarViewModel : INotifyPropertyChanged // bruges til at binde data til UI i WPF.
                                                             // INotifyPropertyChanged interface gør det muligt for ViewModel
@@ -152,6 +137,33 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
+        private ScreeningDisplay? _selectedScreening;
+
+        public ScreeningDisplay? SelectedScreening
+        {
+            get => _selectedScreening;
+            set
+            {
+                _selectedScreening = value;
+                OnPropertyChanged();
+
+                if (_selectedScreening == null)
+                    return;
+
+                SelectedMovie = Movies.FirstOrDefault(
+                    m => m.Id == _selectedScreening.MovieId);
+
+                SelectedHall = AvailableHalls.FirstOrDefault(
+                    h => h.Id == _selectedScreening.HallId);
+
+                ScreeningDate =
+                    _selectedScreening.Date.ToDateTime(TimeOnly.MinValue);
+
+                ScreeningStartTime =
+                    $"{_selectedScreening.StartTime:HH\\:mm}";
+            }
+        }
+
         private string _statusMessage = "";
         public string StatusMessage
         {
@@ -192,8 +204,13 @@ namespace TheMovies.WPF.ViewModels
         public ICommand PreviousMonthCommand { get; }
         public ICommand NextMonthCommand { get; }
         public ICommand RegisterScreeningCommand { get; }
+        public ICommand DeleteScreeningCommand { get; }
+        public ICommand SaveScreeningChangesCommand { get; }
 
-        public CalendarViewModel(FileCinemaRepository cinemaRepository, FileMovieRepository movieRepository, FileHallRepository hallRepository) // her injecter vi repository'et ind i viewmodel'en via konstruktøren
+        public CalendarViewModel(
+            FileCinemaRepository cinemaRepository,
+            FileMovieRepository movieRepository,
+            FileHallRepository hallRepository) // her injecter vi repositories ind i viewmodel'en via konstruktøren
         {
             _cinemaRepository = cinemaRepository;
             _movieRepository = movieRepository;
@@ -205,6 +222,8 @@ namespace TheMovies.WPF.ViewModels
             PreviousMonthCommand = new RelayCommand(PreviousMonth);
             NextMonthCommand = new RelayCommand(NextMonth);
             RegisterScreeningCommand = new RelayCommand(RegisterScreening);
+            DeleteScreeningCommand = new RelayCommand(DeleteScreening);
+            SaveScreeningChangesCommand = new RelayCommand(SaveScreeningChanges, CanSaveScreeningChanges);
 
             Screenings = new ObservableCollection<ScreeningDisplay>();
 
@@ -288,9 +307,19 @@ namespace TheMovies.WPF.ViewModels
 
                 displays.Add(new ScreeningDisplay
                 {
+                    ScreeningId = screening.Id,
+                    MovieId = screening.MovieId,
+                    HallId = screening.HallId,
+                    Date = screening.Date,
+                    StartTime = screening.StartTime,
+
                     TimeSlot = $"{screening.StartTime:HH\\:mm}",
                     MovieTitle = movie?.Title ?? "Ukendt film",
-                    HallName = hall?.Name ?? "Ukendt sal"
+                    HallName = hall?.Name ?? "Ukendt sal",
+
+                    // check if the screening is a premiere by comparing the screening date with the movie's release date
+                    IsPremiere = movie != null &&
+                                  screening.Date == DateOnly.FromDateTime(movie.ReleaseDate)
                 });
             }
 
@@ -327,7 +356,22 @@ namespace TheMovies.WPF.ViewModels
                 return;
             }
 
+
             DateOnly screeningDate = DateOnly.FromDateTime(ScreeningDate);
+
+            // Check if the screening date is before the movie's release date
+            DateOnly releaseDate = DateOnly.FromDateTime(SelectedMovie.ReleaseDate);
+
+            if (screeningDate < releaseDate)
+            {
+                StatusMessage =
+                    $"Filmen kan ikke vises før premieredatoen " +
+                    $"{releaseDate:dd/MM/yyyy}.";
+
+                return;
+            }
+
+            // Check for screening conflicts in the selected hall on the selected date
 
             if (HasScreeningConflict(
                     SelectedHall.Id,
@@ -335,9 +379,22 @@ namespace TheMovies.WPF.ViewModels
                     startTime,
                     SelectedMovie.Duration))
             {
-                StatusMessage = "Der er allerede en forestilling i salen på dette tidspunkt.";
+                TimeOnly nextAvailableTime = GetNextAvailableTime(
+                    SelectedHall.Id,
+                    screeningDate,
+                    startTime,
+                    SelectedMovie.Duration);
+
+                StatusMessage =
+                    $"Der er allerede en forestilling i salen på dette tidspunkt. " +
+                    $"Næste ledige tidspunkt er kl. {nextAvailableTime:HH\\:mm}.";
+
                 return;
             }
+
+
+
+            // Generate a new unique ID for the screening
 
             int newId = 1;
 
@@ -351,6 +408,8 @@ namespace TheMovies.WPF.ViewModels
                     }
                 }
             }
+
+            // Create a new Screening object and add it to the selected cinema's screenings
 
             Screening screening = new Screening
             {
@@ -370,6 +429,122 @@ namespace TheMovies.WPF.ViewModels
             ScreeningStartTime = "";
 
             BuildCalendar();
+        }
+
+        private void DeleteScreening()
+        {
+            if (SelectedCinema == null || SelectedScreening == null)
+            {
+                StatusMessage = "Vælg en forestilling, der skal slettes.";
+                return;
+            }
+
+            Screening? screeningToDelete = SelectedCinema.Screenings
+                .FirstOrDefault(s => s.Id == SelectedScreening.ScreeningId);
+
+            if (screeningToDelete == null)
+            {
+                StatusMessage = "Forestillingen kunne ikke findes.";
+                return;
+            }
+
+            SelectedCinema.Screenings.Remove(screeningToDelete);
+
+            _cinemaRepository.SaveCinemas(Cinemas.ToList());
+
+            StatusMessage = "Forestillingen blev slettet.";
+
+            DateOnly deletedDate = screeningToDelete.Date;
+
+            BuildCalendar();
+
+            // Vis dagsoversigten igen efter kalenderen er blevet genopbygget
+            LoadScreenings(deletedDate);
+
+            SelectedScreening = null;
+        }
+
+        private void SaveScreeningChanges()
+        {
+            if (SelectedCinema == null ||
+                SelectedScreening == null ||
+                SelectedMovie == null ||
+                SelectedHall == null)
+            {
+                StatusMessage = "Vælg en forestilling, der skal redigeres.";
+                return;
+            }
+
+            if (!TimeOnly.TryParse(ScreeningStartTime, out TimeOnly startTime))
+            {
+                StatusMessage = "Indtast et gyldigt tidspunkt, f.eks. 18:30.";
+                return;
+            }
+
+            DateOnly screeningDate = DateOnly.FromDateTime(ScreeningDate);
+
+            // Check if the screening date is before the movie's release date
+            DateOnly releaseDate = DateOnly.FromDateTime(SelectedMovie.ReleaseDate);
+
+            if (screeningDate < releaseDate)
+            {
+                StatusMessage =
+                    $"Filmen kan ikke vises før premieredatoen " +
+                    $"{releaseDate:dd/MM/yyyy}.";
+
+                return;
+            }
+
+            // Find the screening to update in the selected cinema's screenings
+            Screening? screeningToUpdate =
+                SelectedCinema.Screenings.FirstOrDefault(
+                    s => s.Id == SelectedScreening.ScreeningId);
+
+            if (screeningToUpdate == null)
+            {
+                StatusMessage = "Forestillingen kunne ikke findes.";
+                return;
+            }
+
+            bool hasConflict = HasScreeningConflictExceptCurrent(
+                SelectedHall.Id,
+                screeningDate,
+                startTime,
+                SelectedMovie.Duration,
+                screeningToUpdate.Id);
+
+            if (hasConflict)
+            {
+                TimeOnly nextAvailableTime =
+                    GetNextAvailableTimeExceptCurrent(
+                        SelectedHall.Id,
+                        screeningDate,
+                        startTime,
+                        SelectedMovie.Duration,
+                        screeningToUpdate.Id);
+
+                StatusMessage =
+                    $"Ændringen giver en konflikt med en anden forestilling i salen. " +
+                    $"Næste ledige tidspunkt er kl. {nextAvailableTime:HH\\:mm}.";
+
+                return;
+            }
+
+            screeningToUpdate.MovieId = SelectedMovie.Id;
+            screeningToUpdate.HallId = SelectedHall.Id;
+            screeningToUpdate.Date = screeningDate;
+            screeningToUpdate.StartTime = startTime;
+
+            _cinemaRepository.SaveCinemas(Cinemas.ToList());
+
+            StatusMessage = "Forestillingen blev opdateret.";
+
+            BuildCalendar();
+
+            SelectedScreening = null;
+            SelectedMovie = null;
+            SelectedHall = null;
+            ScreeningStartTime = "";
         }
 
         private bool HasScreeningConflict(
@@ -417,6 +592,179 @@ namespace TheMovies.WPF.ViewModels
             return false;
         }
 
+        private bool HasScreeningConflictExceptCurrent(
+                        int hallId,
+                        DateOnly date,
+                        TimeOnly newStartTime,
+                        int newMovieDuration,
+                        int screeningIdToIgnore)
+        {
+            foreach (Cinema cinema in Cinemas)
+            {
+                foreach (Screening existingScreening in cinema.Screenings)
+                {
+                    if (existingScreening.Id == screeningIdToIgnore)
+                        continue;
+
+                    if (existingScreening.HallId != hallId)
+                        continue;
+
+                    if (existingScreening.Date != date)
+                        continue;
+
+                    Movie? existingMovie =
+                        Movies.FirstOrDefault(
+                            m => m.Id == existingScreening.MovieId);
+
+                    if (existingMovie == null)
+                        continue;
+
+                    DateTime existingStart =
+                        existingScreening.Date.ToDateTime(
+                            existingScreening.StartTime);
+
+                    DateTime existingEnd =
+                        existingStart.AddMinutes(
+                            existingMovie.Duration + 30);
+
+                    DateTime newStart =
+                        date.ToDateTime(newStartTime);
+
+                    DateTime newEnd =
+                        newStart.AddMinutes(newMovieDuration + 30);
+
+                    if (newStart < existingEnd &&
+                        newEnd > existingStart)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private TimeOnly GetNextAvailableTime(
+                            int hallId,
+                            DateOnly date,
+                            TimeOnly requestedStartTime,
+                            int newMovieDuration)
+        {
+            DateTime candidateStart = date.ToDateTime(requestedStartTime);
+
+            // Find alle forestillinger i den valgte sal på den valgte dato
+            List<Screening> screeningsForHall = new List<Screening>();
+
+            foreach (Cinema cinema in Cinemas)
+            {
+                foreach (Screening screening in cinema.Screenings)
+                {
+                    if (screening.HallId == hallId &&
+                        screening.Date == date)
+                    {
+                        screeningsForHall.Add(screening);
+                    }
+                }
+            }
+
+            // Sorter dem efter starttid
+            screeningsForHall = screeningsForHall
+                .OrderBy(s => s.StartTime)
+                .ToList();
+
+            foreach (Screening existingScreening in screeningsForHall)
+            {
+                Movie? existingMovie =
+                    Movies.FirstOrDefault(
+                        m => m.Id == existingScreening.MovieId);
+
+                if (existingMovie == null)
+                    continue;
+
+                DateTime existingStart =
+                    date.ToDateTime(existingScreening.StartTime);
+
+                DateTime existingEnd =
+                    existingStart.AddMinutes(
+                        existingMovie.Duration + 30);
+
+                DateTime candidateEnd =
+                    candidateStart.AddMinutes(
+                        newMovieDuration + 30);
+
+                // Den nye forestilling overlapper den eksisterende
+                if (candidateStart < existingEnd &&
+                    candidateEnd > existingStart)
+                {
+                    // Prøv igen lige efter den eksisterende forestilling
+                    candidateStart = existingEnd;
+                }
+            }
+
+            return TimeOnly.FromDateTime(candidateStart);
+        }
+
+
+        private TimeOnly GetNextAvailableTimeExceptCurrent(
+                            int hallId,
+                            DateOnly date,
+                            TimeOnly requestedStartTime,
+                            int newMovieDuration,
+                            int screeningIdToIgnore)
+        {
+            DateTime candidateStart = date.ToDateTime(requestedStartTime);
+
+            List<Screening> screeningsForHall = new List<Screening>();
+
+            foreach (Cinema cinema in Cinemas)
+            {
+                foreach (Screening screening in cinema.Screenings)
+                {
+                    if (screening.Id == screeningIdToIgnore)
+                        continue;
+
+                    if (screening.HallId == hallId &&
+                        screening.Date == date)
+                    {
+                        screeningsForHall.Add(screening);
+                    }
+                }
+            }
+
+            screeningsForHall = screeningsForHall
+                .OrderBy(s => s.StartTime)
+                .ToList();
+
+            foreach (Screening existingScreening in screeningsForHall)
+            {
+                Movie? existingMovie =
+                    Movies.FirstOrDefault(
+                        m => m.Id == existingScreening.MovieId);
+
+                if (existingMovie == null)
+                    continue;
+
+                DateTime existingStart =
+                    date.ToDateTime(existingScreening.StartTime);
+
+                DateTime existingEnd =
+                    existingStart.AddMinutes(
+                        existingMovie.Duration + 30);
+
+                DateTime candidateEnd =
+                    candidateStart.AddMinutes(
+                        newMovieDuration + 30);
+
+                if (candidateStart < existingEnd &&
+                    candidateEnd > existingStart)
+                {
+                    candidateStart = existingEnd;
+                }
+            }
+
+            return TimeOnly.FromDateTime(candidateStart);
+        }
+
         private void LoadAvailableHalls()
         {
             AvailableHalls.Clear();
@@ -433,6 +781,11 @@ namespace TheMovies.WPF.ViewModels
             }
 
             SelectedHall = null;
+        }
+
+        private bool CanSaveScreeningChanges()
+        {
+            return SelectedScreening != null;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

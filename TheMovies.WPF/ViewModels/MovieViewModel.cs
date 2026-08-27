@@ -180,39 +180,39 @@ namespace TheMovies.WPF.ViewModels
         private void DeleteMovie(object parameter)
         {
             if (SelectedMovie == null)
-                return;
-
-            List<Cinema> cinemas = _cinemaRepository.LoadCinemas();
-
-            foreach (Cinema cinema in cinemas)
             {
-                foreach (Screening screening in cinema.Screenings)
-                {
-                    if (screening.MovieId == SelectedMovie.Id)
-                    {
-                        ShowMessage(
-                            "Kan ikke slette film",
-                            "Filmen kan ikke slettes, fordi den bruges i en eller flere forestillinger.");
-
-                        return;
-                    }
-                }
+                return;
             }
 
             Movie movieToDelete = SelectedMovie;
 
-            bool confirmed = ConfirmDelete("Bekræft sletning",
-                $"Er du sikker på, at du vil slette filmen '{movieToDelete.Title}'?");
+            bool confirmed = ConfirmDelete(
+                "Bekræft sletning",
+                $"Er du sikker på, at du vil slette filmen '{movieToDelete.Title}'? " +
+                "Alle forestillinger med filmen bliver også slettet.");
 
             if (!confirmed)
             {
                 return;
             }
 
-            Movies.Remove(movieToDelete);
+            List<Cinema> cinemas = _cinemaRepository.LoadCinemas();
 
+            // Remove all screenings of the movie from all cinemas
+            foreach (Cinema cinema in cinemas)
+            {
+                cinema.Screenings.RemoveAll(
+                    screening => screening.MovieId == movieToDelete.Id);
+            }
+
+            _cinemaRepository.SaveCinemas(cinemas);
+
+            Movies.Remove(movieToDelete);
             _repository.SaveMovies(Movies.ToList());
-            ShowMessage($"{movieToDelete.Title} slettet", "Filmen blev slettet.");
+
+            ShowMessage(
+                $"{movieToDelete.Title} slettet",
+                "Filmen og alle tilhørende forestillinger blev slettet.");
 
             // Return to default values after deletion
             ClearInputFields();

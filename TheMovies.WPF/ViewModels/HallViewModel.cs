@@ -8,6 +8,7 @@ namespace TheMovies.WPF.ViewModels
     public class HallViewModel : ViewModelBase
     {
         private readonly FileHallRepository _repository;
+        private readonly FileCinemaRepository _cinemaRepository;
         private string _Name;
         private Cinema? _selectedCinema;
         private Hall? _selectedHall;
@@ -71,10 +72,11 @@ namespace TheMovies.WPF.ViewModels
         public ICommand DeleteHallCommand { get; }
         public ICommand SaveHallChangesCommand { get; }
 
-        public HallViewModel(FileHallRepository repository,
+        public HallViewModel(FileHallRepository repository, FileCinemaRepository cinemaRepository,
             ObservableCollection<Cinema> cinemas)
         {
             _repository = repository;
+            _cinemaRepository = cinemaRepository;
             Cinemas = cinemas;
 
             // Load halls from the repository and initialize the ObservableCollection
@@ -151,17 +153,31 @@ namespace TheMovies.WPF.ViewModels
 
             bool confirmed = Confirm(
                 "Slet sal",
-                $"Er du sikker på, at du vil slette {hallToDelete.Name} i {hallToDelete.CinemaName}?");
+                $"Er du sikker på, at du vil slette {hallToDelete.Name} i {hallToDelete.CinemaName}? " +
+                "Alle forestillinger i salen bliver også slettet.");
 
             if (!confirmed)
                 return;
+
+            List<Cinema> cinemas = _cinemaRepository.LoadCinemas();
+            // Remove all screenings of the hall from all cinemas
+            foreach (Cinema cinema in cinemas)
+            {
+                cinema.Screenings.RemoveAll(
+                    screening => screening.HallId == hallToDelete.Id);
+            }
+
+            _cinemaRepository.SaveCinemas(cinemas);
 
             Halls.Remove(hallToDelete);
 
             _repository.SaveHalls(Halls.ToList());
 
-            SelectedHall = null;
+            StatusMessage = $"Sal '{hallToDelete.Name}' og dens forestillinger blev slettet.";
 
+            Name = "";
+            SelectedCinema = null;
+            SelectedHall = null;
         }
 
 

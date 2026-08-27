@@ -28,6 +28,7 @@ namespace TheMovies.WPF.ViewModels
 
             HallViewModel = new HallViewModel(
                 _hallRepository,
+                _cinemaRepository,
                 CinemaViewModel.Cinemas);
 
             OpenCalendarCommand = new RelayCommand(

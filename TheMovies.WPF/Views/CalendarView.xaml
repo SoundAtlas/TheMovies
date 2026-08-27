@@ -154,10 +154,22 @@
 
 
                 <!-- REGISTRER -->
-                <Button Content="Registrer forestilling"
-                        Command="{Binding RegisterScreeningCommand}"
-                        Margin="0,0,0,10"
-                        Height="30"/>
+                <!-- REGISTRER / GEM ÆNDRINGER -->
+                <StackPanel Orientation="Horizontal"
+            Margin="0,0,0,10">
+
+                    <Button Content="Registrer forestilling"
+            Command="{Binding RegisterScreeningCommand}"
+            Width="140"
+            Height="30"
+            Margin="0,0,10,0"/>
+
+                    <Button Content="Gem ændringer"
+            Command="{Binding SaveScreeningChangesCommand}"
+            Width="120"
+            Height="30"/>
+
+                </StackPanel>
 
 
                 <!-- STATUS -->
@@ -181,7 +193,8 @@
                            Margin="0,0,0,10"/>
 
                 <!-- FORESTILLINGER -->
-                <ListBox ItemsSource="{Binding Screenings}">
+                <ListBox ItemsSource="{Binding Screenings}"
+                         SelectedItem="{Binding SelectedScreening}">
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -209,6 +222,10 @@
 
                 </ListBox>
 
+                <Button Content="Slet forestilling"
+                        Command="{Binding DeleteScreeningCommand}"
+                        Margin="0,10,0,0"
+                        Height="30"/>
 
                 <!-- TILBAGE -->
                 <Button Content="Tilbage"

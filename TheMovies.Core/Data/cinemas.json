@@ -11,18 +11,32 @@
         "StartTime": "12:00:00"
       },
       {
-        "Id": 2,
-        "MovieId": 3,
-        "HallId": 2,
-        "Date": "2026-08-29",
-        "StartTime": "18:00:00"
-      },
-      {
         "Id": 3,
         "MovieId": 2,
         "HallId": 2,
         "Date": "2026-08-29",
         "StartTime": "20:30:00"
+      },
+      {
+        "Id": 5,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-08-28",
+        "StartTime": "13:30:00"
+      },
+      {
+        "Id": 6,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-08-28",
+        "StartTime": "16:35:00"
+      },
+      {
+        "Id": 7,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "14:20:00"
       }
     ]
   },

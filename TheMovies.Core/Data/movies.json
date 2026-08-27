@@ -17,10 +17,10 @@
   },
   {
     "Id": 3,
-    "Title": "test",
-    "Duration": 120,
-    "Genre": "test",
-    "Director": "test",
-    "ReleaseDate": "2026-08-27T00:00:00+02:00"
+    "Title": "Test",
+    "Duration": 123,
+    "Genre": "Test",
+    "Director": null,
+    "ReleaseDate": "2026-08-29T00:00:00"
   }
 ]
