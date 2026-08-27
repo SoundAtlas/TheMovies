@@ -8,6 +8,7 @@ namespace TheMovies.WPF.ViewModels
     public class CinemaViewModel : ViewModelBase
     {
         private readonly FileCinemaRepository _repository;
+        private readonly FileHallRepository _hallRepository;
 
         private string _name;
 
@@ -54,9 +55,10 @@ namespace TheMovies.WPF.ViewModels
         public ICommand DeleteCinemaCommand { get; }
         public ICommand SaveCinemaChangesCommand { get; }
 
-        public CinemaViewModel(FileCinemaRepository repository)
+        public CinemaViewModel(FileCinemaRepository repository, FileHallRepository hallRepository)
         {
             _repository = repository;
+            _hallRepository = hallRepository;
 
             // Load cinemas from the repository and initialize the ObservableCollection
             List<Cinema> loadedCinemas = _repository.LoadCinemas();
@@ -107,6 +109,20 @@ namespace TheMovies.WPF.ViewModels
             if (SelectedCinema == null)
             {
                 return;
+            }
+
+            List<Hall> halls = _hallRepository.LoadHalls();
+
+            foreach (Hall hall in halls)
+            {
+                if (hall.CinemaId == SelectedCinema.Id)
+                {
+                    ShowMessage(
+                        "Kan ikke slette biograf",
+                        "Biografen kan ikke slettes, fordi den stadig har registrerede sale.");
+
+                    return;
+                }
             }
 
             Cinema cinemaToDelete = SelectedCinema;

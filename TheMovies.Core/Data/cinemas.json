@@ -1,12 +1,34 @@
 [
   {
-    "Id": 1,
     "Name": "CinemaCity Fields",
-    "Screenings": []
+    "Id": 1,
+    "Screenings": [
+      {
+        "Id": 1,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "12:00:00"
+      },
+      {
+        "Id": 2,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "18:00:00"
+      },
+      {
+        "Id": 3,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "20:30:00"
+      }
+    ]
   },
   {
-    "Id": 2,
     "Name": "Nordisk Film Biografer",
+    "Id": 2,
     "Screenings": []
   }
 ]

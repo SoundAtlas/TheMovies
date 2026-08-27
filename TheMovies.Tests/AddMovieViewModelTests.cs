@@ -7,21 +7,42 @@ namespace TheMovies.Tests
 
 
     [TestClass]
-    public class AddMovieViewModelTests
+    public class MovieViewModelTests
     {
+        // Helper method to create a MovieViewModel with a temporary file for testing
+        private MovieViewModel CreateViewModel(
+    string movieFilePath,
+    string cinemaFilePath)
+        {
+            if (File.Exists(movieFilePath))
+                File.Delete(movieFilePath);
+
+            if (File.Exists(cinemaFilePath))
+                File.Delete(cinemaFilePath);
+
+            FileMovieRepository movieRepository =
+                new FileMovieRepository(movieFilePath);
+
+            FileCinemaRepository cinemaRepository =
+                new FileCinemaRepository(cinemaFilePath);
+
+            return new MovieViewModel(
+                movieRepository,
+                cinemaRepository);
+        }
+
         [TestMethod]
         public void AddMovie_WithValidInput_AddsMovie()
         {
-
             // Arrange
 
             string testFilePath = "test_movies_add.json";
-            if (File.Exists(testFilePath))
-                File.Delete(testFilePath);
+            string testCinemaFilePath = "test_cinemas_add.json";
 
-            FileMovieRepository repository = new FileMovieRepository(testFilePath);
-
-            MovieViewModel viewModel = new MovieViewModel(repository);
+            MovieViewModel viewModel =
+                CreateViewModel(
+                    testFilePath,
+                    testCinemaFilePath);
 
             viewModel.Title = "Interstellar";
             viewModel.Duration = "169";
@@ -29,17 +50,23 @@ namespace TheMovies.Tests
 
             int movieCountBefore = viewModel.Movies.Count;
 
-
             // Act
 
             viewModel.RegisterMovieCommand.Execute(null);
 
-            // Assert   
-            Assert.AreEqual(movieCountBefore + 1, viewModel.Movies.Count);
+            // Assert
+
+            Assert.AreEqual(
+                movieCountBefore + 1,
+                viewModel.Movies.Count);
 
             // Clean up
+
             if (File.Exists(testFilePath))
                 File.Delete(testFilePath);
+
+            if (File.Exists(testCinemaFilePath))
+                File.Delete(testCinemaFilePath);
         }
 
         [TestMethod]
@@ -48,12 +75,13 @@ namespace TheMovies.Tests
             // Arrange
 
             string testFilePath = "test_movies_invalid.json";
-            if (File.Exists(testFilePath))
-                File.Delete(testFilePath);
+            string testCinemaFilePath = "test_cinemas_invalid.json";
 
-            FileMovieRepository repository = new FileMovieRepository(testFilePath);
+            MovieViewModel viewModel =
+                CreateViewModel(
+                    testFilePath,
+                    testCinemaFilePath);
 
-            MovieViewModel viewModel = new MovieViewModel(repository);
 
             viewModel.Title = "Interstellar";
             viewModel.Duration = "invalid";
@@ -79,13 +107,15 @@ namespace TheMovies.Tests
         {
             // Arange 
             string testFilePath = "test_movies_clear.json";
+            string testCinemaFilePath = "test_cinemas_clear.json";
 
             if (File.Exists(testFilePath))
                 File.Delete(testFilePath);
 
-            FileMovieRepository repository = new FileMovieRepository(testFilePath);
-
-            MovieViewModel viewModel = new MovieViewModel(repository);
+            MovieViewModel viewModel =
+                CreateViewModel(
+                    testFilePath,
+                    testCinemaFilePath);
 
             viewModel.Title = "Inception";
             viewModel.Duration = "148";
@@ -113,13 +143,17 @@ namespace TheMovies.Tests
             // Arrange
 
             string testFilePath = "test_movies_invalid_clear.json";
+            string testCinemaFilePath = "test_cinemas_invalid_clear.json";
 
             if (File.Exists(testFilePath))
                 File.Delete(testFilePath);
 
-            FileMovieRepository repository = new FileMovieRepository(testFilePath);
+            MovieViewModel viewModel =
+                CreateViewModel(
+                    testFilePath,
+                    testCinemaFilePath);
 
-            MovieViewModel viewModel = new MovieViewModel(repository);
+
 
             viewModel.Title = "Inception";
             viewModel.Duration = "invalid";

@@ -10,6 +10,7 @@ namespace TheMovies.WPF.ViewModels
     {
 
         private readonly FileMovieRepository _repository;
+        private readonly FileCinemaRepository _cinemaRepository;
 
 
         private string _title;
@@ -109,10 +110,11 @@ namespace TheMovies.WPF.ViewModels
         public ICommand SaveMovieChangesCommand { get; }
 
 
-        public MovieViewModel(FileMovieRepository repository)
+        public MovieViewModel(FileMovieRepository repository, FileCinemaRepository cinemaRepository)
         {
 
             _repository = repository;
+            _cinemaRepository = cinemaRepository;
 
             // Load movies from the repository and initialize the ObservableCollection
             List<Movie> loadedMovies = _repository.LoadMovies();
@@ -180,6 +182,22 @@ namespace TheMovies.WPF.ViewModels
             if (SelectedMovie == null)
                 return;
 
+            List<Cinema> cinemas = _cinemaRepository.LoadCinemas();
+
+            foreach (Cinema cinema in cinemas)
+            {
+                foreach (Screening screening in cinema.Screenings)
+                {
+                    if (screening.MovieId == SelectedMovie.Id)
+                    {
+                        ShowMessage(
+                            "Kan ikke slette film",
+                            "Filmen kan ikke slettes, fordi den bruges i en eller flere forestillinger.");
+
+                        return;
+                    }
+                }
+            }
 
             Movie movieToDelete = SelectedMovie;
 

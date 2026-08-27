@@ -23,8 +23,8 @@ namespace TheMovies.WPF.ViewModels
             _cinemaRepository = new FileCinemaRepository();
             _hallRepository = new FileHallRepository();
 
-            MovieViewModel = new MovieViewModel(_movieRepository);
-            CinemaViewModel = new CinemaViewModel(_cinemaRepository);
+            MovieViewModel = new MovieViewModel(_movieRepository, _cinemaRepository);
+            CinemaViewModel = new CinemaViewModel(_cinemaRepository, _hallRepository);
 
             HallViewModel = new HallViewModel(
                 _hallRepository,

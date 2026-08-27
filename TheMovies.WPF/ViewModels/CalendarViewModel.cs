@@ -65,6 +65,7 @@ namespace TheMovies.WPF.ViewModels
             {
                 _selectedCinema = value;
                 OnPropertyChanged();
+                LoadAvailableHalls();
                 // Skift af biograf og skift af måned skal begge opdatere kalendergitteret, så vi kalder BuildCalendar() her.
                 BuildCalendar();
             }
@@ -107,6 +108,61 @@ namespace TheMovies.WPF.ViewModels
             set { _selectedDateLabel = value; OnPropertyChanged(); }
         }
 
+        private Movie? _selectedMovie;
+        public Movie? SelectedMovie
+        {
+            get => _selectedMovie;
+            set
+            {
+                _selectedMovie = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Hall? _selectedHall;
+        public Hall? SelectedHall
+        {
+            get => _selectedHall;
+            set
+            {
+                _selectedHall = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DateTime _screeningDate = DateTime.Today;
+        public DateTime ScreeningDate
+        {
+            get => _screeningDate;
+            set
+            {
+                _screeningDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _screeningStartTime = "";
+        public string ScreeningStartTime
+        {
+            get => _screeningStartTime;
+            set
+            {
+                _screeningStartTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _statusMessage = "";
+        public string StatusMessage
+        {
+            get => _statusMessage;
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string MonthLabel => $"{MonthNames[_month - 1]} {_year}";
 
         // Dagsoversigten: forestillinger for valgt dag i valgt biograf
@@ -117,8 +173,25 @@ namespace TheMovies.WPF.ViewModels
             set { _screenings = value; OnPropertyChanged(); }
         }
 
+        public ObservableCollection<Movie> Movies { get; set; }
+
+        public ObservableCollection<Hall> Halls { get; set; }
+
+        private ObservableCollection<Hall> _availableHalls = new ObservableCollection<Hall>();
+
+        public ObservableCollection<Hall> AvailableHalls
+        {
+            get => _availableHalls;
+            set
+            {
+                _availableHalls = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand PreviousMonthCommand { get; }
         public ICommand NextMonthCommand { get; }
+        public ICommand RegisterScreeningCommand { get; }
 
         public CalendarViewModel(FileCinemaRepository cinemaRepository, FileMovieRepository movieRepository, FileHallRepository hallRepository) // her injecter vi repository'et ind i viewmodel'en via konstruktøren
         {
@@ -131,18 +204,19 @@ namespace TheMovies.WPF.ViewModels
 
             PreviousMonthCommand = new RelayCommand(PreviousMonth);
             NextMonthCommand = new RelayCommand(NextMonth);
+            RegisterScreeningCommand = new RelayCommand(RegisterScreening);
 
             Screenings = new ObservableCollection<ScreeningDisplay>();
 
             List<Cinema> loadedCinemas = _cinemaRepository.LoadCinemas();
             Cinemas = new ObservableCollection<Cinema>(loadedCinemas);
 
-            // Sæt feltet direkte (ikke via property), så vi ikke bygger kalenderen to gange. Hvis vi sætter via property
-            // kaldes den to gange: én gang her og én gang i SelectedCinema's setter.,
-            // men ved at sætte direkte i feltet når vi bygger kalenderen her, så kaldes den kun én gang.
-            _selectedCinema = Cinemas.FirstOrDefault();
+            Movies = new ObservableCollection<Movie>(_movieRepository.LoadMovies());
+            Halls = new ObservableCollection<Hall>(_hallRepository.LoadHalls());
 
-            BuildCalendar();
+
+            SelectedCinema = Cinemas.FirstOrDefault();
+
         }
 
         private void PreviousMonth() // Skifter til forrige måned og opdaterer kalendergitteret
@@ -225,6 +299,140 @@ namespace TheMovies.WPF.ViewModels
                 .ToList();
 
             Screenings = new ObservableCollection<ScreeningDisplay>(displays);
+        }
+
+        private void RegisterScreening()
+        {
+            if (SelectedCinema == null)
+            {
+                StatusMessage = "Vælg en biograf.";
+                return;
+            }
+
+            if (SelectedMovie == null)
+            {
+                StatusMessage = "Vælg en film.";
+                return;
+            }
+
+            if (SelectedHall == null)
+            {
+                StatusMessage = "Vælg en sal.";
+                return;
+            }
+
+            if (!TimeOnly.TryParse(ScreeningStartTime, out TimeOnly startTime))
+            {
+                StatusMessage = "Indtast et gyldigt tidspunkt, f.eks. 18:30.";
+                return;
+            }
+
+            DateOnly screeningDate = DateOnly.FromDateTime(ScreeningDate);
+
+            if (HasScreeningConflict(
+                    SelectedHall.Id,
+                    screeningDate,
+                    startTime,
+                    SelectedMovie.Duration))
+            {
+                StatusMessage = "Der er allerede en forestilling i salen på dette tidspunkt.";
+                return;
+            }
+
+            int newId = 1;
+
+            foreach (Cinema cinema in Cinemas)
+            {
+                foreach (Screening existingScreening in cinema.Screenings)
+                {
+                    if (existingScreening.Id >= newId)
+                    {
+                        newId = existingScreening.Id + 1;
+                    }
+                }
+            }
+
+            Screening screening = new Screening
+            {
+                Id = newId,
+                MovieId = SelectedMovie.Id,
+                HallId = SelectedHall.Id,
+                Date = screeningDate,
+                StartTime = startTime
+            };
+
+            SelectedCinema.Screenings.Add(screening);
+
+            _cinemaRepository.SaveCinemas(Cinemas.ToList());
+
+            StatusMessage = "Forestillingen blev registreret.";
+
+            ScreeningStartTime = "";
+
+            BuildCalendar();
+        }
+
+        private bool HasScreeningConflict(
+                        int hallId,
+                        DateOnly date,
+                        TimeOnly newStartTime,
+                        int newMovieDuration)
+        {
+            foreach (Cinema cinema in Cinemas)
+            {
+                foreach (Screening existingScreening in cinema.Screenings)
+                {
+                    if (existingScreening.HallId != hallId)
+                        continue;
+
+                    if (existingScreening.Date != date)
+                        continue;
+
+                    Movie? existingMovie =
+                        Movies.FirstOrDefault(m => m.Id == existingScreening.MovieId);
+
+                    if (existingMovie == null)
+                        continue;
+
+                    DateTime existingStart =
+                        existingScreening.Date.ToDateTime(existingScreening.StartTime);
+
+                    DateTime existingEnd =
+                        existingStart.AddMinutes(existingMovie.Duration + 30);
+
+                    DateTime newStart =
+                        date.ToDateTime(newStartTime);
+
+                    DateTime newEnd =
+                        newStart.AddMinutes(newMovieDuration + 30);
+
+                    if (newStart < existingEnd &&
+                        newEnd > existingStart)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private void LoadAvailableHalls()
+        {
+            AvailableHalls.Clear();
+
+            if (SelectedCinema == null)
+                return;
+
+            foreach (Hall hall in Halls)
+            {
+                if (hall.CinemaId == SelectedCinema.Id)
+                {
+                    AvailableHalls.Add(hall);
+                }
+            }
+
+            SelectedHall = null;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
