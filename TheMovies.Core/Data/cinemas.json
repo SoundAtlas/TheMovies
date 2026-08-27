@@ -43,6 +43,14 @@
   {
     "Name": "Nordisk Film Biografer",
     "Id": 2,
-    "Screenings": []
+    "Screenings": [
+      {
+        "Id": 9,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-08-29",
+        "StartTime": "16:00:00"
+      }
+    ]
   }
 ]
