@@ -1,10 +1,68 @@
 [
   {
-    "Id": 1,
-    "Name": "A"
+    "Name": "CinemaCity Fields",
+    "Screenings": [
+      {
+        "Id": 1,
+        "MovieTitle": "The Odyssey",
+        "Date": "2026-08-24",
+        "StartTime": "18:00:00",
+        "CinemaRoom": 1
+      },
+      {
+        "Id": 2,
+        "MovieTitle": "Spider-Man: Brand New Day",
+        "Date": "2026-08-26",
+        "StartTime": "16:30:00",
+        "CinemaRoom": 2
+      },
+      {
+        "Id": 3,
+        "MovieTitle": "Spider-Man: Brand New Day",
+        "Date": "2026-08-26",
+        "StartTime": "20:00:00",
+        "CinemaRoom": 2
+      },
+      {
+        "Id": 4,
+        "MovieTitle": "Vores Løfte",
+        "Date": "2026-08-28",
+        "StartTime": "19:15:00",
+        "CinemaRoom": 3
+      },
+      {
+        "Id": 5,
+        "MovieTitle": "The Odyssey",
+        "Date": "2026-09-02",
+        "StartTime": "17:45:00",
+        "CinemaRoom": 1
+      }
+    ]
   },
   {
-    "Id": 2,
-    "Name": "B"
+    "Name": "Nordisk Film Biografer",
+    "Screenings": [
+      {
+        "Id": 6,
+        "MovieTitle": "Vores Løfte",
+        "Date": "2026-08-26",
+        "StartTime": "21:00:00",
+        "CinemaRoom": 5
+      },
+      {
+        "Id": 7,
+        "MovieTitle": "The Odyssey",
+        "Date": "2026-08-30",
+        "StartTime": "14:00:00",
+        "CinemaRoom": 4
+      },
+      {
+        "Id": 8,
+        "MovieTitle": "Spider-Man: Brand New Day",
+        "Date": "2026-08-31",
+        "StartTime": "18:30:00",
+        "CinemaRoom": 6
+      }
+    ]
   }
 ]

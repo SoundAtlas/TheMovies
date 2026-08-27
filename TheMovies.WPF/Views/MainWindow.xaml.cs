@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using TheMovies.WPF.ViewModels;
+using TheMovies.WPF.Views;
 
 
 namespace TheMovies.WPF
@@ -21,6 +22,7 @@ namespace TheMovies.WPF
             mainViewModel.CinemaViewModel.ConfirmDeleteRequested += ConfirmDelete;
 
             mainViewModel.HallViewModel.ConfirmDeleteRequested += ConfirmDelete;
+            mainViewModel.OpenCalendarRequested += OpenCalendar;
         }
 
         private void ShowMessage(string title, string message)
@@ -41,6 +43,11 @@ namespace TheMovies.WPF
                 MessageBoxImage.Question);
 
             return result == MessageBoxResult.Yes;
+        private void OpenCalendar()
+        {
+            MainViewModel vm = (MainViewModel)DataContext;
+            CalendarView calendarView = new CalendarView(vm.CreateCalendarViewModel());
+            calendarView.Show();
         }
     }
 }

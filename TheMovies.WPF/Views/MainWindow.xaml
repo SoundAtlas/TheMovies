@@ -148,6 +148,17 @@
                 
             <TextBlock Text="Navn" />
             <TextBox Text="{Binding HallViewModel.Name}"
+
+                       <!-- ny knap til kalenderen-->
+            <Button Content="Åbn kalender"
+                Command="{Binding OpenCalendarCommand}"
+                Width="120"
+                HorizontalAlignment="Left"
+                Margin="0,0,0,20"/>
+
+
+			<TextBlock Text="Titel" /> 
+            <TextBox Text="{Binding MovieViewModel.Title}"
                      Margin="0,5,0,10"/>
             <TextBlock Text="Biograf" />
             <ComboBox ItemsSource="{Binding HallViewModel.Cinemas}"
