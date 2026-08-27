@@ -10,6 +10,8 @@ namespace TheMovies.WPF.ViewModels
         public HallViewModel HallViewModel { get; }
 
         private readonly FileCinemaRepository _cinemaRepository;
+        private readonly FileMovieRepository _movieRepository;
+        private readonly FileHallRepository _hallRepository;
 
         public ICommand OpenCalendarCommand { get; }
 
@@ -17,14 +19,15 @@ namespace TheMovies.WPF.ViewModels
 
         public MainViewModel()
         {
-            FileMovieRepository movieRepository = new FileMovieRepository();
+            _movieRepository = new FileMovieRepository();
             _cinemaRepository = new FileCinemaRepository();
-            FileHallRepository hallRepository = new FileHallRepository();
+            _hallRepository = new FileHallRepository();
 
-            MovieViewModel = new MovieViewModel(movieRepository);
+            MovieViewModel = new MovieViewModel(_movieRepository);
             CinemaViewModel = new CinemaViewModel(_cinemaRepository);
+
             HallViewModel = new HallViewModel(
-                hallRepository,
+                _hallRepository,
                 CinemaViewModel.Cinemas);
 
             OpenCalendarCommand = new RelayCommand(
@@ -33,7 +36,10 @@ namespace TheMovies.WPF.ViewModels
 
         public CalendarViewModel CreateCalendarViewModel()
         {
-            return new CalendarViewModel(_cinemaRepository);
+            return new CalendarViewModel(
+                _cinemaRepository,
+                _movieRepository,
+                _hallRepository);
         }
     }
 }

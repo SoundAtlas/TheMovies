@@ -145,8 +145,19 @@ namespace TheMovies.WPF.ViewModels
                 return;
             }
 
+            // Find the next available ID for the new movie
+            int newId = 1;
+            foreach (Movie existingMovie in Movies)
+            {
+                if (existingMovie.Id >= newId)
+                {
+                    newId = existingMovie.Id + 1;
+                }
+            }
+
             Movie movie = new Movie
             {
+                Id = newId,
                 Title = Title,
                 Duration = duration,
                 Genre = Genre,
@@ -218,6 +229,7 @@ namespace TheMovies.WPF.ViewModels
             // Create a new Movie object with the updated values
             Movie updatedMovie = new Movie
             {
+                Id = SelectedMovie.Id,
                 Title = Title,
                 Duration = duration,
                 Genre = Genre,

@@ -87,7 +87,7 @@
 							</TextBlock>
 							<TextBlock>
                                 <Run Text="Sal "/>
-                                <Run Text="{Binding CinemaRoom}"/>
+                                <Run Text="{Binding HallName}"/>
 							</TextBlock>
 							<TextBlock Text="Premiere!" Foreground="DarkRed" FontWeight="Bold"
                                        Visibility="{Binding IsPremiere, Converter={StaticResource BoolToVis}}"/>
