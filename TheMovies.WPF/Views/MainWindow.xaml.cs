@@ -15,7 +15,13 @@ namespace TheMovies.WPF
             InitializeComponent();
             MainViewModel mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
-            mainViewModel.AddMovieViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.MovieViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.MovieViewModel.ConfirmDeleteRequested += ConfirmDelete;
+
+            mainViewModel.CinemaViewModel.ShowMessageRequested += ShowMessage;
+            mainViewModel.CinemaViewModel.ConfirmDeleteRequested += ConfirmDelete;
+
+            mainViewModel.HallViewModel.ConfirmDeleteRequested += ConfirmDelete;
             mainViewModel.OpenCalendarRequested += OpenCalendar;
         }
 
@@ -28,6 +34,15 @@ namespace TheMovies.WPF
                 MessageBoxImage.Information);
         }
 
+        private bool ConfirmDelete(string title, string message)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                message,
+                title,
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            return result == MessageBoxResult.Yes;
         private void OpenCalendar()
         {
             MainViewModel vm = (MainViewModel)DataContext;

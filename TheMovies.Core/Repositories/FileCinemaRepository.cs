@@ -3,42 +3,47 @@ using TheMovies.Core.Models;
 
 namespace TheMovies.Core.Repositories
 {
-	public class FileCinemaRepository
-	{
-		private readonly string _filePath;
+    public class FileCinemaRepository
+    {
+        private readonly string _filePath;
 
-		public FileCinemaRepository(string filePath = @"..\..\..\..\TheMovies.Core\Data\cinemas.json") // Default file path for the cinemas.json file
-		{
-			_filePath = filePath;
-		}
+        public FileCinemaRepository(string filePath = @"..\..\..\..\TheMovies.Core\Data\cinemas.json")
+        {
+            _filePath = filePath;
 
-		public void SaveCinemas(List<Cinema> cinemas)
-		{
-			JsonSerializerOptions options = new JsonSerializerOptions
-			{
-				WriteIndented = true // Gør det lidt mere læsbart
-			};
+            if (!File.Exists(_filePath))
+                File.Create(_filePath).Close();
+        }
 
-			string json = JsonSerializer.Serialize(cinemas, options);
-			File.WriteAllText(_filePath, json);
-		}
+        public void SaveCinemas(List<Cinema> cinemas)
+        {
 
-		public List<Cinema> LoadCinemas()
-		{
-			if (!File.Exists(_filePath))
-			{
-				return new List<Cinema>();
-			}
+            string json = JsonSerializer.Serialize(cinemas, new JsonSerializerOptions { WriteIndented = true });
 
-			string json = File.ReadAllText(_filePath);
+            File.WriteAllText(_filePath, json);
+        }
+        public List<Cinema> LoadCinemas()
+        {
 
-			if (string.IsNullOrWhiteSpace(json))
-			{
-				return new List<Cinema>();
-			}
+            if (!File.Exists(_filePath))
+            {
+                return new List<Cinema>();
+            }
 
-			List<Cinema>? cinemas = JsonSerializer.Deserialize<List<Cinema>>(json);
-			return cinemas ?? new List<Cinema>();
-		}
-	}
+            // Read the JSON data from the file
+            string json = File.ReadAllText(_filePath);
+
+            // Check if the JSON string is empty or null
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return new List<Cinema>();
+            }
+
+            // Deserialize the JSON data into a list of Cinema objects
+            List<Cinema>? cinemas = JsonSerializer.Deserialize<List<Cinema>>(json);
+
+            // Return the list of cinemas, or an empty list if deserialization failed
+            return cinemas ?? new List<Cinema>();
+        }
+    }
 }

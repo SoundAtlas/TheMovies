@@ -5,13 +5,149 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovies.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TheMovies" Height="600" Width="800">
     <Grid>
-        <StackPanel Margin="20">
-            <TextBlock Text="Registrer film" 
-                       FontSize="24" 
-                       FontWeight="Bold" 
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <!-- FILM SEKTION -->
+
+            <StackPanel Margin="20">
+                <TextBlock Text="Registrer film" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,20"/>
+                <TextBlock Text="Titel" />
+                <TextBox Text="{Binding MovieViewModel.Title}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Varighed(min)" />
+                <TextBox Text="{Binding MovieViewModel.Duration}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Genre" />
+                <TextBox Text="{Binding MovieViewModel.Genre}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Filminstruktør" />
+                <TextBox Text="{Binding MovieViewModel.Director}"
+                         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Premieredato" />
+                <DatePicker SelectedDate="{Binding MovieViewModel.ReleaseDate}"
+                            Margin="0,5,0,10" Width="140" HorizontalAlignment="Left"/>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Content="Registrer film"
+                        Command="{Binding MovieViewModel.RegisterMovieCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,10,0"/>
+                    <Button Content="Gem ændringer"
+                        Command="{Binding MovieViewModel.SaveMovieChangesCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+
+                </StackPanel>
+
+                <TextBlock Text="{Binding MovieViewModel.StatusMessage}"
+                            Margin="0,10,0,0"/>
+
+                <!-- FILM LISTE -->
+                <TextBlock Text="Registrerede film:" 
+                           FontSize="16" 
+                           FontWeight="Medium" 
+                           Margin="0,10,0,10"/>
+               
+                <ListBox ItemsSource="{Binding MovieViewModel.Movies}"
+                         SelectedItem="{Binding MovieViewModel.SelectedMovie}"
+                         Margin="0,10,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Title}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding Duration}" />
+                                <TextBlock Text=" min - " />
+                                <TextBlock Text="{Binding Genre}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="Filminstruktør: " />
+                                <TextBlock Text="{Binding Director}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="Premieredato: " />
+                                <TextBlock Text="{Binding ReleaseDate, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button Content="Slet film"
+                        Command="{Binding MovieViewModel.DeleteMovieCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,10,0,0"/>
+
+                <!-- BIOGRAF SEKTION -->
+                <Separator Margin="0,20,0,20"/>
+                
+                <TextBlock Text="Biografer"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="0,0,0,20"/>
+                
+                <TextBlock Text="Navn" />
+  
+
+                <TextBox Text="{Binding CinemaViewModel.Name}"
+                         Margin="0,5,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <Button Content="Registrer biograf"
+                            Command="{Binding CinemaViewModel.RegisterCinemaCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,10,0"/>
+                
+                    <Button Content="Gem ændringer"
+                            Command="{Binding CinemaViewModel.SaveCinemaChangesCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <TextBlock Text="{Binding CinemaViewModel.StatusMessage}"
+                           Margin="0,10,0,0"/>
+
+                <TextBlock Text="Registrerede biografer:" 
+                           FontSize="16" 
+                           FontWeight="Medium" 
+                           Margin="0,10,0,10"/>
+
+
+                <!-- BIOGRAF LISTE -->
+                <ListBox ItemsSource="{Binding CinemaViewModel.Cinemas}"
+                         SelectedItem="{Binding CinemaViewModel.SelectedCinema}"
+                         Margin="0,10,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+                <Button Content="Slet biograf"
+                        Command="{Binding CinemaViewModel.DeleteCinemaCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,10,0,0"/>
+
+            <!-- SAL SEKTION -->
+            <Separator Margin="0,20,0,20"/>
+            <TextBlock Text="Sale"
+                       FontSize="24"
+                       FontWeight="Bold"
                        Margin="0,0,0,20"/>
+                
+            <TextBlock Text="Navn" />
+            <TextBox Text="{Binding HallViewModel.Name}"
 
                        <!-- ny knap til kalenderen-->
             <Button Content="Åbn kalender"
@@ -22,38 +158,59 @@
 
 
 			<TextBlock Text="Titel" /> 
-            <TextBox Text="{Binding AddMovieViewModel.Title}"
+            <TextBox Text="{Binding MovieViewModel.Title}"
                      Margin="0,5,0,10"/>
-            
-            <TextBlock Text="Varighed(min)" />
-            <TextBox Text="{Binding AddMovieViewModel.Duration}"
-                     Margin="0,5,0,10"/>
-            
-            <TextBlock Text="Genre" />
-            <TextBox Text="{Binding AddMovieViewModel.Genre}"
-                     Margin="0,5,0,20"/>
+            <TextBlock Text="Biograf" />
+            <ComboBox ItemsSource="{Binding HallViewModel.Cinemas}"
+                      SelectedItem="{Binding HallViewModel.SelectedCinema}"
+                      DisplayMemberPath="Name"
+                      Margin="0,5,0,10"/>
 
-            <Button Content="Registrer film"
-                    Command="{Binding AddMovieViewModel.RegisterMovieCommand}"
-                    Width="120"
-                    HorizontalAlignment="Left"/>
-            <ListBox ItemsSource="{Binding AddMovieViewModel.Movies}"
-         Margin="0,20,0,0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Title}" />
-                            <TextBlock Text=" - " />
-                            <TextBlock Text="{Binding Duration}" />
-                            <TextBlock Text=" min - " />
-                            <TextBlock Text="{Binding Genre}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <StackPanel Orientation="Horizontal">
+                    
+                <Button Content="Registrer sal"
+                        Command="{Binding HallViewModel.RegisterHallCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,10,0"/>
 
-        </StackPanel>
-        
+                <Button Content="Gem ændringer"
+                        Command="{Binding HallViewModel.SaveHallChangesCommand}"                    
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+                
+            </StackPanel>
+
+
+
+                <!-- SAL LISTE -->
+            <TextBlock Text="Registrerede sale:"
+                       FontSize="16"
+                       FontWeight="Medium"
+                       Margin="0,20,0,10"/>
+                
+                <ListBox ItemsSource="{Binding HallViewModel.Halls}"
+                         SelectedItem="{Binding HallViewModel.SelectedHall}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding CinemaName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button Content="Slet sal"
+                        Command="{Binding HallViewModel.DeleteHallCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,10,0,0"/>
+
+            </StackPanel>
+
+        </ScrollViewer>
         
     </Grid>
 </Window>

@@ -21,7 +21,7 @@ namespace TheMovies.Tests
 
             FileMovieRepository repository = new FileMovieRepository(testFilePath);
 
-            AddMovieViewModel viewModel = new AddMovieViewModel(repository);
+            MovieViewModel viewModel = new MovieViewModel(repository);
 
             viewModel.Title = "Interstellar";
             viewModel.Duration = "169";
@@ -53,7 +53,7 @@ namespace TheMovies.Tests
 
             FileMovieRepository repository = new FileMovieRepository(testFilePath);
 
-            AddMovieViewModel viewModel = new AddMovieViewModel(repository);
+            MovieViewModel viewModel = new MovieViewModel(repository);
 
             viewModel.Title = "Interstellar";
             viewModel.Duration = "invalid";
@@ -85,7 +85,7 @@ namespace TheMovies.Tests
 
             FileMovieRepository repository = new FileMovieRepository(testFilePath);
 
-            AddMovieViewModel viewModel = new AddMovieViewModel(repository);
+            MovieViewModel viewModel = new MovieViewModel(repository);
 
             viewModel.Title = "Inception";
             viewModel.Duration = "148";
@@ -119,7 +119,7 @@ namespace TheMovies.Tests
 
             FileMovieRepository repository = new FileMovieRepository(testFilePath);
 
-            AddMovieViewModel viewModel = new AddMovieViewModel(repository);
+            MovieViewModel viewModel = new MovieViewModel(repository);
 
             viewModel.Title = "Inception";
             viewModel.Duration = "invalid";

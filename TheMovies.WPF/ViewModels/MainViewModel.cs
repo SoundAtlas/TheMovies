@@ -1,32 +1,39 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 using TheMovies.Core.Repositories;
 
 namespace TheMovies.WPF.ViewModels
 {
-	public class MainViewModel : ViewModelBase
-	{
-		public AddMovieViewModel AddMovieViewModel { get; }
+    public class MainViewModel : ViewModelBase
+    {
+        public MovieViewModel MovieViewModel { get; }
+        public CinemaViewModel CinemaViewModel { get; }
+        public HallViewModel HallViewModel { get; }
 
-		private readonly FileCinemaRepository _cinemaRepository;
+        private readonly FileCinemaRepository _cinemaRepository;
 
-		public ICommand OpenCalendarCommand { get; }
+        public ICommand OpenCalendarCommand { get; }
 
-		// MainWindow (View) "lytter" på dette event og åbner selve vinduet.
-		// ViewModel må ikke selv oprette et Window — det ville bryde MVVM-adskillelsen.
-		public event Action? OpenCalendarRequested;
+        public event Action? OpenCalendarRequested;
 
-		public MainViewModel()
-		{
-			FileMovieRepository movieRepository = new FileMovieRepository();
-			AddMovieViewModel = new AddMovieViewModel(movieRepository);
+        public MainViewModel()
+        {
+            FileMovieRepository movieRepository = new FileMovieRepository();
+            _cinemaRepository = new FileCinemaRepository();
+            FileHallRepository hallRepository = new FileHallRepository();
 
-			_cinemaRepository = new FileCinemaRepository();
-			OpenCalendarCommand = new RelayCommand(() => OpenCalendarRequested?.Invoke());
-		}
+            MovieViewModel = new MovieViewModel(movieRepository);
+            CinemaViewModel = new CinemaViewModel(cinemaRepository);
+            HallViewModel = new HallViewModel(
+                hallRepository,
+                CinemaViewModel.Cinemas);
 
-		public CalendarViewModel CreateCalendarViewModel()
-		{
-			return new CalendarViewModel(_cinemaRepository);
-		}
-	}
+            OpenCalendarCommand = new RelayCommand(
+                 => OpenCalendarRequested?.Invoke());
+        }
+
+        public CalendarViewModel CreateCalendarViewModel()
+        {
+            return new CalendarViewModel(_cinemaRepository);
+        }
+    }
 }
