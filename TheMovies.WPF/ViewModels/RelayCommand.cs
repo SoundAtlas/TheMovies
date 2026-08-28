@@ -15,6 +15,13 @@ namespace TheMovies.WPF.ViewModels
             _canExecute = canExecute;
         }
 
+        public RelayCommand(Action execute, Func<bool>? canExecute = null)
+        {
+            if (execute == null) throw new ArgumentNullException(nameof(execute));
+            _execute = _ => execute();
+            _canExecute = canExecute == null ? null : _ => canExecute();
+        }
+
         public bool CanExecute(object? parameter)
         {
             return _canExecute == null || _canExecute(parameter);

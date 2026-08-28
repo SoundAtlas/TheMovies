@@ -1,12 +1,6 @@
 [
   {
-    "Title": "Min Evige Sommer",
-    "Duration": 105,
-    "Genre": "Drama",
-    "Director": "Sylvia Le Fanu",
-    "ReleaseDate": "2026-08-15T00:00:00"
-  },
-  {
+    "Id": 1,
     "Title": "Onkel",
     "Duration": 106,
     "Genre": "Drama",
@@ -14,10 +8,19 @@
     "ReleaseDate": "2026-08-20T00:00:00"
   },
   {
+    "Id": 2,
     "Title": "Trine On Fire",
     "Duration": 95,
     "Genre": "Dokumentar",
     "Director": "Alexander Lind",
     "ReleaseDate": "2026-08-26T13:07:36.6000728+02:00"
+  },
+  {
+    "Id": 3,
+    "Title": "Test",
+    "Duration": 123,
+    "Genre": "Test",
+    "Director": null,
+    "ReleaseDate": "2026-08-29T00:00:00"
   }
 ]

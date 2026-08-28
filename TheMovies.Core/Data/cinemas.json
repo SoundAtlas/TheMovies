@@ -1,0 +1,56 @@
+[
+  {
+    "Name": "CinemaCity Fields",
+    "Id": 1,
+    "Screenings": [
+      {
+        "Id": 1,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "12:00:00"
+      },
+      {
+        "Id": 3,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "20:30:00"
+      },
+      {
+        "Id": 5,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-08-28",
+        "StartTime": "13:30:00"
+      },
+      {
+        "Id": 6,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-08-28",
+        "StartTime": "16:35:00"
+      },
+      {
+        "Id": 7,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-08-29",
+        "StartTime": "14:20:00"
+      }
+    ]
+  },
+  {
+    "Name": "Nordisk Film Biografer",
+    "Id": 2,
+    "Screenings": [
+      {
+        "Id": 9,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-08-29",
+        "StartTime": "16:00:00"
+      }
+    ]
+  }
+]
