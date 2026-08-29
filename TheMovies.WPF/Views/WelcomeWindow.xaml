@@ -1,0 +1,63 @@
+<Window x:Class="TheMovies.WPF.Views.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="The Movies" Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <TextBlock Text="Velkommen!"
+                       FontSize="16"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,4"/>
+
+            <TextBlock Text="The Movies"
+                       FontSize="40"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40"/>
+
+            <TextBlock Text="Vælg biograf"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"/>
+
+            <!-- Tegner én knap pr. biograf i Cinemas-listen. -->
+            <ItemsControl ItemsSource="{Binding Cinemas}" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- CommandParameter="{Binding}" sender Cinema-objektet med, så
+                             ViewModel'en ved hvilken biograf der blev valgt. -->
+                        <Button Content="{Binding Name}"
+                                Width="120"
+                                Margin="8,0"
+                                Command="{Binding DataContext.SelectCinemaCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <!-- Ligger her og ikke på startsiden, fordi den skal kunne bruges selv når der
+             ikke er nogen biografer at vælge imellem endnu. -->
+        <Button Grid.Row="1"
+                Content="Administrer biografer og sale"
+                Command="{Binding ManageCinemasCommand}"
+                Height="40"
+                HorizontalAlignment="Center"
+                Width="240"
+                Margin="0,20,0,0"/>
+    </Grid>
+</Window>

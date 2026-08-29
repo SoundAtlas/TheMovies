@@ -1,0 +1,131 @@
+<Window x:Class="TheMovies.WPF.Views.ManageCinemasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Administrer biografer og sale" Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Genbruger CinemaViewModel og HallViewModel med de samme bindinger som MainWindow. -->
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0"
+                Content="← Tilbage"
+                Click="TilbageKnap_Click"
+                HorizontalAlignment="Left"
+                Padding="10,4"
+                Margin="0,0,0,20"/>
+
+        <TextBlock Grid.Row="1"
+                   Text="Administrer biografer og sale"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <!-- Scroller, fordi biograf- og sal-sektionen tilsammen er for høje til ét vindue. -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <!-- BIOGRAF SEKTION -->
+                <TextBlock Text="Navn" />
+                <TextBox Text="{Binding CinemaViewModel.Name}" Margin="0,5,0,10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Registrer biograf"
+                            Command="{Binding CinemaViewModel.RegisterCinemaCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,10,0"/>
+
+                    <Button Content="Gem ændringer"
+                            Command="{Binding CinemaViewModel.SaveCinemaChangesCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <TextBlock Text="{Binding CinemaViewModel.StatusMessage}" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Registrerede biografer:"
+                           FontSize="16"
+                           FontWeight="Medium"
+                           Margin="0,20,0,10"/>
+
+                <!-- Vælg en biograf i listen for at redigere/slette den. -->
+                <ListBox ItemsSource="{Binding CinemaViewModel.Cinemas}"
+                         SelectedItem="{Binding CinemaViewModel.SelectedCinema}"
+                         Margin="0,0,0,10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button Content="Slet biograf"
+                        Command="{Binding CinemaViewModel.DeleteCinemaCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+
+                <!-- SAL SEKTION -->
+                <Separator Margin="0,25,0,25"/>
+
+                <TextBlock Text="Sale"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="0,0,0,20"/>
+
+                <TextBlock Text="Navn" />
+                <TextBox Text="{Binding HallViewModel.Name}" Margin="0,5,0,10"/>
+
+                <TextBlock Text="Biograf" />
+                <ComboBox ItemsSource="{Binding HallViewModel.Cinemas}"
+                          SelectedItem="{Binding HallViewModel.SelectedCinema}"
+                          DisplayMemberPath="Name"
+                          Margin="0,5,0,10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Registrer sal"
+                            Command="{Binding HallViewModel.RegisterHallCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,10,0"/>
+
+                    <Button Content="Gem ændringer"
+                            Command="{Binding HallViewModel.SaveHallChangesCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <TextBlock Text="{Binding HallViewModel.StatusMessage}" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Registrerede sale:"
+                           FontSize="16"
+                           FontWeight="Medium"
+                           Margin="0,20,0,10"/>
+
+                <!-- Vælg en sal i listen for at redigere/slette den. -->
+                <ListBox ItemsSource="{Binding HallViewModel.Halls}"
+                         SelectedItem="{Binding HallViewModel.SelectedHall}"
+                         Margin="0,0,0,10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding CinemaName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button Content="Slet sal"
+                        Command="{Binding HallViewModel.DeleteHallCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

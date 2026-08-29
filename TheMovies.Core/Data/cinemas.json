@@ -52,5 +52,35 @@
         "StartTime": "16:00:00"
       }
     ]
+  },
+  {
+    "Name": "Ræhr",
+    "Id": 3,
+    "Screenings": [
+      {
+        "Id": 10,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-08-29",
+        "StartTime": "12:00:00"
+      },
+      {
+        "Id": 11,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-08-29",
+        "StartTime": "20:30:00"
+      }
+    ]
+  },
+  {
+    "Name": "Odense",
+    "Id": 4,
+    "Screenings": []
+  },
+  {
+    "Name": "Aalborg",
+    "Id": 5,
+    "Screenings": []
   }
 ]
