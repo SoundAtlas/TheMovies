@@ -50,5 +50,10 @@ namespace TheMovies.WPF
             CalendarView calendarView = new CalendarView(vm.CreateCalendarViewModel());
             calendarView.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

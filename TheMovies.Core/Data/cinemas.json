@@ -1,56 +1,51 @@
 [
   {
-    "Name": "CinemaCity Fields",
-    "Id": 1,
+    "Name": "The Movies - Hjerm",
+    "Id": 3,
     "Screenings": [
       {
         "Id": 1,
         "MovieId": 1,
-        "HallId": 2,
-        "Date": "2026-08-29",
-        "StartTime": "12:00:00"
+        "HallId": 1,
+        "Date": "2026-08-20",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 2,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-01",
+        "StartTime": "10:00:00"
       },
       {
         "Id": 3,
         "MovieId": 2,
-        "HallId": 2,
-        "Date": "2026-08-29",
-        "StartTime": "20:30:00"
+        "HallId": 1,
+        "Date": "2026-09-01",
+        "StartTime": "12:20:00"
       },
       {
-        "Id": 5,
-        "MovieId": 2,
-        "HallId": 2,
-        "Date": "2026-08-28",
-        "StartTime": "13:30:00"
-      },
-      {
-        "Id": 6,
-        "MovieId": 1,
-        "HallId": 2,
-        "Date": "2026-08-28",
-        "StartTime": "16:35:00"
-      },
-      {
-        "Id": 7,
+        "Id": 4,
         "MovieId": 3,
         "HallId": 2,
-        "Date": "2026-08-29",
-        "StartTime": "14:20:00"
+        "Date": "2026-09-01",
+        "StartTime": "10:00:00"
       }
     ]
   },
   {
-    "Name": "Nordisk Film Biografer",
-    "Id": 2,
-    "Screenings": [
-      {
-        "Id": 9,
-        "MovieId": 3,
-        "HallId": 3,
-        "Date": "2026-08-29",
-        "StartTime": "16:00:00"
-      }
-    ]
+    "Name": "The Movies - Videb\u00E6k",
+    "Id": 4,
+    "Screenings": []
+  },
+  {
+    "Name": "The Movies - Thorsminde",
+    "Id": 5,
+    "Screenings": []
+  },
+  {
+    "Name": "The Movies - R\u00E6hr",
+    "Id": 6,
+    "Screenings": []
   }
 ]
