@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
 using TheMovies.WPF.DisplayModels;
 
 namespace TheMovies.WPF.ViewModels
@@ -10,9 +10,9 @@ namespace TheMovies.WPF.ViewModels
     // knapperne til kalender, opret film og skift biograf.
     public class StartViewModel : ViewModelBase
     {
-        private readonly FileCinemaRepository _cinemaRepository;
-        private readonly FileMovieRepository _movieRepository;
-        private readonly FileHallRepository _hallRepository;
+        private readonly ICinemaRepository _cinemaRepository;
+        private readonly IMovieRepository _movieRepository;
+        private readonly IHallRepository _hallRepository;
 
         private static readonly string[] DayNames =
         {
@@ -48,9 +48,9 @@ namespace TheMovies.WPF.ViewModels
 
         public StartViewModel(
             Cinema selectedCinema,
-            FileCinemaRepository cinemaRepository,
-            FileMovieRepository movieRepository,
-            FileHallRepository hallRepository)
+            ICinemaRepository cinemaRepository,
+            IMovieRepository movieRepository,
+            IHallRepository hallRepository)
         {
             SelectedCinema = selectedCinema;
 

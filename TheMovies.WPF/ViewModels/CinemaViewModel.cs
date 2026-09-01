@@ -1,14 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
 
 namespace TheMovies.WPF.ViewModels
 {
     public class CinemaViewModel : ViewModelBase
     {
-        private readonly FileCinemaRepository _repository;
-        private readonly FileHallRepository _hallRepository;
+        private readonly ICinemaRepository _cinemaRepository;
+        private readonly IHallRepository _hallRepository;
 
         private string _name;
 
@@ -17,7 +17,6 @@ namespace TheMovies.WPF.ViewModels
             get { return _name; }
             set { _name = value; OnPropertyChanged(); }
         }
-
 
         private string _statusMessage;
 
@@ -55,13 +54,13 @@ namespace TheMovies.WPF.ViewModels
         public ICommand DeleteCinemaCommand { get; }
         public ICommand SaveCinemaChangesCommand { get; }
 
-        public CinemaViewModel(FileCinemaRepository repository, FileHallRepository hallRepository)
+        public CinemaViewModel(ICinemaRepository cinemaRepository, IHallRepository hallRepository)
         {
-            _repository = repository;
+            _cinemaRepository = cinemaRepository;
             _hallRepository = hallRepository;
 
             // Load cinemas from the repository and initialize the ObservableCollection
-            List<Cinema> loadedCinemas = _repository.LoadCinemas();
+            List<Cinema> loadedCinemas = _cinemaRepository.LoadCinemas();
             Cinemas = new ObservableCollection<Cinema>(loadedCinemas);
 
             RegisterCinemaCommand = new RelayCommand(RegisterCinema);
@@ -96,7 +95,7 @@ namespace TheMovies.WPF.ViewModels
             };
 
             Cinemas.Add(cinema);
-            _repository.SaveCinemas(Cinemas.ToList());
+            _cinemaRepository.SaveCinemas(Cinemas.ToList());
 
             StatusMessage = $"Biograf '{Name}' er blevet registreret.";
 
@@ -137,7 +136,7 @@ namespace TheMovies.WPF.ViewModels
             }
 
             Cinemas.Remove(cinemaToDelete);
-            _repository.SaveCinemas(Cinemas.ToList());
+            _cinemaRepository.SaveCinemas(Cinemas.ToList());
             ShowMessage($"{cinemaToDelete.Name} slettet", "Biografen blev slettet.");
 
             Name = ""; // Clear the input field after deletion
@@ -164,7 +163,7 @@ namespace TheMovies.WPF.ViewModels
 
             Cinemas[index] = updatedCinema;
 
-            _repository.SaveCinemas(Cinemas.ToList());
+            _cinemaRepository.SaveCinemas(Cinemas.ToList());
 
             StatusMessage = $"Biograf '{Name}' er blevet opdateret.";
             // Return to default values after saving changes

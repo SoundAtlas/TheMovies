@@ -1,14 +1,14 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
 
 namespace TheMovies.WPF.ViewModels
 {
     // ViewModel til velkomstskærmen - viser de registrerede biografer, så man kan vælge én.
     public class WelcomeViewModel
     {
-        private readonly FileCinemaRepository _cinemaRepository;
+        private readonly ICinemaRepository _cinemaRepository;
 
         // Alle biografer man kan vælge imellem - én knap pr. biograf i WelcomeWindow.
         public ObservableCollection<Cinema> Cinemas { get; }
@@ -22,7 +22,7 @@ namespace TheMovies.WPF.ViewModels
         // WelcomeWindow lytter på denne og åbner ManageCinemasWindow.
         public event Action? ManageCinemasRequested;
 
-        public WelcomeViewModel(FileCinemaRepository cinemaRepository)
+        public WelcomeViewModel(ICinemaRepository cinemaRepository)
         {
             _cinemaRepository = cinemaRepository;
 

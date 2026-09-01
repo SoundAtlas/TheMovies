@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
 
 
 namespace TheMovies.WPF.ViewModels
@@ -9,8 +9,8 @@ namespace TheMovies.WPF.ViewModels
     public class MovieViewModel : ViewModelBase
     {
 
-        private readonly FileMovieRepository _repository;
-        private readonly FileCinemaRepository _cinemaRepository;
+        private readonly IMovieRepository _movieRepository;
+        private readonly ICinemaRepository _cinemaRepository;
 
 
         private string _title;
@@ -110,14 +110,14 @@ namespace TheMovies.WPF.ViewModels
         public ICommand SaveMovieChangesCommand { get; }
 
 
-        public MovieViewModel(FileMovieRepository repository, FileCinemaRepository cinemaRepository)
+        public MovieViewModel(IMovieRepository movieRepository, ICinemaRepository cinemaRepository)
         {
 
-            _repository = repository;
+            _movieRepository = movieRepository;
             _cinemaRepository = cinemaRepository;
 
             // Load movies from the repository and initialize the ObservableCollection
-            List<Movie> loadedMovies = _repository.LoadMovies();
+            List<Movie> loadedMovies = _movieRepository.LoadMovies();
             Movies = new ObservableCollection<Movie>(loadedMovies);
 
             RegisterMovieCommand = new RelayCommand(RegisterMovie);
@@ -168,7 +168,7 @@ namespace TheMovies.WPF.ViewModels
             };
 
             Movies.Add(movie);
-            _repository.SaveMovies(Movies.ToList());
+            _movieRepository.SaveMovies(Movies.ToList());
 
             StatusMessage = $"{Title} registreret";
 
@@ -208,7 +208,7 @@ namespace TheMovies.WPF.ViewModels
             _cinemaRepository.SaveCinemas(cinemas);
 
             Movies.Remove(movieToDelete);
-            _repository.SaveMovies(Movies.ToList());
+            _movieRepository.SaveMovies(Movies.ToList());
 
             ShowMessage(
                 $"{movieToDelete.Title} slettet",
@@ -259,7 +259,7 @@ namespace TheMovies.WPF.ViewModels
             Movies[index] = updatedMovie;
 
 
-            _repository.SaveMovies(Movies.ToList());
+            _movieRepository.SaveMovies(Movies.ToList());
             StatusMessage = $"{Title} blev opdateret";
             // Reset the input fields after saving changes
             ClearInputFields();

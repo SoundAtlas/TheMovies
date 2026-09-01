@@ -1,10 +1,11 @@
 ﻿using System.Text.Json;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
 
 
 namespace TheMovies.Core.Repositories
 {
-    public class FileMovieRepository
+    public class FileMovieRepository : IMovieRepository
     {
 
         private readonly string _filePath;
