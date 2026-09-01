@@ -1,17 +1,32 @@
 [
   {
+    "Id": 1,
+    "Name": "Sal 1",
+    "CinemaId": 3
+  },
+  {
     "Id": 2,
-    "Name": "1. Sal",
-    "CinemaId": 1
+    "Name": "Sal 2",
+    "CinemaId": 3
   },
   {
     "Id": 3,
-    "Name": "1. Sal - Nordisk Film Biografer",
-    "CinemaId": 2
+    "Name": "Sal 1",
+    "CinemaId": 4
   },
   {
     "Id": 4,
     "Name": "Sal 1",
-    "CinemaId": 3
+    "CinemaId": 5
+  },
+  {
+    "Id": 5,
+    "Name": "Sal 1",
+    "CinemaId": 6
+  },
+  {
+    "Id": 6,
+    "Name": "Sal 2",
+    "CinemaId": 6
   }
 ]
