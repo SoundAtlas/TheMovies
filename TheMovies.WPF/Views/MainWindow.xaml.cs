@@ -18,10 +18,6 @@ namespace TheMovies.WPF
             mainViewModel.MovieViewModel.ShowMessageRequested += ShowMessage;
             mainViewModel.MovieViewModel.ConfirmDeleteRequested += ConfirmDelete;
 
-            mainViewModel.CinemaViewModel.ShowMessageRequested += ShowMessage;
-            mainViewModel.CinemaViewModel.ConfirmDeleteRequested += ConfirmDelete;
-
-            mainViewModel.HallViewModel.ConfirmDeleteRequested += ConfirmDelete;
             mainViewModel.OpenCalendarRequested += OpenCalendar;
         }
 
@@ -51,6 +47,11 @@ namespace TheMovies.WPF
             calendarView.Show();
         }
 
+        // Lukker vinduet - StartWindow står åben bagved og bliver aktiv igen, hvilket
+        // udløser dens opdatering af dagsoversigten (se StartWindow.xaml.cs).
+        private void TilbageKnap_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 

@@ -6,9 +6,9 @@ namespace TheMovies.WPF.ViewModels
     public class MainViewModel : ViewModelBase
     {
         public MovieViewModel MovieViewModel { get; }
-        public CinemaViewModel CinemaViewModel { get; }
-        public HallViewModel HallViewModel { get; }
 
+        // Bruges stadig af MovieViewModel (rydder screenings op ved sletning) og af
+        // CreateCalendarViewModel - selvom Biograf/Sal ikke længere har deres egen sektion her.
         private readonly FileCinemaRepository _cinemaRepository;
         private readonly FileMovieRepository _movieRepository;
         private readonly FileHallRepository _hallRepository;
@@ -24,12 +24,6 @@ namespace TheMovies.WPF.ViewModels
             _hallRepository = new FileHallRepository();
 
             MovieViewModel = new MovieViewModel(_movieRepository, _cinemaRepository);
-            CinemaViewModel = new CinemaViewModel(_cinemaRepository, _hallRepository);
-
-            HallViewModel = new HallViewModel(
-                _hallRepository,
-                _cinemaRepository,
-                CinemaViewModel.Cinemas);
 
             OpenCalendarCommand = new RelayCommand(
                 () => OpenCalendarRequested?.Invoke());

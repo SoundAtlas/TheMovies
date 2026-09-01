@@ -8,10 +8,15 @@ namespace TheMovies.Core.Repositories
 
         private readonly string _filePath;
 
-        public FileHallRepository(string filePath = @"..\..\..\..\TheMovies.Core\Data\halls.json")
+        // AppContext.BaseDirectory er mappen .exe'en rent faktisk kører fra - virker uanset
+        // om man starter via Visual Studio, "dotnet run" eller den byggede .exe direkte.
+        public FileHallRepository(string? filePath = null)
         {
-            _filePath = filePath;
+            _filePath = filePath ?? Path.Combine(AppContext.BaseDirectory, "Data", "halls.json");
 
+            // Data-mappen findes ikke nødvendigvis endnu - uden denne linje fejler File.Create
+            // nedenfor, fordi mappen mangler.
+            Directory.CreateDirectory(Path.GetDirectoryName(_filePath)!);
             if (!File.Exists(_filePath))
                 File.Create(_filePath).Close();
         }
