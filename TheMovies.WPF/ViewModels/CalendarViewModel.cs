@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
 using TheMovies.WPF.DisplayModels;
 
 namespace TheMovies.WPF.ViewModels
@@ -16,9 +16,9 @@ namespace TheMovies.WPF.ViewModels
                                                             // INotifyPropertyChanged interface gør det muligt for ViewModel
                                                             // at notificere UI når en property ændres, så UI kan opdatere sig selv.
     {
-        private readonly FileCinemaRepository _cinemaRepository;
-        private readonly FileMovieRepository _movieRepository;
-        private readonly FileHallRepository _hallRepository;
+        private readonly ICinemaRepository _cinemaRepository;
+        private readonly IMovieRepository _movieRepository;
+        private readonly IHallRepository _hallRepository;
 
         private int _year;
         private int _month;
@@ -208,9 +208,9 @@ namespace TheMovies.WPF.ViewModels
         public ICommand SaveScreeningChangesCommand { get; }
 
         public CalendarViewModel(
-            FileCinemaRepository cinemaRepository,
-            FileMovieRepository movieRepository,
-            FileHallRepository hallRepository) // her injecter vi repositories ind i viewmodel'en via konstruktøren
+            ICinemaRepository cinemaRepository,
+            IMovieRepository movieRepository,
+            IHallRepository hallRepository) // her injecter vi repositories ind i viewmodel'en via konstruktøren
         {
             _cinemaRepository = cinemaRepository;
             _movieRepository = movieRepository;

@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Repositories;
 
 namespace TheMovies.WPF.ViewModels
@@ -9,9 +10,9 @@ namespace TheMovies.WPF.ViewModels
 
         // Bruges stadig af MovieViewModel (rydder screenings op ved sletning) og af
         // CreateCalendarViewModel - selvom Biograf/Sal ikke længere har deres egen sektion her.
-        private readonly FileCinemaRepository _cinemaRepository;
-        private readonly FileMovieRepository _movieRepository;
-        private readonly FileHallRepository _hallRepository;
+        private readonly ICinemaRepository _cinemaRepository;
+        private readonly IMovieRepository _movieRepository;
+        private readonly IHallRepository _hallRepository;
 
         public ICommand OpenCalendarCommand { get; }
 

@@ -1,14 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
 
 namespace TheMovies.WPF.ViewModels
 {
     public class HallViewModel : ViewModelBase
     {
-        private readonly FileHallRepository _repository;
-        private readonly FileCinemaRepository _cinemaRepository;
+        private readonly IHallRepository _hallRepository;
+        private readonly ICinemaRepository _cinemaRepository;
         private string _Name;
         private Cinema? _selectedCinema;
         private Hall? _selectedHall;
@@ -72,15 +72,15 @@ namespace TheMovies.WPF.ViewModels
         public ICommand DeleteHallCommand { get; }
         public ICommand SaveHallChangesCommand { get; }
 
-        public HallViewModel(FileHallRepository repository, FileCinemaRepository cinemaRepository,
+        public HallViewModel(IHallRepository hallRepository, ICinemaRepository cinemaRepository,
             ObservableCollection<Cinema> cinemas)
         {
-            _repository = repository;
+            _hallRepository = hallRepository;
             _cinemaRepository = cinemaRepository;
             Cinemas = cinemas;
 
             // Load halls from the repository and initialize the ObservableCollection
-            List<Hall> loadedHalls = _repository.LoadHalls();
+            List<Hall> loadedHalls = _hallRepository.LoadHalls();
 
             // Go through each hall that was loaded from the JSON file
             foreach (Hall hall in loadedHalls)
@@ -135,7 +135,7 @@ namespace TheMovies.WPF.ViewModels
 
             Halls.Add(hall);
 
-            _repository.SaveHalls(Halls.ToList());
+            _hallRepository.SaveHalls(Halls.ToList());
 
             StatusMessage = $"Sal '{Name}' er blevet registreret.";
 
@@ -171,7 +171,7 @@ namespace TheMovies.WPF.ViewModels
 
             Halls.Remove(hallToDelete);
 
-            _repository.SaveHalls(Halls.ToList());
+            _hallRepository.SaveHalls(Halls.ToList());
 
             StatusMessage = $"Sal '{hallToDelete.Name}' og dens forestillinger blev slettet.";
 
@@ -179,7 +179,6 @@ namespace TheMovies.WPF.ViewModels
             SelectedCinema = null;
             SelectedHall = null;
         }
-
 
         private void SaveHallChanges(object parameter)
         {
@@ -204,7 +203,7 @@ namespace TheMovies.WPF.ViewModels
 
             Halls[index] = updatedHall;
 
-            _repository.SaveHalls(Halls.ToList());
+            _hallRepository.SaveHalls(Halls.ToList());
 
             StatusMessage = $"Sal '{Name}' er blevet opdateret.";
             Name = "";
@@ -212,7 +211,6 @@ namespace TheMovies.WPF.ViewModels
             SelectedHall = null;
 
         }
-
 
         // Command CanExecute methods
         private bool CanDeleteHall(object? parameter)
@@ -224,7 +222,6 @@ namespace TheMovies.WPF.ViewModels
         {
             return SelectedHall != null;
         }
-
 
         // Event to request confirmation for deletion
         public event Func<string, string, bool>? ConfirmDeleteRequested;
