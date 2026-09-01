@@ -180,6 +180,7 @@ namespace TheMovies.WPF.ViewModels
             SelectedHall = null;
         }
 
+
         private void SaveHallChanges(object parameter)
         {
             if (SelectedHall == null)
@@ -211,6 +212,7 @@ namespace TheMovies.WPF.ViewModels
             SelectedHall = null;
 
         }
+
 
         // Command CanExecute methods
         private bool CanDeleteHall(object? parameter)

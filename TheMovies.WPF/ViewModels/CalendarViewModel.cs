@@ -1,6 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
@@ -12,9 +10,7 @@ namespace TheMovies.WPF.ViewModels
 
 
 
-    public class CalendarViewModel : INotifyPropertyChanged // bruges til at binde data til UI i WPF.
-                                                            // INotifyPropertyChanged interface gør det muligt for ViewModel
-                                                            // at notificere UI når en property ændres, så UI kan opdatere sig selv.
+    public class CalendarViewModel : ViewModelBase
     {
         private readonly ICinemaRepository _cinemaRepository;
         private readonly IMovieRepository _movieRepository;
@@ -788,8 +784,5 @@ namespace TheMovies.WPF.ViewModels
             return SelectedScreening != null;
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string? name = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

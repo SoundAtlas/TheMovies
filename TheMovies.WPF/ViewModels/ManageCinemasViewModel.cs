@@ -1,4 +1,4 @@
-using TheMovies.Core.Repositories;
+using TheMovies.Core.Interfaces;
 
 namespace TheMovies.WPF.ViewModels
 {
@@ -10,8 +10,8 @@ namespace TheMovies.WPF.ViewModels
         public HallViewModel HallViewModel { get; }
 
         public ManageCinemasViewModel(
-            FileCinemaRepository cinemaRepository,
-            FileHallRepository hallRepository)
+            ICinemaRepository cinemaRepository,
+            IHallRepository hallRepository)
         {
             CinemaViewModel = new CinemaViewModel(cinemaRepository, hallRepository);
 
