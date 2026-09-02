@@ -41,7 +41,8 @@
                         <!-- CommandParameter="{Binding}" sender Cinema-objektet med, så
                              ViewModel'en ved hvilken biograf der blev valgt. -->
                         <Button Content="{Binding Name}"
-                                Width="120"
+                                Width="200"
+                                Height="40"
                                 Margin="8,0"
                                 Command="{Binding DataContext.SelectCinemaCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                 CommandParameter="{Binding}"/>

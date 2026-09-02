@@ -12,5 +12,7 @@
         public string MovieTitle { get; set; }
         public string HallName { get; set; }
         public bool IsPremiere { get; set; }
+        // Number of seats left for this screening (calculated at creation)
+        public int SeatsLeft { get; set; }
     }
 }

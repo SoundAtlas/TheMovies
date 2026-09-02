@@ -2,6 +2,8 @@
 using System.Windows.Input;
 using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
+using TheMovies.Core.Repositories;
+using TheMovies.WPF.Views;
 using TheMovies.WPF.DisplayModels;
 
 namespace TheMovies.WPF.ViewModels
@@ -37,6 +39,16 @@ namespace TheMovies.WPF.ViewModels
             set { _cinemas = value; OnPropertyChanged(); }
         }
 
+        private void ViewBookings()
+        {
+            var repo = new TheMovies.Core.Repositories.FileBookingRepository();
+            int? filterId = SelectedScreening != null ? SelectedScreening.ScreeningId : (int?)null;
+            var vm = new BookingsViewModel(repo, _cinemaRepository, _hallRepository, _movieRepository, filterId);
+            var view = new Views.BookingsView();
+            view.DataContext = vm;
+            view.Owner = System.Windows.Application.Current?.MainWindow;
+            view.ShowDialog();
+        }
         // Den biograf brugeren har valgt
         private Cinema _selectedCinema;
         public Cinema SelectedCinema
@@ -202,6 +214,8 @@ namespace TheMovies.WPF.ViewModels
         public ICommand RegisterScreeningCommand { get; }
         public ICommand DeleteScreeningCommand { get; }
         public ICommand SaveScreeningChangesCommand { get; }
+        public ICommand BookScreeningCommand { get; }
+        public ICommand ViewBookingsCommand { get; }
 
         public CalendarViewModel(
             ICinemaRepository cinemaRepository,
@@ -220,6 +234,8 @@ namespace TheMovies.WPF.ViewModels
             RegisterScreeningCommand = new RelayCommand(RegisterScreening);
             DeleteScreeningCommand = new RelayCommand(DeleteScreening);
             SaveScreeningChangesCommand = new RelayCommand(SaveScreeningChanges, CanSaveScreeningChanges);
+            BookScreeningCommand = new RelayCommand(BookScreening, () => SelectedScreening != null);
+            ViewBookingsCommand = new RelayCommand(ViewBookings);
 
             Screenings = new ObservableCollection<ScreeningDisplay>();
 
@@ -782,6 +798,77 @@ namespace TheMovies.WPF.ViewModels
         private bool CanSaveScreeningChanges()
         {
             return SelectedScreening != null;
+        }
+
+        private void BookScreening()
+        {
+            if (SelectedScreening == null)
+            {
+                StatusMessage = "Vælg en forestilling først.";
+                return;
+            }
+
+            // Load bookings and hall to compute seats left before showing dialog
+            var repo = new FileBookingRepository();
+            var bookings = repo.LoadBookings();
+
+            Hall? hall = Halls.FirstOrDefault(h => h.Id == SelectedScreening.HallId);
+            if (hall == null)
+            {
+                StatusMessage = "Sal kunne ikke findes.";
+                return;
+            }
+
+            int alreadyBooked = bookings
+                .Where(b => b.ScreeningId == SelectedScreening.ScreeningId)
+                .Sum(b => b.BookingAmount);
+
+            int seatsLeft = hall.Capacity - alreadyBooked;
+
+            // Show booking dialog
+            BookingDialog bookingView = new BookingDialog();
+            var bookingVm = new BookingViewModel();
+            bookingVm.SeatsLeft = seatsLeft;
+            bookingView.DataContext = bookingVm;
+            bookingView.Owner = System.Windows.Application.Current?.MainWindow;
+
+            bool? result = bookingView.ShowDialog();
+            if (result != true)
+            {
+                StatusMessage = "Booking annulleret.";
+                return;
+            }
+            // Re-load bookings to avoid race and perform capacity check again
+            bookings = repo.LoadBookings();
+            var newBooking = bookingVm.ToBooking();
+            if (newBooking.BookingAmount < 1) newBooking.BookingAmount = 1;
+
+            alreadyBooked = bookings
+                .Where(b => b.ScreeningId == SelectedScreening.ScreeningId)
+                .Sum(b => b.BookingAmount);
+
+            seatsLeft = hall.Capacity - alreadyBooked;
+            if (newBooking.BookingAmount > seatsLeft)
+            {
+                StatusMessage = seatsLeft > 0
+                    ? $"Der er kun {seatsLeft} pladser tilbage i salen. Vælg et lavere antal."
+                    : "Salen er udsolgt for denne forestilling.";
+                return;
+            }
+
+            int newId = 1;
+            if (bookings.Any())
+                newId = bookings.Max(b => b.Id) + 1;
+
+            newBooking.Id = newId;
+            newBooking.ScreeningId = SelectedScreening.ScreeningId;
+
+            bookings.Add(newBooking);
+            repo.SaveBookings(bookings);
+
+            // Notify listeners so UI (StartWindow etc.) can refresh immediately
+            TheMovies.WPF.Helpers.BookingNotifier.RaiseBookingChanged(newBooking.ScreeningId);
+            StatusMessage = "Booking gennemført.";
         }
 
     }

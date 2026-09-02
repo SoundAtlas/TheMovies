@@ -11,6 +11,7 @@ namespace TheMovies.Core.Models
         // This property is not serialized to JSON, but it can be used in the application to display the cinema name associated with the hall.
         [JsonIgnore]
         public string CinemaName { get; set; }
+        public int Capacity { get; set; }
 
     }
 }

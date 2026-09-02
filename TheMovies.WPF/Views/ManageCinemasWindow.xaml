@@ -85,6 +85,8 @@
                           SelectedItem="{Binding HallViewModel.SelectedCinema}"
                           DisplayMemberPath="Name"
                           Margin="0,5,0,10"/>
+                <TextBlock Text="Kapacitet" />
+                <TextBox Text="{Binding HallViewModel.Capacity}" Margin="0,5,0,10"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Registrer sal"
@@ -116,6 +118,8 @@
                                 <TextBlock Text="{Binding Name}" />
                                 <TextBlock Text=" - " />
                                 <TextBlock Text="{Binding CinemaName}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding Capacity}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

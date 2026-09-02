@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <!-- Kopierer .json-filerne med ud i bin-mappen ved build, så de ligger klar ved siden af .exe'en. -->
     <Content Include="Data\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

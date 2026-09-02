@@ -16,12 +16,14 @@ namespace TheMovies.WPF.Views
             FileCinemaRepository cinemaRepository = new FileCinemaRepository();
             FileMovieRepository movieRepository = new FileMovieRepository();
             FileHallRepository hallRepository = new FileHallRepository();
+            FileBookingRepository bookingRepository = new FileBookingRepository();
 
             StartViewModel startViewModel = new StartViewModel(
                 selectedCinema,
                 cinemaRepository,
                 movieRepository,
-                hallRepository);
+                hallRepository,
+                bookingRepository);
 
             DataContext = startViewModel;
 

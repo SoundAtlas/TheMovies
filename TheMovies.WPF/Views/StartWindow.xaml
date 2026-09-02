@@ -74,6 +74,9 @@
 								<TextBlock Text="{Binding MovieTitle}"/>
 								<TextBlock Text=" - "/>
 								<TextBlock Text="{Binding HallName}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="Pladser tilbage: " FontWeight="Bold"/>
+                                <TextBlock Text="{Binding SeatsLeft}"/>
 							</StackPanel>
 						</DataTemplate>
 					</ListBox.ItemTemplate>

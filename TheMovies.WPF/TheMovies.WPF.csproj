@@ -12,4 +12,10 @@
     <ProjectReference Include="..\TheMovies.Core\TheMovies.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Views\BookingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
 </Project>

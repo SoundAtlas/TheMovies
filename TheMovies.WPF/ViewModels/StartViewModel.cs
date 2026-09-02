@@ -13,6 +13,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly ICinemaRepository _cinemaRepository;
         private readonly IMovieRepository _movieRepository;
         private readonly IHallRepository _hallRepository;
+        private readonly IBookingRepository _bookingRepository;
 
         private static readonly string[] DayNames =
         {
@@ -50,13 +51,15 @@ namespace TheMovies.WPF.ViewModels
             Cinema selectedCinema,
             ICinemaRepository cinemaRepository,
             IMovieRepository movieRepository,
-            IHallRepository hallRepository)
+            IHallRepository hallRepository,
+            IBookingRepository bookingRepository)
         {
             SelectedCinema = selectedCinema;
 
             _cinemaRepository = cinemaRepository;
             _movieRepository = movieRepository;
             _hallRepository = hallRepository;
+            _bookingRepository = bookingRepository;
 
             TodayLabel = BuildTodayLabel();
             TodaysScreenings = new ObservableCollection<ScreeningDisplay>(LoadTodaysScreenings(SelectedCinema));
@@ -64,6 +67,9 @@ namespace TheMovies.WPF.ViewModels
             OpenCalendarCommand = new RelayCommand(() => OpenCalendarRequested?.Invoke());
             CreateMovieCommand = new RelayCommand(() => CreateMovieRequested?.Invoke());
             ChangeCinemaCommand = new RelayCommand(() => ChangeCinemaRequested?.Invoke());
+
+            // subscribe to booking changes so we update seats left immediately
+            TheMovies.WPF.Helpers.BookingNotifier.BookingChanged += (id) => RefreshTodaysScreenings();
         }
 
         private string BuildTodayLabel()
@@ -84,6 +90,7 @@ namespace TheMovies.WPF.ViewModels
 
             List<Movie> movies = _movieRepository.LoadMovies();
             List<Hall> halls = _hallRepository.LoadHalls();
+            List<Booking> bookings = _bookingRepository.LoadBookings();
 
             List<ScreeningDisplay> result = new List<ScreeningDisplay>();
 
@@ -94,6 +101,10 @@ namespace TheMovies.WPF.ViewModels
 
                 Movie? movie = movies.FirstOrDefault(m => m.Id == screening.MovieId);
                 Hall? hall = halls.FirstOrDefault(h => h.Id == screening.HallId);
+
+                // compute seats left for this screening
+                int alreadyBooked = bookings.Where(b => b.ScreeningId == screening.Id).Sum(b => b.BookingAmount);
+                int seatsLeft = (hall?.Capacity ?? 0) - alreadyBooked;
 
                 result.Add(new ScreeningDisplay
                 {
@@ -108,7 +119,8 @@ namespace TheMovies.WPF.ViewModels
                     HallName = hall?.Name ?? "Ukendt sal",
 
                     IsPremiere = movie != null &&
-                                 screening.Date == DateOnly.FromDateTime(movie.ReleaseDate)
+                                 screening.Date == DateOnly.FromDateTime(movie.ReleaseDate),
+                    SeatsLeft = seatsLeft < 0 ? 0 : seatsLeft
                 });
             }
 
