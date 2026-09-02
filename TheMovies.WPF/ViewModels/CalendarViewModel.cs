@@ -840,7 +840,28 @@ namespace TheMovies.WPF.ViewModels
             }
             // Re-load bookings to avoid race and perform capacity check again
             bookings = repo.LoadBookings();
-            var newBooking = bookingVm.ToBooking();
+            Booking newBooking;
+            try
+            {
+                // additional safety checks and conversion
+                if (string.IsNullOrWhiteSpace(bookingVm.Email) || !bookingVm.Email.Contains("@"))
+                    throw new FormatException("Email skal indeholde '@'.");
+
+                if (string.IsNullOrWhiteSpace(bookingVm.PhoneNumber) || !System.Text.RegularExpressions.Regex.IsMatch(bookingVm.PhoneNumber, "^[0-9]+$"))
+                    throw new FormatException("Telefonnummer må kun indeholde tal.");
+
+                newBooking = bookingVm.ToBooking();
+            }
+            catch (FormatException fx)
+            {
+                StatusMessage = fx.Message;
+                return;
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = "Der opstod en fejl ved oprettelse af booking.";
+                return;
+            }
             if (newBooking.BookingAmount < 1) newBooking.BookingAmount = 1;
 
             alreadyBooked = bookings

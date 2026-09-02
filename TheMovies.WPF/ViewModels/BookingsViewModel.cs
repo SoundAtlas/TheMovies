@@ -155,28 +155,41 @@ namespace TheMovies.WPF.ViewModels
                 var target = bookings.FirstOrDefault(x => x.Id == SelectedBooking.Id);
                 if (target != null)
                 {
-                    var newBooking = vm.ToBooking();
-
-                    int already = bookings.Where(b => b.ScreeningId == screeningId && b.Id != target.Id).Sum(b => b.BookingAmount);
-                    int seatsNowLeft = hall.Capacity - already;
-                    if (newBooking.BookingAmount > seatsNowLeft)
+                    try
                     {
-                        MessageBox.Show(seatsNowLeft > 0
-                            ? $"Kan ikke opdatere. Der er kun {seatsNowLeft} pladser tilbage for denne forestilling."
-                            : "Kan ikke opdatere. Salen er udsolgt for denne forestilling.",
-                            "Ikke nok pladser", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        var newBooking = vm.ToBooking();
+
+                        int already = bookings.Where(b => b.ScreeningId == screeningId && b.Id != target.Id).Sum(b => b.BookingAmount);
+                        int seatsNowLeft = hall.Capacity - already;
+                        if (newBooking.BookingAmount > seatsNowLeft)
+                        {
+                            MessageBox.Show(seatsNowLeft > 0
+                                ? $"Kan ikke opdatere. Der er kun {seatsNowLeft} pladser tilbage for denne forestilling."
+                                : "Kan ikke opdatere. Salen er udsolgt for denne forestilling.",
+                                "Ikke nok pladser", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+
+                        target.BookingAmount = newBooking.BookingAmount;
+                        target.Email = newBooking.Email;
+                        target.PhoneNumber = newBooking.PhoneNumber;
+                        _bookingRepository.SaveBookings(bookings);
+                        Load();
+
+                        if (_bookingRepository is TheMovies.Core.Repositories.FileBookingRepository fileRepo)
+                        {
+                            MessageBox.Show($"Booking gemt i: {fileRepo.FilePath}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                    catch (System.FormatException fx)
+                    {
+                        MessageBox.Show(fx.Message, "Ugyldige data", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
-
-                    target.BookingAmount = newBooking.BookingAmount;
-                    target.Email = newBooking.Email;
-                    target.PhoneNumber = newBooking.PhoneNumber;
-                    _bookingRepository.SaveBookings(bookings);
-                    Load();
-
-                    if (_bookingRepository is TheMovies.Core.Repositories.FileBookingRepository fileRepo)
+                    catch (System.Exception)
                     {
-                        MessageBox.Show($"Booking gemt i: {fileRepo.FilePath}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Der opstod en fejl ved opdatering af bookingen.", "Fejl", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
                 }
             }

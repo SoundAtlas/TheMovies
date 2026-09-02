@@ -14,6 +14,22 @@ namespace TheMovies.WPF.Views
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
+            // Validate email contains '@' and phone contains only digits before closing
+            if (DataContext is BookingViewModel vm)
+            {
+                if (string.IsNullOrWhiteSpace(vm.Email) || !vm.Email.Contains("@"))
+                {
+                    MessageBox.Show("Indtast en gyldig emailadresse som indeholder '@'.", "Ugyldig email", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(vm.PhoneNumber) || !Regex.IsMatch(vm.PhoneNumber, "^[0-9]+$"))
+                {
+                    MessageBox.Show("Telefonnummer må kun indeholde tal.", "Ugyldigt telefonnummer", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+            }
+
             DialogResult = true;
             Close();
         }
