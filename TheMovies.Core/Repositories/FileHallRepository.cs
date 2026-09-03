@@ -13,7 +13,7 @@ namespace TheMovies.Core.Repositories
         // om man starter via Visual Studio, "dotnet run" eller den byggede .exe direkte.
         public FileHallRepository(string? filePath = null)
         {
-            _filePath = filePath ?? Path.Combine(AppContext.BaseDirectory, "Data", "halls.json");
+            _filePath = filePath ?? DataFilePath.Get("halls.json");
 
             // Data-mappen findes ikke nødvendigvis endnu - uden denne linje fejler File.Create
             // nedenfor, fordi mappen mangler.

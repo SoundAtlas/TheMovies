@@ -1,0 +1,72 @@
+[
+  {
+    "Name": "The Movies - Hjerm",
+    "Id": 3,
+    "Screenings": [
+      {
+        "Id": 1,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-08-20",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 2,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-01",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 3,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-01",
+        "StartTime": "12:20:00"
+      },
+      {
+        "Id": 4,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-01",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 5,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-04",
+        "StartTime": "12:30:00"
+      },
+      {
+        "Id": 6,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-03",
+        "StartTime": "12:30:00"
+      },
+      {
+        "Id": 7,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-03",
+        "StartTime": "14:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "The Movies - Videb\u00E6k",
+    "Id": 4,
+    "Screenings": []
+  },
+  {
+    "Name": "The Movies - Thorsminde",
+    "Id": 5,
+    "Screenings": []
+  },
+  {
+    "Name": "The Movies - R\u00E6hr",
+    "Id": 6,
+    "Screenings": []
+  }
+]

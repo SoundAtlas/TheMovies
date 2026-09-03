@@ -14,7 +14,7 @@ namespace TheMovies.Core.Repositories
         // om man starter via Visual Studio, "dotnet run" eller den byggede .exe direkte.
         public FileMovieRepository(string? filePath = null)
         {
-            _filePath = filePath ?? Path.Combine(AppContext.BaseDirectory, "Data", "movies.json");
+            _filePath = filePath ?? DataFilePath.Get("movies.json");
 
             // Data-mappen findes ikke nødvendigvis endnu (fx første gang appen køres et nyt sted) -
             // uden denne linje fejler File.Create nedenfor, fordi mappen mangler.

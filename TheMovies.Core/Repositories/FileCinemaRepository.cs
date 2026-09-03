@@ -12,7 +12,7 @@ namespace TheMovies.Core.Repositories
         // om man starter via Visual Studio, "dotnet run" eller den byggede .exe direkte.
         public FileCinemaRepository(string? filePath = null)
         {
-            _filePath = filePath ?? Path.Combine(AppContext.BaseDirectory, "Data", "cinemas.json");
+            _filePath = filePath ?? DataFilePath.Get("cinemas.json");
 
             // Data-mappen findes ikke nødvendigvis endnu - uden denne linje fejler File.Create
             // nedenfor, fordi mappen mangler.
