@@ -40,6 +40,7 @@ namespace TheMovies.Tests
         public void CreateBooking_WhenBookingAmountExceedsSeatsLeft_DoesNotAddBooking()
         {
             // Scenario 3: A booking cannot exceed the selected screening's remaining capacity.
+            // Arrange
             InMemoryBookingRepository bookingRepository = new(
                 new Booking
                 {
@@ -57,15 +58,17 @@ namespace TheMovies.Tests
                 PhoneNumber = "12345678"
             };
 
+            // Act
             BookingCreationResult result = service.CreateBooking(
                 booking,
                 screeningId: 7,
                 hallCapacity: 10);
 
+            // Assert
             Assert.IsFalse(result.IsSuccess);
             Assert.HasCount(1, bookingRepository.Bookings);
             Assert.AreEqual(0, bookingRepository.SaveCallCount);
-            StringAssert.Contains(result.Message, "kun 2 pladser tilbage");
+            Assert.Contains(result.Message, "kun 2 pladser tilbage");
         }
 
         private sealed class InMemoryBookingRepository : IBookingRepository
