@@ -3,8 +3,8 @@ using System.Windows.Input;
 using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
 using TheMovies.Core.Repositories;
-using TheMovies.WPF.Views;
 using TheMovies.WPF.DisplayModels;
+using TheMovies.WPF.Views;
 
 namespace TheMovies.WPF.ViewModels
 {
@@ -17,7 +17,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly ICinemaRepository _cinemaRepository;
         private readonly IMovieRepository _movieRepository;
         private readonly IHallRepository _hallRepository;
-
+        private readonly IBookingRepository _bookingRepository;
         private int _year;
         private int _month;
 
@@ -41,14 +41,14 @@ namespace TheMovies.WPF.ViewModels
 
         private void ViewBookings()
         {
-            var repo = new TheMovies.Core.Repositories.FileBookingRepository();
             int? filterId = SelectedScreening != null ? SelectedScreening.ScreeningId : (int?)null;
-            var vm = new BookingsViewModel(repo, _cinemaRepository, _hallRepository, _movieRepository, filterId);
+            var vm = new BookingsViewModel(_bookingRepository, _cinemaRepository, _hallRepository, _movieRepository, filterId);
             var view = new Views.BookingsView();
             view.DataContext = vm;
             view.Owner = System.Windows.Application.Current?.MainWindow;
             view.ShowDialog();
         }
+
         // Den biograf brugeren har valgt
         private Cinema _selectedCinema;
         public Cinema SelectedCinema
@@ -220,11 +220,13 @@ namespace TheMovies.WPF.ViewModels
         public CalendarViewModel(
             ICinemaRepository cinemaRepository,
             IMovieRepository movieRepository,
-            IHallRepository hallRepository) // her injecter vi repositories ind i viewmodel'en via konstruktøren
+            IHallRepository hallRepository,
+            IBookingRepository bookingRepository) // her injecter vi repositories ind i viewmodel'en via konstruktøren
         {
             _cinemaRepository = cinemaRepository;
             _movieRepository = movieRepository;
             _hallRepository = hallRepository;
+            _bookingRepository = bookingRepository;
 
             _year = DateTime.Today.Year;
             _month = DateTime.Today.Month;

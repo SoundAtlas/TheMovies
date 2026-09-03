@@ -160,7 +160,8 @@ namespace TheMovies.WPF.ViewModels
             CalendarViewModel calendarViewModel = new CalendarViewModel(
                 _cinemaRepository,
                 _movieRepository,
-                _hallRepository);
+                _hallRepository,
+                _bookingRepository);
 
             Cinema? matchingCinema = calendarViewModel.Cinemas
                 .FirstOrDefault(c => c.Id == SelectedCinema.Id);

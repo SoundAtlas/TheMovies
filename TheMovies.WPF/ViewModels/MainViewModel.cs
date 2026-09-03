@@ -13,6 +13,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly ICinemaRepository _cinemaRepository;
         private readonly IMovieRepository _movieRepository;
         private readonly IHallRepository _hallRepository;
+        private readonly IBookingRepository _bookingRepository;
 
         public ICommand OpenCalendarCommand { get; }
 
@@ -23,6 +24,7 @@ namespace TheMovies.WPF.ViewModels
             _movieRepository = new FileMovieRepository();
             _cinemaRepository = new FileCinemaRepository();
             _hallRepository = new FileHallRepository();
+            _bookingRepository = new FileBookingRepository();
 
             MovieViewModel = new MovieViewModel(_movieRepository, _cinemaRepository);
 
@@ -35,7 +37,8 @@ namespace TheMovies.WPF.ViewModels
             return new CalendarViewModel(
                 _cinemaRepository,
                 _movieRepository,
-                _hallRepository);
+                _hallRepository,
+                _bookingRepository);
         }
     }
 }
