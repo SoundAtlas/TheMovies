@@ -41,8 +41,17 @@ namespace TheMovies.WPF.ViewModels
 
         private void ViewBookings()
         {
-            int? filterId = SelectedScreening != null ? SelectedScreening.ScreeningId : (int?)null;
-            var vm = new BookingsViewModel(_bookingRepository, _cinemaRepository, _hallRepository, _movieRepository, filterId);
+            int? filterScreeningId = SelectedScreening?.ScreeningId;
+            string? screeningDescription = SelectedScreening == null
+                ? null
+                : $"{SelectedScreening.MovieTitle} – {SelectedScreening.Date:dd-MM-yyyy} kl. {SelectedScreening.StartTime:HH\\:mm}";
+            var vm = new BookingsViewModel(
+                _bookingRepository,
+                _cinemaRepository,
+                _hallRepository,
+                _movieRepository,
+                filterScreeningId,
+                screeningDescription);
             var view = new Views.BookingsView();
             view.DataContext = vm;
             view.Owner = System.Windows.Application.Current?.MainWindow;
@@ -79,6 +88,7 @@ namespace TheMovies.WPF.ViewModels
             {
                 _selectedDay = value;
                 OnPropertyChanged();
+                SelectedScreening = null;
 
                 if (value != null && SelectedCinema != null)
                 {
@@ -100,6 +110,14 @@ namespace TheMovies.WPF.ViewModels
             get => _selectedDateLabel;
             set { _selectedDateLabel = value; OnPropertyChanged(); }
         }
+
+        public string BookingsFilterText => SelectedScreening == null
+            ? "Bookinger: Alle forestillinger"
+            : $"Bookinger: {SelectedScreening.MovieTitle} kl. {SelectedScreening.StartTime:HH\\:mm}";
+
+        public string ViewBookingsButtonText => SelectedScreening == null
+            ? "Se alle bookinger"
+            : "Se valgte bookinger";
 
         private Movie? _selectedMovie;
         public Movie? SelectedMovie
@@ -154,6 +172,8 @@ namespace TheMovies.WPF.ViewModels
             {
                 _selectedScreening = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(BookingsFilterText));
+                OnPropertyChanged(nameof(ViewBookingsButtonText));
 
                 if (_selectedScreening == null)
                     return;

@@ -30,6 +30,11 @@ namespace TheMovies.WPF.ViewModels
         private readonly IHallRepository _hallRepository;
         private readonly IMovieRepository _movieRepository;
         private readonly int? _filterScreeningId;
+        private readonly string? _screeningDescription;
+
+        public string ScopeTitle => _filterScreeningId.HasValue
+            ? $"Bookinger for {_screeningDescription ?? "valgt forestilling"}"
+            : "Alle bookinger";
 
         public ObservableCollection<BookingDisplay> Bookings { get; set; } = new ObservableCollection<BookingDisplay>();
 
@@ -40,13 +45,20 @@ namespace TheMovies.WPF.ViewModels
             set { _selectedBooking = value; OnPropertyChanged(); }
         }
 
-        public BookingsViewModel(IBookingRepository bookingRepository, ICinemaRepository cinemaRepository, IHallRepository hallRepository, IMovieRepository movieRepository, int? filterScreeningId = null)
+        public BookingsViewModel(
+            IBookingRepository bookingRepository,
+            ICinemaRepository cinemaRepository,
+            IHallRepository hallRepository,
+            IMovieRepository movieRepository,
+            int? filterScreeningId = null,
+            string? screeningDescription = null)
         {
             _bookingRepository = bookingRepository;
             _cinemaRepository = cinemaRepository;
             _hallRepository = hallRepository;
             _movieRepository = movieRepository;
             _filterScreeningId = filterScreeningId;
+            _screeningDescription = screeningDescription;
             Load();
         }
 
@@ -61,9 +73,9 @@ namespace TheMovies.WPF.ViewModels
 
             foreach (var b in bookings)
             {
-                // apply optional screening filter
                 if (_filterScreeningId.HasValue && b.ScreeningId != _filterScreeningId.Value)
                     continue;
+
                 Screening? found = null;
                 foreach (var c in cinemas)
                 {
