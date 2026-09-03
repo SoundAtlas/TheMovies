@@ -28,6 +28,6 @@ The project requires Windows and the .NET 10 SDK.
 ## Authors
 
 - Andreas Hemmer
-- Stine Larsen
-- Isabella Larsson Seedorff
 - Frederik Pedersen
+- Isabella Larsson Seedorff
+- Stine Larsen
