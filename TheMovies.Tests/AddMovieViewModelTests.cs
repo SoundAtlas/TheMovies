@@ -21,10 +21,10 @@ namespace TheMovies.Tests
                 File.Delete(cinemaFilePath);
 
             FileMovieRepository movieRepository =
-                new FileMovieRepository(movieFilePath);
+                new FileMovieRepository(Path.GetFullPath(movieFilePath));
 
             FileCinemaRepository cinemaRepository =
-                new FileCinemaRepository(cinemaFilePath);
+                new FileCinemaRepository(Path.GetFullPath(cinemaFilePath));
 
             return new MovieViewModel(
                 movieRepository,
