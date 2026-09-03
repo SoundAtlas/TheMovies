@@ -46,6 +46,8 @@ namespace TheMovies.WPF.ViewModels
 
                 Name = _selectedHall.Name;
 
+                Capacity = _selectedHall.Capacity;
+
                 // Go through all cinemas to find the cinema that the selected hall belongs to
                 foreach (Cinema cinema in Cinemas)
                 {
@@ -57,7 +59,6 @@ namespace TheMovies.WPF.ViewModels
                         break;
                     }
                 }
-
             }
         }
 
