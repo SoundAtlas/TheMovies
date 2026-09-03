@@ -14,17 +14,21 @@ namespace TheMovies.Tests
             string moviePath = "test_screening_movies.json";
             string cinemaPath = "test_screening_cinemas.json";
             string hallPath = "test_screening_halls.json";
+            string bookingPath = "test_screening_bookings.json";
 
-            DeleteFiles(moviePath, cinemaPath, hallPath);
+            DeleteFiles(moviePath, cinemaPath, hallPath, bookingPath);
 
             FileMovieRepository movieRepository =
-                new FileMovieRepository(moviePath);
+                new FileMovieRepository(Path.GetFullPath(moviePath));
 
             FileCinemaRepository cinemaRepository =
-                new FileCinemaRepository(cinemaPath);
+                new FileCinemaRepository(Path.GetFullPath(cinemaPath));
 
             FileHallRepository hallRepository =
-                new FileHallRepository(hallPath);
+                new FileHallRepository(Path.GetFullPath(hallPath));
+
+            FileBookingRepository bookingRepository =
+                new FileBookingRepository(Path.GetFullPath(bookingPath));
 
             Movie movie = new Movie
             {
@@ -57,7 +61,8 @@ namespace TheMovies.Tests
                 new CalendarViewModel(
                     cinemaRepository,
                     movieRepository,
-                    hallRepository
+                    hallRepository,
+                    bookingRepository
                     );
 
             viewModel.SelectedMovie = viewModel.Movies[0];
@@ -75,7 +80,7 @@ namespace TheMovies.Tests
             Assert.AreEqual(1, savedCinemas[0].Screenings[0].MovieId);
             Assert.AreEqual(1, savedCinemas[0].Screenings[0].HallId);
 
-            DeleteFiles(moviePath, cinemaPath, hallPath);
+            DeleteFiles(moviePath, cinemaPath, hallPath, bookingPath);
         }
 
 
@@ -86,17 +91,21 @@ namespace TheMovies.Tests
             string moviePath = "test_overlap_movies.json";
             string cinemaPath = "test_overlap_cinemas.json";
             string hallPath = "test_overlap_halls.json";
+            string bookingPath = "test_overlap_bookings.json";
 
-            DeleteFiles(moviePath, cinemaPath, hallPath);
+            DeleteFiles(moviePath, cinemaPath, hallPath, bookingPath);
 
             FileMovieRepository movieRepository =
-                new FileMovieRepository(moviePath);
+                new FileMovieRepository(Path.GetFullPath(moviePath));
 
             FileCinemaRepository cinemaRepository =
-                new FileCinemaRepository(cinemaPath);
+                new FileCinemaRepository(Path.GetFullPath(cinemaPath));
 
             FileHallRepository hallRepository =
-                new FileHallRepository(hallPath);
+                new FileHallRepository(Path.GetFullPath(hallPath));
+
+            FileBookingRepository bookingRepository =
+                new FileBookingRepository(Path.GetFullPath(bookingPath));
 
             Movie movie = new Movie
             {
@@ -140,7 +149,8 @@ namespace TheMovies.Tests
                 new CalendarViewModel(
                     cinemaRepository,
                     movieRepository,
-                    hallRepository);
+                    hallRepository,
+                    bookingRepository);
 
             viewModel.SelectedMovie = viewModel.Movies[0];
             viewModel.SelectedHall = viewModel.AvailableHalls[0];
@@ -162,7 +172,7 @@ namespace TheMovies.Tests
                 viewModel.StatusMessage,
                 "Næste ledige tidspunkt");
 
-            DeleteFiles(moviePath, cinemaPath, hallPath);
+            DeleteFiles(moviePath, cinemaPath, hallPath, bookingPath);
         }
 
 
@@ -173,17 +183,21 @@ namespace TheMovies.Tests
             string moviePath = "test_release_movies.json";
             string cinemaPath = "test_release_cinemas.json";
             string hallPath = "test_release_halls.json";
+            string bookingPath = "test_release_bookings.json";
 
-            DeleteFiles(moviePath, cinemaPath, hallPath);
+            DeleteFiles(moviePath, cinemaPath, hallPath, bookingPath);
 
             FileMovieRepository movieRepository =
-                new FileMovieRepository(moviePath);
+                new FileMovieRepository(Path.GetFullPath(moviePath));
 
             FileCinemaRepository cinemaRepository =
-                new FileCinemaRepository(cinemaPath);
+                new FileCinemaRepository(Path.GetFullPath(cinemaPath));
 
             FileHallRepository hallRepository =
-                new FileHallRepository(hallPath);
+                new FileHallRepository(Path.GetFullPath(hallPath));
+
+            FileBookingRepository bookingRepository =
+                new FileBookingRepository(Path.GetFullPath(bookingPath));
 
             Movie movie = new Movie
             {
@@ -216,7 +230,8 @@ namespace TheMovies.Tests
                 new CalendarViewModel(
                     cinemaRepository,
                     movieRepository,
-                    hallRepository);
+                    hallRepository,
+                    bookingRepository);
 
             viewModel.SelectedMovie = viewModel.Movies[0];
             viewModel.SelectedHall = viewModel.AvailableHalls[0];
@@ -237,14 +252,15 @@ namespace TheMovies.Tests
                 viewModel.StatusMessage,
                 "kan ikke vises før premieredatoen");
 
-            DeleteFiles(moviePath, cinemaPath, hallPath);
+            DeleteFiles(moviePath, cinemaPath, hallPath, bookingPath);
         }
 
 
         private void DeleteFiles(
             string moviePath,
             string cinemaPath,
-            string hallPath)
+            string hallPath,
+            string bookingPath)
         {
             if (File.Exists(moviePath))
                 File.Delete(moviePath);
@@ -254,6 +270,9 @@ namespace TheMovies.Tests
 
             if (File.Exists(hallPath))
                 File.Delete(hallPath);
+
+            if (File.Exists(bookingPath))
+                File.Delete(bookingPath);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
-using TheMovies.Core.Repositories;
+using TheMovies.Core.Services;
 using TheMovies.WPF.DisplayModels;
 using TheMovies.WPF.Views;
 
@@ -18,6 +18,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly IMovieRepository _movieRepository;
         private readonly IHallRepository _hallRepository;
         private readonly IBookingRepository _bookingRepository;
+        private readonly BookingService _bookingService;
         private int _year;
         private int _month;
 
@@ -247,6 +248,7 @@ namespace TheMovies.WPF.ViewModels
             _movieRepository = movieRepository;
             _hallRepository = hallRepository;
             _bookingRepository = bookingRepository;
+            _bookingService = new BookingService(bookingRepository);
 
             _year = DateTime.Today.Year;
             _month = DateTime.Today.Month;
@@ -830,10 +832,6 @@ namespace TheMovies.WPF.ViewModels
                 return;
             }
 
-            // Load bookings and hall to compute seats left before showing dialog
-            var repo = new FileBookingRepository();
-            var bookings = repo.LoadBookings();
-
             Hall? hall = Halls.FirstOrDefault(h => h.Id == SelectedScreening.HallId);
             if (hall == null)
             {
@@ -841,11 +839,9 @@ namespace TheMovies.WPF.ViewModels
                 return;
             }
 
-            int alreadyBooked = bookings
-                .Where(b => b.ScreeningId == SelectedScreening.ScreeningId)
-                .Sum(b => b.BookingAmount);
-
-            int seatsLeft = hall.Capacity - alreadyBooked;
+            int seatsLeft = _bookingService.GetSeatsLeft(
+                SelectedScreening.ScreeningId,
+                hall.Capacity);
 
             // Show booking dialog
             BookingDialog bookingView = new BookingDialog();
@@ -860,8 +856,6 @@ namespace TheMovies.WPF.ViewModels
                 StatusMessage = "Booking annulleret.";
                 return;
             }
-            // Re-load bookings to avoid race and perform capacity check again
-            bookings = repo.LoadBookings();
             Booking newBooking;
             try
             {
@@ -884,34 +878,17 @@ namespace TheMovies.WPF.ViewModels
                 StatusMessage = "Der opstod en fejl ved oprettelse af booking.";
                 return;
             }
-            if (newBooking.BookingAmount < 1) newBooking.BookingAmount = 1;
+            BookingCreationResult creationResult = _bookingService.CreateBooking(
+                newBooking,
+                SelectedScreening.ScreeningId,
+                hall.Capacity);
 
-            alreadyBooked = bookings
-                .Where(b => b.ScreeningId == SelectedScreening.ScreeningId)
-                .Sum(b => b.BookingAmount);
-
-            seatsLeft = hall.Capacity - alreadyBooked;
-            if (newBooking.BookingAmount > seatsLeft)
-            {
-                StatusMessage = seatsLeft > 0
-                    ? $"Der er kun {seatsLeft} pladser tilbage i salen. Vælg et lavere antal."
-                    : "Salen er udsolgt for denne forestilling.";
+            StatusMessage = creationResult.Message;
+            if (!creationResult.IsSuccess)
                 return;
-            }
-
-            int newId = 1;
-            if (bookings.Any())
-                newId = bookings.Max(b => b.Id) + 1;
-
-            newBooking.Id = newId;
-            newBooking.ScreeningId = SelectedScreening.ScreeningId;
-
-            bookings.Add(newBooking);
-            repo.SaveBookings(bookings);
 
             // Notify listeners so UI (StartWindow etc.) can refresh immediately
             TheMovies.WPF.Helpers.BookingNotifier.RaiseBookingChanged(newBooking.ScreeningId);
-            StatusMessage = "Booking gennemført.";
         }
 
     }

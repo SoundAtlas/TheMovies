@@ -17,7 +17,7 @@ public class FileMovieRepositoryTests
             File.Delete(testFilePath);
 
         File.Create(testFilePath).Close();
-        FileMovieRepository repository = new FileMovieRepository(testFilePath);
+        FileMovieRepository repository = new FileMovieRepository(Path.GetFullPath(testFilePath));
 
         // Act
         List<Movie> movies = repository.LoadMovies();
@@ -38,7 +38,7 @@ public class FileMovieRepositoryTests
         string testFilePath = "test_movies_load.json";
         if (File.Exists(testFilePath))
             File.Delete(testFilePath);
-        FileMovieRepository repository = new FileMovieRepository(testFilePath);
+        FileMovieRepository repository = new FileMovieRepository(Path.GetFullPath(testFilePath));
         List<Movie> moviesToSave = new List<Movie>
         {
             new Movie { Title = "Inception", Duration = 148, Genre = "Sci-Fi" },
@@ -71,7 +71,7 @@ public class FileMovieRepositoryTests
         string testFilePath = "test_movies_save.json";
         if (File.Exists(testFilePath))
             File.Delete(testFilePath);
-        FileMovieRepository repository = new FileMovieRepository(testFilePath);
+        FileMovieRepository repository = new FileMovieRepository(Path.GetFullPath(testFilePath));
         List<Movie> moviesToSave = new List<Movie>
         {
             new Movie { Title = "Inception", Duration = 148, Genre = "Sci-Fi" }
