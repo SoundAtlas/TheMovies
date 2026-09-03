@@ -66,37 +66,17 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        public bool CanBook
-        {
-            get
-            {
-                if (!int.TryParse(BookingAmount, out int amt))
-                    return false;
+        public bool CanBook =>
+                int.TryParse(BookingAmount, out int amount) &&
+                amount >= 1 &&
+                amount <= SeatsLeft &&
+                !string.IsNullOrWhiteSpace(Email) &&
+                Email.Contains('@') &&
+                Email.Contains('.') &&
+                !string.IsNullOrWhiteSpace(PhoneNumber) &&
+                PhoneNumber.All(char.IsDigit) &&
+                PhoneNumber.Length is >= 8 and <= 15;
 
-                if (amt < 1)
-                    return false;
-
-                if (SeatsLeft < 1)
-                    return false;
-
-                if (amt > SeatsLeft)
-                    return false;
-
-                if (string.IsNullOrWhiteSpace(Email))
-                    return false;
-
-                if (!Email.Contains("@"))
-                    return false;
-
-                if (string.IsNullOrWhiteSpace(PhoneNumber))
-                    return false;
-
-                if (!PhoneNumber.All(char.IsDigit))
-                    return false;
-
-                return true;
-            }
-        }
 
         public Booking ToBooking()
         {
@@ -141,8 +121,8 @@ namespace TheMovies.WPF.ViewModels
                     if (string.IsNullOrWhiteSpace(Email))
                         return "Email skal udfyldes.";
 
-                    if (!Email.Contains("@"))
-                        return "Email skal indeholde '@'.";
+                    if (!Email.Contains('@') || !Email.Contains('.'))
+                        return "Email skal indeholde '.' og '@'.";
                 }
 
                 if (columnName == nameof(PhoneNumber))
@@ -152,6 +132,9 @@ namespace TheMovies.WPF.ViewModels
 
                     if (!PhoneNumber.All(char.IsDigit))
                         return "Telefonnummer må kun indeholde tal.";
+
+                    if (PhoneNumber.Length < 8 || PhoneNumber.Length > 15)
+                        return "Telefonnummer skal være mellem 8 og 15 cifre.";
                 }
 
                 return string.Empty;
