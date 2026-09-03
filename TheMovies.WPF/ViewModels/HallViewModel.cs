@@ -10,6 +10,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly IHallRepository _hallRepository;
         private readonly ICinemaRepository _cinemaRepository;
         private string _Name;
+        private int _Capacity;
         private Cinema? _selectedCinema;
         private Hall? _selectedHall;
         private string _statusMessage;
@@ -27,6 +28,11 @@ namespace TheMovies.WPF.ViewModels
             set { _Name = value; OnPropertyChanged(); }
         }
 
+        public int Capacity
+        {
+            get { return _Capacity; }
+            set { _Capacity = value; OnPropertyChanged(); }
+        }
         public Hall? SelectedHall
         {
             get { return _selectedHall; }
@@ -130,8 +136,10 @@ namespace TheMovies.WPF.ViewModels
                 Id = newId,
                 Name = Name,
                 CinemaId = SelectedCinema.Id,
-                CinemaName = SelectedCinema.Name
-            };
+                CinemaName = SelectedCinema.Name,
+                Capacity = Capacity
+
+            };  
 
             Halls.Add(hall);
 
@@ -199,7 +207,8 @@ namespace TheMovies.WPF.ViewModels
                 Id = SelectedHall.Id,
                 Name = Name,
                 CinemaId = SelectedCinema.Id,
-                CinemaName = SelectedCinema.Name
+                CinemaName = SelectedCinema.Name,
+                Capacity = Capacity
             };
 
             Halls[index] = updatedHall;
@@ -210,6 +219,7 @@ namespace TheMovies.WPF.ViewModels
             Name = "";
             SelectedCinema = null;
             SelectedHall = null;
+            Capacity = 0;
 
         }
 

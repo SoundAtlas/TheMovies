@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:TheMovies.WPF"
         mc:Ignorable="d"
         Title="TheMovies" Height="700" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        MinHeight="700"
+        MinWidth="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <!-- Ligger fast i toppen (uden for ScrollViewer'en), så den altid er synlig,
-             uanset hvor langt man har scrollet ned i formularen. -->
+        uanset hvor langt man har scrollet ned i formularen. -->
         <Button Grid.Row="0"
                 Content="← Tilbage"
                 Click="TilbageKnap_Click"
@@ -30,13 +32,13 @@
             <StackPanel Margin="20">
                 <!-- ny knap til kalenderen-->
                 <Button Content="Åbn kalender"
-    Command="{Binding OpenCalendarCommand}"
-    Width="120"
-    HorizontalAlignment="Left"
-    Margin="0,0,0,20"/>
-                <TextBlock Text="Registrer film" 
-                           FontSize="24" 
-                           FontWeight="Bold" 
+                        Command="{Binding OpenCalendarCommand}"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,20"/>
+                <TextBlock Text="Registrer film"
+                           FontSize="24"
+                           FontWeight="Bold"
                            Margin="0,0,0,20"/>
                 <TextBlock Text="Titel" />
                 <TextBox Text="{Binding MovieViewModel.Title}"
@@ -61,26 +63,26 @@
                 <StackPanel Orientation="Horizontal">
 
                     <Button Content="Registrer film"
-                        Command="{Binding MovieViewModel.RegisterMovieCommand}"
-                        Width="120"
-                        HorizontalAlignment="Left"
-                        Margin="0,0,10,0" Click="Button_Click"/>
+                            Command="{Binding MovieViewModel.RegisterMovieCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,10,0" Click="Button_Click"/>
                     <Button Content="Gem ændringer"
-                        Command="{Binding MovieViewModel.SaveMovieChangesCommand}"
-                        Width="120"
-                        HorizontalAlignment="Left"/>
+                            Command="{Binding MovieViewModel.SaveMovieChangesCommand}"
+                            Width="120"
+                            HorizontalAlignment="Left"/>
 
                 </StackPanel>
 
                 <TextBlock Text="{Binding MovieViewModel.StatusMessage}"
-                            Margin="0,10,0,0"/>
+                           Margin="0,10,0,0"/>
 
                 <!-- FILM LISTE -->
-                <TextBlock Text="Registrerede film:" 
-                           FontSize="16" 
-                           FontWeight="Medium" 
+                <TextBlock Text="Registrerede film:"
+                           FontSize="16"
+                           FontWeight="Medium"
                            Margin="0,10,0,10"/>
-               
+
                 <ListBox ItemsSource="{Binding MovieViewModel.Movies}"
                          SelectedItem="{Binding MovieViewModel.SelectedMovie}"
                          Margin="0,10,0,0">
@@ -112,6 +114,6 @@
             </StackPanel>
 
         </ScrollViewer>
-        
+
     </Grid>
 </Window>

@@ -57,7 +57,8 @@ namespace TheMovies.Tests
                 new CalendarViewModel(
                     cinemaRepository,
                     movieRepository,
-                    hallRepository);
+                    hallRepository
+                    );
 
             viewModel.SelectedMovie = viewModel.Movies[0];
             viewModel.SelectedHall = viewModel.AvailableHalls[0];

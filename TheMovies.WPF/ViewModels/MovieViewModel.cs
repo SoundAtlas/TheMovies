@@ -126,7 +126,7 @@ namespace TheMovies.WPF.ViewModels
 
         }
 
-        private void RegisterMovie(object parameter)
+        private void RegisterMovie(object? parameter)
         {
 
             if (string.IsNullOrWhiteSpace(Title))
@@ -177,7 +177,7 @@ namespace TheMovies.WPF.ViewModels
 
         }
 
-        private void DeleteMovie(object parameter)
+        private void DeleteMovie(object? parameter)
         {
             if (SelectedMovie == null)
             {
@@ -222,7 +222,7 @@ namespace TheMovies.WPF.ViewModels
 
 
 
-        private void SaveMovieChanges(object parameter)
+        private void SaveMovieChanges(object? parameter)
         {
             if (SelectedMovie == null)
                 return;
