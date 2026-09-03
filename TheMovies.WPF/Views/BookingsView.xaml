@@ -1,7 +1,8 @@
 ﻿<Window x:Class="TheMovies.WPF.Views.BookingsView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bookinger" Height="400" Width="750" WindowStartupLocation="CenterOwner">
+        Title="Bookinger" Height="400" Width="750" WindowStartupLocation="CenterOwner"
+        MinHeight="400" MinWidth="750">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -20,7 +21,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="0,2">
-                        <TextBlock Text="Dato: " FontWeight="Bold" />  
+                        <TextBlock Text="Dato: " FontWeight="Bold" />
                         <TextBlock Text="{Binding ScreeningDate, StringFormat=d}"/>
                         <TextBlock Text=" " />
                         <TextBlock Text="Tid: " FontWeight="Bold" />
