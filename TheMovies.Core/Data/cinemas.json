@@ -1,0 +1,3393 @@
+[
+  {
+    "Name": "The Movies - Hjerm",
+    "Id": 3,
+    "Screenings": [
+      {
+        "Id": 1,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-08-20",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 2,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-01",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 122,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-01",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 123,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-01",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 124,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-01",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 6,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-02",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 125,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-02",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 126,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-02",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 127,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-02",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 10,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-03",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 128,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-03",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 129,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-03",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 130,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-03",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 14,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-04",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 131,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-04",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 132,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-04",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 133,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-04",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 18,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-05",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 134,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-05",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 135,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-05",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 136,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-05",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 22,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-06",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 137,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-06",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 138,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-06",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 139,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-06",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 26,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-07",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 140,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-07",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 141,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-07",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 142,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-07",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 30,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-08",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 143,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-08",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 144,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-08",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 145,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-08",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 34,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-09",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 146,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-09",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 147,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-09",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 148,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-09",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 38,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-10",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 149,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-10",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 150,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-10",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 151,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-10",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 42,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-11",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 152,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-11",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 153,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-11",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 154,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-11",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 46,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-12",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 155,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-12",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 156,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-12",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 157,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-12",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 50,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-13",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 158,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-13",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 159,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-13",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 160,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-13",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 54,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-14",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 161,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-14",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 162,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-14",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 163,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-14",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 58,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-15",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 164,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-15",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 165,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-15",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 166,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-15",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 62,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-16",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 167,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-16",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 168,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-16",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 169,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-16",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 66,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-17",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 170,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-17",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 171,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-17",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 172,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-17",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 70,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-18",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 173,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-18",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 174,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-18",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 175,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-18",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 74,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-19",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 176,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-19",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 177,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-19",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 178,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-19",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 78,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-20",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 179,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-20",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 180,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-20",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 181,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-20",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 82,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-21",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 182,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-21",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 183,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-21",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 184,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-21",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 86,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-22",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 185,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-22",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 186,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-22",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 187,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-22",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 90,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-23",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 188,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-23",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 189,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-23",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 190,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-23",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 94,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-24",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 191,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-24",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 192,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-24",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 193,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-24",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 98,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-25",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 194,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-25",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 195,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-25",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 196,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-25",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 102,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-26",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 197,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-26",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 198,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-26",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 199,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-26",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 106,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-27",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 200,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-27",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 201,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-27",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 202,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-27",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 110,
+        "MovieId": 1,
+        "HallId": 2,
+        "Date": "2026-09-28",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 203,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-28",
+        "StartTime": "12:50:00"
+      },
+      {
+        "Id": 204,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-28",
+        "StartTime": "15:35:00"
+      },
+      {
+        "Id": 205,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-28",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 114,
+        "MovieId": 2,
+        "HallId": 1,
+        "Date": "2026-09-29",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 206,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-29",
+        "StartTime": "12:55:00"
+      },
+      {
+        "Id": 207,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-29",
+        "StartTime": "15:40:00"
+      },
+      {
+        "Id": 208,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-29",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 118,
+        "MovieId": 3,
+        "HallId": 2,
+        "Date": "2026-09-30",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 209,
+        "MovieId": 1,
+        "HallId": 1,
+        "Date": "2026-09-30",
+        "StartTime": "12:45:00"
+      },
+      {
+        "Id": 210,
+        "MovieId": 2,
+        "HallId": 2,
+        "Date": "2026-09-30",
+        "StartTime": "15:30:00"
+      },
+      {
+        "Id": 211,
+        "MovieId": 3,
+        "HallId": 1,
+        "Date": "2026-09-30",
+        "StartTime": "19:15:00"
+      }
+    ]
+  },
+  {
+    "Name": "The Movies - Videbæk",
+    "Id": 4,
+    "Screenings": [
+      {
+        "Id": 212,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-01",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 3,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-01",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 213,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-01",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 214,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-01",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 215,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-02",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 7,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-02",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 216,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-02",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 217,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-02",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 218,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-03",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 11,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-03",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 219,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-03",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 220,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-03",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 221,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-04",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 15,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-04",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 222,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-04",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 223,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-04",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 224,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-05",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 19,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-05",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 225,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-05",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 226,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-05",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 227,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-06",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 23,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-06",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 228,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-06",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 229,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-06",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 230,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-07",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 27,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-07",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 231,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-07",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 232,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-07",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 233,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-08",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 31,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-08",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 234,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-08",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 235,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-08",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 236,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-09",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 35,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-09",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 237,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-09",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 238,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-09",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 239,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-10",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 39,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-10",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 240,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-10",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 241,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-10",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 242,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-11",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 43,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-11",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 243,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-11",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 244,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-11",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 245,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-12",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 47,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-12",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 246,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-12",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 247,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-12",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 248,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-13",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 51,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-13",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 249,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-13",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 250,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-13",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 251,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-14",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 55,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-14",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 252,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-14",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 253,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-14",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 254,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-15",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 59,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-15",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 255,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-15",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 256,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-15",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 257,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-16",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 63,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-16",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 258,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-16",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 259,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-16",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 260,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-17",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 67,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-17",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 261,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-17",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 262,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-17",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 263,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-18",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 71,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-18",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 264,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-18",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 265,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-18",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 266,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-19",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 75,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-19",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 267,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-19",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 268,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-19",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 269,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-20",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 79,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-20",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 270,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-20",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 271,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-20",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 272,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-21",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 83,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-21",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 273,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-21",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 274,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-21",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 275,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-22",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 87,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-22",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 276,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-22",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 277,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-22",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 278,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-23",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 91,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-23",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 279,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-23",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 280,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-23",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 281,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-24",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 95,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-24",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 282,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-24",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 283,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-24",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 284,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-25",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 99,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-25",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 285,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-25",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 286,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-25",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 287,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-26",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 103,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-26",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 288,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-26",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 289,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-26",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 290,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-27",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 107,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-27",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 291,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-27",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 292,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-27",
+        "StartTime": "19:35:00"
+      },
+      {
+        "Id": 293,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-28",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 111,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-28",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 294,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-28",
+        "StartTime": "16:55:00"
+      },
+      {
+        "Id": 295,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-28",
+        "StartTime": "19:40:00"
+      },
+      {
+        "Id": 296,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-29",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 115,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-29",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 297,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-29",
+        "StartTime": "16:45:00"
+      },
+      {
+        "Id": 298,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-29",
+        "StartTime": "19:30:00"
+      },
+      {
+        "Id": 299,
+        "MovieId": 2,
+        "HallId": 3,
+        "Date": "2026-09-30",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 119,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-30",
+        "StartTime": "14:00:00"
+      },
+      {
+        "Id": 300,
+        "MovieId": 3,
+        "HallId": 3,
+        "Date": "2026-09-30",
+        "StartTime": "16:50:00"
+      },
+      {
+        "Id": 301,
+        "MovieId": 1,
+        "HallId": 3,
+        "Date": "2026-09-30",
+        "StartTime": "19:35:00"
+      }
+    ]
+  },
+  {
+    "Name": "The Movies - Thorsminde",
+    "Id": 5,
+    "Screenings": [
+      {
+        "Id": 302,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-01",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 303,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-01",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 4,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-01",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 304,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-01",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 305,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-02",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 306,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-02",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 8,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-02",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 307,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-02",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 308,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-03",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 309,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-03",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 12,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-03",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 310,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-03",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 311,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-04",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 312,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-04",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 16,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-04",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 313,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-04",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 314,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-05",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 315,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-05",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 20,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-05",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 316,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-05",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 317,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-06",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 318,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-06",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 24,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-06",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 319,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-06",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 320,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-07",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 321,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-07",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 28,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-07",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 322,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-07",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 323,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-08",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 324,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-08",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 32,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-08",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 325,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-08",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 326,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-09",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 327,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-09",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 36,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-09",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 328,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-09",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 329,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-10",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 330,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-10",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 40,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-10",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 331,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-10",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 332,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-11",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 333,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-11",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 44,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-11",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 334,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-11",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 335,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-12",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 336,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-12",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 48,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-12",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 337,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-12",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 338,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-13",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 339,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-13",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 52,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-13",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 340,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-13",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 341,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-14",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 342,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-14",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 56,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-14",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 343,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-14",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 344,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-15",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 345,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-15",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 60,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-15",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 346,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-15",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 347,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-16",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 348,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-16",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 64,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-16",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 349,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-16",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 350,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-17",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 351,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-17",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 68,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-17",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 352,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-17",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 353,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-18",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 354,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-18",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 72,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-18",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 355,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-18",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 356,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-19",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 357,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-19",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 76,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-19",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 358,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-19",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 359,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-20",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 360,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-20",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 80,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-20",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 361,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-20",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 362,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-21",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 363,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-21",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 84,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-21",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 364,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-21",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 365,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-22",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 366,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-22",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 88,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-22",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 367,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-22",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 368,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-23",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 369,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-23",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 92,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-23",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 370,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-23",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 371,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-24",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 372,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-24",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 96,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-24",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 373,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-24",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 374,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-25",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 375,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-25",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 100,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-25",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 376,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-25",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 377,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-26",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 378,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-26",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 104,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-26",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 379,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-26",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 380,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-27",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 381,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-27",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 108,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-27",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 382,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-27",
+        "StartTime": "19:25:00"
+      },
+      {
+        "Id": 383,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-28",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 384,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-28",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 112,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-28",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 385,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-28",
+        "StartTime": "19:15:00"
+      },
+      {
+        "Id": 386,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-29",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 387,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-29",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 116,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-29",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 388,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-29",
+        "StartTime": "19:20:00"
+      },
+      {
+        "Id": 389,
+        "MovieId": 3,
+        "HallId": 4,
+        "Date": "2026-09-30",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 390,
+        "MovieId": 1,
+        "HallId": 4,
+        "Date": "2026-09-30",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 120,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-30",
+        "StartTime": "16:30:00"
+      },
+      {
+        "Id": 391,
+        "MovieId": 2,
+        "HallId": 4,
+        "Date": "2026-09-30",
+        "StartTime": "19:25:00"
+      }
+    ]
+  },
+  {
+    "Name": "The Movies - Ræhr",
+    "Id": 6,
+    "Screenings": [
+      {
+        "Id": 392,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-01",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 393,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-01",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 394,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-01",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 5,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-01",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 395,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-02",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 396,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-02",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 397,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-02",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 9,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-02",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 398,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-03",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 399,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-03",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 400,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-03",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 13,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-03",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 401,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-04",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 402,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-04",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 403,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-04",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 17,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-04",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 404,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-05",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 405,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-05",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 406,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-05",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 21,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-05",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 407,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-06",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 408,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-06",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 409,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-06",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 25,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-06",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 410,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-07",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 411,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-07",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 412,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-07",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 29,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-07",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 413,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-08",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 414,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-08",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 415,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-08",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 33,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-08",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 416,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-09",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 417,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-09",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 418,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-09",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 37,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-09",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 419,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-10",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 420,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-10",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 421,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-10",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 41,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-10",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 422,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-11",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 423,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-11",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 424,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-11",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 45,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-11",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 425,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-12",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 426,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-12",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 427,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-12",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 49,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-12",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 428,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-13",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 429,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-13",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 430,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-13",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 53,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-13",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 431,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-14",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 432,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-14",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 433,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-14",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 57,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-14",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 434,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-15",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 435,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-15",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 436,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-15",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 61,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-15",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 437,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-16",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 438,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-16",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 439,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-16",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 65,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-16",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 440,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-17",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 441,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-17",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 442,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-17",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 69,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-17",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 443,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-18",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 444,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-18",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 445,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-18",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 73,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-18",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 446,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-19",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 447,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-19",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 448,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-19",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 77,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-19",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 449,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-20",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 450,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-20",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 451,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-20",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 81,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-20",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 452,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-21",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 453,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-21",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 454,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-21",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 85,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-21",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 455,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-22",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 456,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-22",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 457,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-22",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 89,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-22",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 458,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-23",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 459,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-23",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 460,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-23",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 93,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-23",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 461,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-24",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 462,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-24",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 463,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-24",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 97,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-24",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 464,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-25",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 465,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-25",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 466,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-25",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 101,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-25",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 467,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-26",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 468,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-26",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 469,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-26",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 105,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-26",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 470,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-27",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 471,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-27",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 472,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-27",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 109,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-27",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 473,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-28",
+        "StartTime": "10:05:00"
+      },
+      {
+        "Id": 474,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-28",
+        "StartTime": "13:05:00"
+      },
+      {
+        "Id": 475,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-28",
+        "StartTime": "16:05:00"
+      },
+      {
+        "Id": 113,
+        "MovieId": 1,
+        "HallId": 6,
+        "Date": "2026-09-28",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 476,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-29",
+        "StartTime": "10:10:00"
+      },
+      {
+        "Id": 477,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-29",
+        "StartTime": "13:10:00"
+      },
+      {
+        "Id": 478,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-29",
+        "StartTime": "16:10:00"
+      },
+      {
+        "Id": 117,
+        "MovieId": 2,
+        "HallId": 5,
+        "Date": "2026-09-29",
+        "StartTime": "19:00:00"
+      },
+      {
+        "Id": 479,
+        "MovieId": 1,
+        "HallId": 5,
+        "Date": "2026-09-30",
+        "StartTime": "10:00:00"
+      },
+      {
+        "Id": 480,
+        "MovieId": 2,
+        "HallId": 6,
+        "Date": "2026-09-30",
+        "StartTime": "13:00:00"
+      },
+      {
+        "Id": 481,
+        "MovieId": 3,
+        "HallId": 5,
+        "Date": "2026-09-30",
+        "StartTime": "16:00:00"
+      },
+      {
+        "Id": 121,
+        "MovieId": 3,
+        "HallId": 6,
+        "Date": "2026-09-30",
+        "StartTime": "19:00:00"
+      }
+    ]
+  }
+]

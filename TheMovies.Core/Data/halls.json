@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Name": "Sal 1",
+    "CinemaId": 3,
+    "Capacity": 50
+  },
+  {
+    "Id": 2,
+    "Name": "Sal 2",
+    "CinemaId": 3,
+    "Capacity": 75
+  },
+  {
+    "Id": 3,
+    "Name": "Sal 1",
+    "CinemaId": 4,
+    "Capacity": 100
+  },
+  {
+    "Id": 4,
+    "Name": "Sal 1",
+    "CinemaId": 5,
+    "Capacity": 50
+  },
+  {
+    "Id": 5,
+    "Name": "Sal 1",
+    "CinemaId": 6,
+    "Capacity": 150
+  },
+  {
+    "Id": 6,
+    "Name": "Sal 2",
+    "CinemaId": 6,
+    "Capacity": 200
+  }
+]

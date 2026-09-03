@@ -17,7 +17,7 @@ namespace TheMovies.Core.Repositories
         {
             // Keep behavior consistent with other file repositories (movies/halls):
             // use runtime output Data folder next to the executable by default.
-            _filePath = filePath ?? Path.Combine(AppContext.BaseDirectory, "Data", "bookings.json");
+            _filePath = filePath ?? DataFilePath.Get("bookings.json");
 
             // Ensure directory exists and file is created
             Directory.CreateDirectory(Path.GetDirectoryName(_filePath)!);
