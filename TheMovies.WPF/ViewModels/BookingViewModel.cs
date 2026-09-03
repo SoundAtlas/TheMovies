@@ -1,12 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.ComponentModel;
 using TheMovies.Core.Models;
 
 namespace TheMovies.WPF.ViewModels
 {
-    public class BookingViewModel : INotifyPropertyChanged, IDataErrorInfo
+    public class BookingViewModel : ViewModelBase, IDataErrorInfo
     {
         private string _bookingAmount = "1";
         public string BookingAmount
@@ -163,15 +160,6 @@ namespace TheMovies.WPF.ViewModels
 
         #endregion
 
-        #region INotifyPropertyChanged
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
     }
 }
