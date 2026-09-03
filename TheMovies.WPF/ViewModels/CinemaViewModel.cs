@@ -10,7 +10,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly ICinemaRepository _cinemaRepository;
         private readonly IHallRepository _hallRepository;
 
-        private string _name;
+        private string _name = string.Empty;
 
         public string Name
         {
@@ -18,7 +18,7 @@ namespace TheMovies.WPF.ViewModels
             set { _name = value; OnPropertyChanged(); }
         }
 
-        private string _statusMessage;
+        private string _statusMessage = string.Empty;
 
         public string StatusMessage
         {
@@ -68,7 +68,7 @@ namespace TheMovies.WPF.ViewModels
             SaveCinemaChangesCommand = new RelayCommand(SaveCinemaChanges, CanSaveCinemaChanges);
         }
 
-        public void RegisterCinema(object paramter)
+        public void RegisterCinema(object? parameter)
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
@@ -103,7 +103,7 @@ namespace TheMovies.WPF.ViewModels
 
         }
 
-        public void DeleteCinema(object parameter)
+        public void DeleteCinema(object? parameter)
         {
             if (SelectedCinema == null)
             {
@@ -144,7 +144,7 @@ namespace TheMovies.WPF.ViewModels
 
         }
 
-        public void SaveCinemaChanges(object parameter)
+        public void SaveCinemaChanges(object? parameter)
         {
             if (SelectedCinema == null)
                 return;

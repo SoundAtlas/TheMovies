@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using TheMovies.Core.Interfaces;
 using TheMovies.Core.Models;
@@ -10,13 +9,13 @@ namespace TheMovies.WPF.ViewModels
     {
         public int Id { get; set; }
         public int BookingAmount { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string Email { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
         public int ScreeningId { get; set; }
 
         // display fields
-        public string MovieTitle { get; set; }
-        public string HallName { get; set; }
+        public string MovieTitle { get; set; } = string.Empty;
+        public string HallName { get; set; } = string.Empty;
         public DateOnly? ScreeningDate { get; set; }
         public TimeOnly? ScreeningStart { get; set; }
 

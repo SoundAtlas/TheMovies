@@ -9,11 +9,11 @@ namespace TheMovies.WPF.ViewModels
     {
         private readonly IHallRepository _hallRepository;
         private readonly ICinemaRepository _cinemaRepository;
-        private string _Name;
+        private string _Name = string.Empty;
         private int _Capacity;
         private Cinema? _selectedCinema;
         private Hall? _selectedHall;
-        private string _statusMessage;
+        private string _statusMessage = string.Empty;
 
         public string StatusMessage
         {
@@ -112,7 +112,7 @@ namespace TheMovies.WPF.ViewModels
             SaveHallChangesCommand = new RelayCommand(SaveHallChanges, CanSaveHallChanges);
         }
 
-        private void RegisterHall(object paramter)
+        private void RegisterHall(object? parameter)
         {
 
             if (string.IsNullOrWhiteSpace(Name))
@@ -139,7 +139,7 @@ namespace TheMovies.WPF.ViewModels
                 CinemaName = SelectedCinema.Name,
                 Capacity = Capacity
 
-            };  
+            };
 
             Halls.Add(hall);
 
@@ -152,7 +152,7 @@ namespace TheMovies.WPF.ViewModels
 
         }
 
-        private void DeleteHall(object parameter)
+        private void DeleteHall(object? parameter)
         {
             if (SelectedHall == null)
                 return;
@@ -189,7 +189,7 @@ namespace TheMovies.WPF.ViewModels
         }
 
 
-        private void SaveHallChanges(object parameter)
+        private void SaveHallChanges(object? parameter)
         {
             if (SelectedHall == null)
                 return;

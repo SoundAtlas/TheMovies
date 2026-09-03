@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
-using TheMovies.Core.Models;
+﻿using System.Text.Json;
 using TheMovies.Core.Interfaces;
-using System.IO;
+using TheMovies.Core.Models;
 
 namespace TheMovies.Core.Repositories
 {
@@ -59,7 +55,7 @@ namespace TheMovies.Core.Repositories
             }
 
             // Deserialize the JSON data into a list of Booking objects
-            List<Booking>? bookings = JsonSerializer.Deserialize<List<Booking>>(json); 
+            List<Booking>? bookings = JsonSerializer.Deserialize<List<Booking>>(json);
             // Return the list of bookings, or an empty list if deserialization failed
             return bookings ?? new List<Booking>();
         }

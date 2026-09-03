@@ -32,7 +32,7 @@ namespace TheMovies.WPF.ViewModels
         };
 
         // Alle biografer — fylder ComboBox'en øverst
-        private ObservableCollection<Cinema> _cinemas;
+        private ObservableCollection<Cinema> _cinemas = new();
         public ObservableCollection<Cinema> Cinemas
         {
             get => _cinemas;
@@ -59,8 +59,8 @@ namespace TheMovies.WPF.ViewModels
         }
 
         // Den biograf brugeren har valgt
-        private Cinema _selectedCinema;
-        public Cinema SelectedCinema
+        private Cinema? _selectedCinema;
+        public Cinema? SelectedCinema
         {
             get => _selectedCinema;
             set
@@ -73,15 +73,15 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        private ObservableCollection<DayDisplay> _days;
+        private ObservableCollection<DayDisplay> _days = new();
         public ObservableCollection<DayDisplay> Days
         {
             get => _days;
             set { _days = value; OnPropertyChanged(); }
         }
 
-        private DayDisplay _selectedDay;
-        public DayDisplay SelectedDay
+        private DayDisplay? _selectedDay;
+        public DayDisplay? SelectedDay
         {
             get => _selectedDay;
             set
@@ -206,7 +206,7 @@ namespace TheMovies.WPF.ViewModels
         public string MonthLabel => $"{MonthNames[_month - 1]} {_year}";
 
         // Dagsoversigten: forestillinger for valgt dag i valgt biograf
-        private ObservableCollection<ScreeningDisplay> _screenings;
+        private ObservableCollection<ScreeningDisplay> _screenings = new();
         public ObservableCollection<ScreeningDisplay> Screenings
         {
             get => _screenings;
@@ -879,7 +879,7 @@ namespace TheMovies.WPF.ViewModels
                 StatusMessage = fx.Message;
                 return;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 StatusMessage = "Der opstod en fejl ved oprettelse af booking.";
                 return;

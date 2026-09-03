@@ -13,7 +13,7 @@ namespace TheMovies.WPF.ViewModels
         private readonly ICinemaRepository _cinemaRepository;
 
 
-        private string _title;
+        private string _title = string.Empty;
         public string Title
         {
             get => _title;
@@ -24,7 +24,7 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        private string _duration;
+        private string _duration = string.Empty;
         public string Duration
         {
             get => _duration;
@@ -35,7 +35,7 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        private string _genre;
+        private string _genre = string.Empty;
         public string Genre
         {
             get => _genre;
@@ -46,7 +46,7 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        private string _director;
+        private string _director = string.Empty;
         public string Director
         {
             get => _director;
@@ -68,8 +68,8 @@ namespace TheMovies.WPF.ViewModels
             }
         }
 
-        private string _statusMessage;
-        public string StatusMessage
+        private string? _statusMessage;
+        public string? StatusMessage
         {
             get => _statusMessage;
             set
